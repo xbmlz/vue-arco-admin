@@ -10,12 +10,14 @@
 - [x] pnpm
 - [x] vite3
 - [x] vue3+ts
-- [ ] vue-router
+- [x] vue-router
+- [ ] layout
+- [ ] mockjs
+- [ ] axios
+- [ ] pinia
+- [ ] login
 - [ ] arco
 - [ ] unocss
-- [ ] layout
-- [ ] login
-- [ ] axios
 - [ ] components
 
 ## 特性
