@@ -22,6 +22,7 @@ jobs:
 
       - name: Install and Build 🔧
         run: |
+          npm i -g pnpm
           pnpm i
           pnpm run build
 
