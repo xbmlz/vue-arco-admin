@@ -1,3 +1,3 @@
 <template>
-  <div>Vite + Vue + TS</div>
+  <RouterView />
 </template>
