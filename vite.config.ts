@@ -18,7 +18,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
 		},
 		server: {
 			host: true,
-			port: VITE_PORT
+			port: Number(VITE_PORT)
 		}
 	}
 })
