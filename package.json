@@ -1,85 +1,93 @@
 {
-	"name": "venable-admin",
-	"version": "1.0.0",
-	"description": "🚀A modern vue admin. It is based on vue3.x and TypeScript. It's so fast!",
-	"scripts": {
-		"commit": "czg",
-		"dev": "vite",
-		"build": "vue-tsc --noEmit && vite build",
-		"preview": "vite preview",
-		"lint:eslint": "eslint --fix --ext .js,.ts,.vue ./src",
-		"lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\"",
-		"lint:lint-staged": "lint-staged",
-		"prepare": "husky install"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/xbmlz/venable-admin.git"
-	},
-	"author": "xbmlz",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/xbmlz/venable-admin/issues"
-	},
-	"homepage": "https://github.com/xbmlz/venable-admin#readme",
-	"keywords": [
-		"vite",
-		"vue",
-		"typescript"
-	],
-	"engines": {
-		"node": "^14.18.0 || >=16.0.0"
-	},
-	"dependencies": {
-		"@types/node": "^18.6.5",
-		"vue": "^3.2.37",
-		"vue-router": "4"
-	},
-	"devDependencies": {
-		"@commitlint/config-conventional": "^17.0.3",
-		"@typescript-eslint/eslint-plugin": "^5.33.0",
-		"@typescript-eslint/parser": "^5.33.0",
-		"@vitejs/plugin-vue": "^3.0.1",
-		"commitlint": "^17.0.3",
-		"cz-git": "^1.3.10",
-		"czg": "^1.3.10",
-		"eslint": "^8.21.0",
-		"eslint-config-prettier": "^8.5.0",
-		"eslint-define-config": "^1.6.0",
-		"eslint-plugin-import": "^2.26.0",
-		"eslint-plugin-node": "^11.1.0",
-		"eslint-plugin-prettier": "^4.2.1",
-		"eslint-plugin-vue": "^9.3.0",
-		"husky": "^8.0.1",
-		"lint-staged": "^13.0.3",
-		"prettier": "^2.7.1",
-		"typescript": "^4.7.4",
-		"vite": "^3.0.4",
-		"vite-plugin-eslint": "^1.7.0",
-		"vue-tsc": "^0.39.5"
-	},
-	"lint-staged": {
-		"*.{js,jsx,ts,tsx}": [
-			"eslint --fix",
-			"prettier --write"
-		],
-		"{!(package)*.json,*.code-snippets,.!(browserslist)*rc}": [
-			"prettier --write--parser json"
-		],
-		"package.json": [
-			"prettier --write"
-		],
-		"*.vue": [
-			"eslint --fix",
-			"prettier --write",
-			"stylelint --fix"
-		],
-		"*.{scss,less,styl,html}": [
-			"stylelint --fix",
-			"prettier --write"
-		],
-		"*.md": [
-			"prettier --write"
-		]
-	}
+  "name": "venable-admin",
+  "version": "1.0.0",
+  "description": "🚀A modern vue admin. It is based on vue3.x and TypeScript. It's so fast!",
+  "scripts": {
+    "commit": "czg",
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "lint:eslint": "eslint --fix --ext .js,.ts,.vue ./src",
+    "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\"",
+    "lint:stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
+    "lint:lint-staged": "lint-staged",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xbmlz/venable-admin.git"
+  },
+  "author": "xbmlz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xbmlz/venable-admin/issues"
+  },
+  "homepage": "https://github.com/xbmlz/venable-admin#readme",
+  "keywords": [
+    "vite",
+    "vue",
+    "typescript"
+  ],
+  "engines": {
+    "node": "^14.18.0 || >=16.0.0"
+  },
+  "dependencies": {
+    "@types/node": "^18.6.5",
+    "vue": "^3.2.37",
+    "vue-router": "4"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^17.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.0",
+    "@vitejs/plugin-vue": "^3.0.1",
+    "commitlint": "^17.0.3",
+    "cz-git": "^1.3.10",
+    "czg": "^1.3.10",
+    "eslint": "^8.21.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-define-config": "^1.6.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.3.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "postcss": "^8.4.16",
+    "postcss-html": "^1.5.0",
+    "postcss-less": "^6.0.0",
+    "prettier": "^2.7.1",
+    "stylelint": "^14.9.1",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-recommended-vue": "^1.4.0",
+    "stylelint-config-standard": "^26.0.0",
+    "typescript": "^4.7.4",
+    "vite": "^3.0.4",
+    "vite-plugin-eslint": "^1.7.0",
+    "vue-tsc": "^0.39.5"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "{!(package)*.json,*.code-snippets,.!(browserslist)*rc}": [
+      "prettier --write--parser json"
+    ],
+    "package.json": [
+      "prettier --write"
+    ],
+    "*.vue": [
+      "eslint --fix",
+      "prettier --write",
+      "stylelint --fix"
+    ],
+    "*.{scss,less,styl,html}": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.md": [
+      "prettier --write"
+    ]
+  }
 }

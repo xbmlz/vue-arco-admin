@@ -1,4 +1,5 @@
 {
 	"editor.formatOnSave": true,
-	"npm.packageManager": "pnpm"
+	"npm.packageManager": "pnpm",
+	"stylelint.validate": ["css", "less", "postcss", "scss", "vue", "sass"]
 }
