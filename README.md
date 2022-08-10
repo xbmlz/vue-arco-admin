@@ -16,6 +16,8 @@
 - [x] prettier
 - [x] husky
 - [x] commitlint
+- [x] stylelint
+- [x] vue-components-auto-import
 - [ ] layout
 - [ ] mockjs
 - [ ] axios
