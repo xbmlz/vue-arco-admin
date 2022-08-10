@@ -1,39 +1,51 @@
 {
-  "name": "venable-admin",
-  "version": "1.0.0",
-  "description": "🚀A modern vue admin. It is based on vue3.x and TypeScript. It's so fast!",
-  "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xbmlz/venable-admin.git"
-  },
-  "author": "xbmlz",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/xbmlz/venable-admin/issues"
-  },
-  "homepage": "https://github.com/xbmlz/venable-admin#readme",
-  "keywords": [
-    "vite",
-    "vue",
-    "typescript"
-  ],
-  "engines": {
-    "node": "^14.18.0 || >=16.0.0"
-  },
-  "dependencies": {
-    "@types/node": "^18.6.5",
-    "vue": "^3.2.37",
-    "vue-router": "4"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^3.0.1",
-    "typescript": "^4.7.4",
-    "vite": "^3.0.4",
-    "vue-tsc": "^0.39.5"
-  }
+	"name": "venable-admin",
+	"version": "1.0.0",
+	"description": "🚀A modern vue admin. It is based on vue3.x and TypeScript. It's so fast!",
+	"scripts": {
+		"dev": "vite",
+		"build": "vue-tsc --noEmit && vite build",
+		"preview": "vite preview",
+		"lint:eslint": "eslint --fix --ext .js,.ts,.vue ./src",
+		"lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/xbmlz/venable-admin.git"
+	},
+	"author": "xbmlz",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/xbmlz/venable-admin/issues"
+	},
+	"homepage": "https://github.com/xbmlz/venable-admin#readme",
+	"keywords": [
+		"vite",
+		"vue",
+		"typescript"
+	],
+	"engines": {
+		"node": "^14.18.0 || >=16.0.0"
+	},
+	"dependencies": {
+		"@types/node": "^18.6.5",
+		"vue": "^3.2.37",
+		"vue-router": "4"
+	},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^5.33.0",
+		"@typescript-eslint/parser": "^5.33.0",
+		"@vitejs/plugin-vue": "^3.0.1",
+		"eslint": "^8.21.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-define-config": "^1.6.0",
+		"eslint-plugin-import": "^2.26.0",
+		"eslint-plugin-node": "^11.1.0",
+		"eslint-plugin-prettier": "^4.2.1",
+		"eslint-plugin-vue": "^9.3.0",
+		"prettier": "^2.7.1",
+		"typescript": "^4.7.4",
+		"vite": "^3.0.4",
+		"vue-tsc": "^0.39.5"
+	}
 }
