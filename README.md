@@ -31,4 +31,6 @@
 - [Vite3](https://cn.vitejs.dev/)
 - [Vue3](https://cn.vuejs.org/)
 - [Vue-Router](https://router.vuejs.org/zh)
+- [Eslint](http://eslint.cn)
+- [Prettier](https://www.prettier.cn)
 
