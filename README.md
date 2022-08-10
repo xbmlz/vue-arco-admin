@@ -1,4 +1,5 @@
 # venable-admin
+
 🚀A modern vue admin. It is based on vue3.x and TypeScript. It's so fast!
 
 [Live Demo](https://xbmlz.github.io/venable-admin/)
@@ -11,6 +12,10 @@
 - [x] vite3
 - [x] vue3+ts
 - [x] vue-router
+- [x] eslint
+- [x] prettier
+- [x] husky
+- [x] commitlint
 - [ ] layout
 - [ ] mockjs
 - [ ] axios
@@ -33,4 +38,3 @@
 - [Vue-Router](https://router.vuejs.org/zh)
 - [Eslint](http://eslint.cn)
 - [Prettier](https://www.prettier.cn)
-
