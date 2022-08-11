@@ -1,5 +1,10 @@
 {
-	"editor.formatOnSave": true,
-	"npm.packageManager": "pnpm",
-	"stylelint.validate": ["css", "less", "postcss", "scss", "vue", "sass"]
+  "prettier.enable": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "files.associations": {
+    "*.css": "postcss"
+  },
+  "editor.formatOnSave": false
 }

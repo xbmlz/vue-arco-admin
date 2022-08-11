@@ -1,3 +1,3 @@
 <template>
-	<div>default layout</div>
+  <div>default layout</div>
 </template>
