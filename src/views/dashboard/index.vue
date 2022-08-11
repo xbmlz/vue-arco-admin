@@ -1,3 +1,9 @@
+<script lang="ts" setup>
+defineOptions({
+  name: 'Dashboard',
+})
+</script>
+
 <template>
-  <div>home</div>
+  <div>Dashboard</div>
 </template>
