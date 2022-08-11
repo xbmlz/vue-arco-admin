@@ -5,6 +5,8 @@ import Vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import DefineOptions from 'unplugin-vue-define-options/vite'
+import { ArcoResolver } from 'unplugin-vue-components/resolvers'
+import { createStyleImportPlugin } from 'vite-plugin-style-import'
 
 // https://cn.vitejs.dev/config/
 export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
@@ -30,9 +32,27 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         // allow auto import and register components used in markdown
         include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
         dts: 'src/components.d.ts',
+        resolvers: [
+          ArcoResolver({ sideEffect: true }),
+        ],
       }),
       // https://github.com/sxzz/unplugin-vue-macros/blob/main/packages/define-options/README-zh-CN.md
       DefineOptions(),
+      // https://github.com/vbenjs/vite-plugin-style-import/blob/main/README.zh_CN.md
+      createStyleImportPlugin({
+        libs: [
+          {
+            libraryName: '@arco-design/web-vue',
+            esModule: true,
+            resolveStyle: (name) => {
+              // css
+              return `@arco-design/web-vue/es/${name}/style/css.js`
+              // less
+              // return `@arco-design/web-vue/es/${name}/style/index.js`
+            },
+          },
+        ],
+      }),
     ],
     resolve: {
       alias: {

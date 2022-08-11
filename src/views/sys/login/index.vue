@@ -5,5 +5,9 @@ defineOptions({
 </script>
 
 <template>
-  <div>Login</div>
+  <div>
+    <AButton type="primary">
+      Login
+    </AButton>
+  </div>
 </template>
