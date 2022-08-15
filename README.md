@@ -18,10 +18,10 @@
 - [x] commitlint
 - [x] stylelint
 - [x] vue-components-auto-import
-- [ ] layout
-- [ ] mockjs
-- [ ] axios
+- [x] mockjs
+- [x] axios
 - [ ] pinia
+- [ ] layout
 - [ ] login
 - [x] arco-design
 - [ ] unocss

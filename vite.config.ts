@@ -7,12 +7,15 @@ import AutoImport from 'unplugin-auto-import/vite'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 import { ArcoResolver } from 'unplugin-vue-components/resolvers'
 import { createStyleImportPlugin } from 'vite-plugin-style-import'
+import { viteMockServe } from 'vite-plugin-mock'
 
 // https://cn.vitejs.dev/config/
-export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
+export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
   const root = process.cwd()
   const env = loadEnv(mode, root)
-  const { VITE_PORT, VITE_PUBLIC_PATH } = env
+  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_BASE_URL } = env
+  const isBuild = command === 'build'
+  const isHttps = /^https:\/\//.test(VITE_BASE_URL)
 
   return {
     base: VITE_PUBLIC_PATH,
@@ -53,6 +56,17 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
           },
         ],
       }),
+      // https://github.com/vbenjs/vite-plugin-mock
+      viteMockServe({
+        ignore: /^\_/,
+        mockPath: 'mock',
+        localEnabled: !isBuild,
+        prodEnabled: isBuild,
+        injectCode: `
+        import { setupProdMockServer } from '../mock/_createProductionServer';
+        setupProdMockServer();
+        `,
+      }),
     ],
     resolve: {
       alias: {
@@ -62,6 +76,14 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     server: {
       host: true,
       port: Number(VITE_PORT),
+      proxy: {
+        '/api': {
+          target: VITE_BASE_URL,
+          changeOrigin: true,
+          rewrite: path => path.replace(/^\/api/, ''),
+          ...(isHttps ? { secure: false } : {}),
+        },
+      },
     },
   }
 })
