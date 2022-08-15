@@ -1,9 +1,9 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 // 创建一个路由实例
 const router = createRouter({
   // 创建一个hash历史记录
-  history: createWebHistory(),
+  history: createWebHashHistory(import.meta.env.VITE_PUBLIC_PATH),
   routes: [
     {
       path: '/',

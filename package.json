@@ -33,9 +33,9 @@
   "dependencies": {
     "@types/node": "^18.6.5",
     "axios": "^0.27.2",
+    "mockjs": "^1.1.0",
     "vue": "^3.2.37",
-    "vue-router": "4",
-    "mockjs": "^1.1.0"
+    "vue-router": "4"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.26.1",
