@@ -23,7 +23,7 @@
 - [ ] axios
 - [ ] pinia
 - [ ] login
-- [ ] arco
+- [x] arco-design
 - [ ] unocss
 - [ ] components
 
