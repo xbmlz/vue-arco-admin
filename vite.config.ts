@@ -50,6 +50,9 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
             libraryName: '@arco-design/web-vue',
             esModule: true,
             resolveStyle: (name) => {
+              interface replaceMap {
+                [key: string]: string
+              }
               // 这部分组件的使用必须依赖父级，所以直接忽略即可。
               const ignoreList = [
                 'config-provider',
@@ -83,7 +86,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
                 'icon',
               ]
               // 需要映射引入样式的组件列表
-              const replaceList = {
+              const replaceList: replaceMap = {
                 'typography-text': 'typography',
                 'typography-title': 'typography',
                 'typography-paragraph': 'typography',
@@ -148,6 +151,17 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
           ...(isHttps ? { secure: false } : {}),
         },
       },
+    },
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            arco: ['@arco-design/web-vue'],
+            vue: ['vue', 'vue-router'],
+          },
+        },
+      },
+      chunkSizeWarningLimit: 2000,
     },
   }
 })
