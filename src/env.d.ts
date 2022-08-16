@@ -7,6 +7,9 @@ declare module '*.vue' {
 	export default component
 }
 
+declare module '*.png'
+declare module '*.svg'
+
 interface ImportMetaEnv {
 	readonly VITE_PORT: number
 	readonly VITE_APP_TITLE: string

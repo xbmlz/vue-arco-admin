@@ -14,9 +14,8 @@
     "skipLibCheck": true,
     "composite": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
-      "@": ["src"],
       "@/*": ["src/*"]
     },
     "types": ["unplugin-vue-define-options"]

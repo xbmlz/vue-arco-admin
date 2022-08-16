@@ -1,23 +1,75 @@
 <script lang="ts" setup>
-import { Message } from '@arco-design/web-vue'
-import { loginApi } from '@/api/sys/user'
+import LoginBanner from './components/banner.vue'
+import LoginForm from './components/login-form.vue'
+
 defineOptions({
   name: 'Login',
 })
-const loginHandle = () => {
-  loginApi({
-    username: 'admin',
-    password: '123456',
-  }).then((res) => {
-    Message.success('login.form.login.success')
-  })
-}
 </script>
 
 <template>
-  <div>
-    <AButton type="primary" @click="loginHandle">
-      Login
-    </AButton>
+  <div class="container">
+    <div class="logo">
+      <img
+        alt="logo"
+        src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/dfdba5317c0c20ce20e64fac803d52bc.svg~tplv-49unhts6dw-image.image"
+      >
+      <div class="logo-text">
+        VEnable Admin
+      </div>
+    </div>
+    <LoginBanner />
+    <div class="content">
+      <div class="content-inner">
+        <LoginForm />
+      </div>
+      <div class="footer">
+        <Footer />
+      </div>
+    </div>
   </div>
 </template>
+
+<style lang="less" scoped>
+  .container {
+    display: flex;
+    height: 100vh;
+    .banner {
+      width: 520px;
+      // background: linear-gradient(163.85deg, #1d2129 0%, #00308f 100%);
+      background: #f3f4fb;
+      background-image: url(../../../assets/images/login-cover.jpg);
+      background-repeat: no-repeat;
+    }
+    .content {
+      position: relative;
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 40px;
+    }
+    .footer {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+    }
+  }
+  .logo {
+    position: fixed;
+    top: 24px;
+    left: 22px;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    &-text {
+      margin-right: 4px;
+      margin-left: 4px;
+      font-size: 20px;
+      line-height: 20px;
+      font-weight: 600;
+    }
+  }
+</style>
+
