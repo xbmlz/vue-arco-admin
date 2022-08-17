@@ -8,6 +8,7 @@ declare module '*.vue' {
 }
 
 declare module '*.png'
+declare module '*.jpg'
 declare module '*.svg'
 
 interface ImportMetaEnv {

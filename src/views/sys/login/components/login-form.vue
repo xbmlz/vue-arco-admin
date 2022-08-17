@@ -7,17 +7,17 @@ const userInfo = reactive({
 </script>
 
 <template>
-  <div class="login-form-wrapper">
-    <div class="login-form-title">
+  <div w-320px>
+    <div font-500 text-3xl mb-4>
       登录 VEnable Admin
     </div>
-    <div class="login-form-sub-title">
+    <div text-2xl color-gray-5 mb-4>
       登录 VEnable Admin
     </div>
-    <div class="login-form-error-msg">
+    <div h-32px color-red-5 text-xl>
       {{ errorMessage }}
     </div>
-    <AForm ref="loginForm" :model="userInfo" class="login-form" layout="vertical">
+    <AForm ref="loginForm" :model="userInfo" layout="vertical">
       <AFormItem hide-label>
         <AInput placeholder="用户名: admin">
           <template #prefix>
@@ -33,48 +33,17 @@ const userInfo = reactive({
         </AInputPassword>
       </AFormItem>
       <ASpace :size="16" direction="vertical">
-        <div class="login-form-password-actions">
+        <div flex justify-between>
           <ACheckbox>记住密码</ACheckbox>
           <ALink>忘记密码</ALink>
         </div>
         <AButton type="primary" html-type="submit" long>
           登录
         </AButton>
-        <AButton type="text" long class="login-form-register-btn">
+        <AButton type="text" long>
           注册账号
         </AButton>
       </ASpace>
     </AForm>
   </div>
 </template>
-
-<style lang="less" scoped>
-  .login-form {
-    &-wrapper {
-      width: 320px;
-    }
-    &-title {
-      color: var(--color-text-1);
-      font-weight: 500;
-      font-size: 24px;
-      line-height: 32px;
-    }
-    &-sub-title {
-      color: var(--color-text-3);
-      font-size: 16px;
-      line-height: 24px;
-    }
-    &-error-msg {
-      height: 32px;
-      color: rgb(var(--red-6));
-      line-height: 32px;
-    }
-    &-password-actions {
-      display: flex;
-      justify-content: space-between;
-    }
-    &-register-btn {
-      color: var(--color-text-3) !important;
-    }
-  }
-</style>

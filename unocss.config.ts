@@ -1,9 +1,10 @@
-import { defineConfig, presetAttributify, presetUno, presetWebFonts } from 'unocss'
+import { defineConfig, presetAttributify, presetTypography, presetUno, presetWebFonts, transformerDirectives, transformerVariantGroup } from 'unocss'
 
 export default defineConfig({
   presets: [
     presetUno(),
     presetAttributify(),
+    presetTypography(),
     presetWebFonts({
       fonts: {
         sans: 'DM Sans',
@@ -11,5 +12,9 @@ export default defineConfig({
         mono: 'DM Mono',
       },
     }),
+  ],
+  transformers: [
+    transformerDirectives(),
+    transformerVariantGroup(),
   ],
 })
