@@ -20,11 +20,12 @@
 - [x] vue-components-auto-import
 - [x] mockjs
 - [x] axios
-- [ ] pinia
+- [x] pinia
+- [ ] vueuse
 - [ ] layout
-- [ ] login
+- [x] login
 - [x] arco-design
-- [ ] unocss
+- [x] unocss
 - [ ] components
 
 ## 特性

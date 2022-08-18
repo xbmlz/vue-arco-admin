@@ -1,15 +1,19 @@
-export function resultOk<T = Record>(result: T, { msg = 'ok' } = {}) {
+export function resultOk<T = Record>(data: T, { msg = 'ok' } = {}) {
   return {
     code: 0,
     msg,
-    result,
+    data,
   }
 }
 
-export function resultError<T = Record>(result: T, { msg = 'error' } = {}) {
+export function resultError(msg = 'Request failed', { code = -1, data = null } = {}) {
   return {
-    code: -1,
+    code,
     msg,
-    result,
+    data,
   }
+}
+
+export function getRequestToken({ headers }: requestParams): string | undefined {
+  return headers?.authorization
 }

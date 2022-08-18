@@ -24,7 +24,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
       Vue(),
       // https://github.com/antfu/unplugin-auto-import
       AutoImport({
-        imports: ['vue', 'vue-router'],
+        imports: ['vue', 'vue-router', '@vueuse/core', '@vueuse/head'],
         dts: 'src/auto-imports.d.ts',
         dirs: ['src/composables', 'src/store'],
         vueTemplate: true,
@@ -157,7 +157,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
         output: {
           manualChunks: {
             arco: ['@arco-design/web-vue'],
-            vue: ['vue', 'vue-router'],
+            vue: ['vue', 'vue-router', 'pinia', '@vueuse/core'],
           },
         },
       },

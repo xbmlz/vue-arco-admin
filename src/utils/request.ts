@@ -1,5 +1,7 @@
 import axios from 'axios'
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
+import { Message } from '@arco-design/web-vue'
+import { tokenStorage } from './storage'
 
 interface Result<T> {
   code: number
@@ -12,11 +14,9 @@ class Request {
   instance: AxiosInstance
   // 基础配置
   baseConfig: AxiosRequestConfig = {
-    url: import.meta.env.VITE_BASE_URL,
+    baseURL: import.meta.env.VITE_BASE_URL,
+    // url: import.meta.env.VITE_BASE_URL,
     timeout: 60000,
-    headers: {
-      token: localStorage.getItem('token') as string,
-    },
   }
 
   constructor(config?: AxiosRequestConfig) {
@@ -26,6 +26,8 @@ class Request {
     // 全局请求拦截器
     this.instance.interceptors.request.use(
       (config: AxiosRequestConfig) => {
+        const token = tokenStorage.value
+        config.headers.authorization = token
         return config
       },
       (err: any) => {
@@ -36,7 +38,16 @@ class Request {
     // 全局响应拦截器
     this.instance.interceptors.response.use(
       (res: AxiosResponse) => {
-        return res.data
+        const result = res.data
+        if (!result)
+          throw new Error('[HTTP] Request has no return value')
+          // 用户可以自定义
+        const { code, msg, data } = result
+        const hasSuccess = result && Reflect.has(result, 'code') && code === 0
+        if (hasSuccess)
+          return data
+        Message.error(msg)
+        return Promise.reject(new Error(msg || 'Error'))
       },
       (err: any) => {
         return Promise.reject(err)

@@ -1,9 +1,52 @@
 <script lang="ts" setup>
+import type { ValidatedError } from '@arco-design/web-vue/es/form/interface'
+import { Message } from '@arco-design/web-vue'
+import type { LoginParams } from '@/api/sys/model/userModel'
+
 const errorMessage = ref('')
-const userInfo = reactive({
+const userStore = useUserStore()
+const router = useRouter()
+
+const loginConfig = useStorage('login-config', {
+  rememberPassword: true,
   username: '',
   password: '',
 })
+const userInfo = reactive({
+  username: loginConfig.value.username,
+  password: loginConfig.value.password,
+})
+
+const setRememberPassword = (val: boolean) => {
+  loginConfig.value.rememberPassword = val
+}
+
+const handleSubmit = async ({
+  errors,
+  values,
+}: {
+  errors: Record<string, ValidatedError> | undefined
+  values: Record<string, any>
+}) => {
+  if (!errors) {
+    try {
+      const { redirect, ...othersQuery } = router.currentRoute.value.query
+      const token = await userStore.login(values as LoginParams)
+      if (token) {
+        router.push({
+          name: (redirect as string) || 'Workplace',
+          query: {
+            ...othersQuery,
+          },
+        })
+        Message.success('登录成功')
+      }
+    }
+    catch (error) {
+      errorMessage.value = (error as Error).message
+    }
+  }
+}
 </script>
 
 <template>
@@ -17,16 +60,26 @@ const userInfo = reactive({
     <div h-32px color-red-5 text-xl>
       {{ errorMessage }}
     </div>
-    <AForm ref="loginForm" :model="userInfo" layout="vertical">
-      <AFormItem hide-label>
-        <AInput placeholder="用户名: admin">
+    <AForm ref="loginForm" :model="userInfo" layout="vertical" @submit="handleSubmit">
+      <AFormItem
+        field="username"
+        :rules="[{ required: true, message: '用户名不能为空' }]"
+        :validate-trigger="['change', 'blur']"
+        hide-label
+      >
+        <AInput v-model="userInfo.username" placeholder="用户名: admin">
           <template #prefix>
             <icon-user />
           </template>
         </AInput>
       </AFormItem>
-      <AFormItem hide-label>
-        <AInputPassword allow-clear placeholder="密码: admin">
+      <AFormItem
+        field="password"
+        :rules="[{ required: true, message: '密码不能为空' }]"
+        :validate-trigger="['change', 'blur']"
+        hide-label
+      >
+        <AInputPassword v-model="userInfo.password" placeholder="密码: admin" allow-clear>
           <template #prefix>
             <icon-lock />
           </template>
@@ -34,7 +87,9 @@ const userInfo = reactive({
       </AFormItem>
       <ASpace :size="16" direction="vertical">
         <div flex justify-between>
-          <ACheckbox>记住密码</ACheckbox>
+          <ACheckbox checked="rememberPassword" :model-value="loginConfig.rememberPassword" @change="(setRememberPassword as any)">
+            记住密码
+          </ACheckbox>
           <ALink>忘记密码</ALink>
         </div>
         <AButton type="primary" html-type="submit" long>

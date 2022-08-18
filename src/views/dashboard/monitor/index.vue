@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 defineOptions({
-  name: 'Dashboard',
+  name: 'Monitor',
 })
 </script>
 
 <template>
-  <div>Dashboard</div>
+  <div>Monitor</div>
 </template>
