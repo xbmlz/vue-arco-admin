@@ -7,7 +7,7 @@ import { tokenStorage, userStorage } from '@/utils/storage'
 const useUserStore = defineStore('user', {
   state: (): UserState => ({
     // user info
-    userInfo: {},
+    userInfo: null,
     // token
     token: undefined,
   }),
