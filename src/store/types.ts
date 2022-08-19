@@ -1,10 +1,17 @@
+import type { RoleInfo } from '@/api/sys/model/userModel'
+
+declare type Nullable<T> = T | null
+
 export interface UserState {
   userInfo: Nullable<UserInfo>
   token?: string
-  lastUpdateTime: 0
 }
 
 export interface UserInfo {
-  name?: string
-  avatar?: string
+  userId: string | number
+  username: string
+  realName: string
+  avatar: string
+  desc?: string
+  roles: RoleInfo[]
 }

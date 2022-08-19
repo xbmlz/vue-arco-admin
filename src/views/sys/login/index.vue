@@ -11,8 +11,9 @@ defineOptions({
   <div flex h-100vh>
     <div fixed top-4 left-4 z-1 inline-flex items-center>
       <img
+        w-8
         alt="logo"
-        src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/dfdba5317c0c20ce20e64fac803d52bc.svg~tplv-49unhts6dw-image.image"
+        src="../../../assets/logo.svg"
       >
       <div ml-2 mr-2 text-2xl font-500 color-white>
         VEnable Admin

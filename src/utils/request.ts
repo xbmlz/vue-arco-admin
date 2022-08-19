@@ -3,10 +3,10 @@ import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import { Message } from '@arco-design/web-vue'
 import { tokenStorage } from './storage'
 
-interface Result<T> {
+export interface Result<T = any> {
   code: number
   msg: string
-  data?: T
+  data: T
 }
 
 class Request {
@@ -27,7 +27,9 @@ class Request {
     this.instance.interceptors.request.use(
       (config: AxiosRequestConfig) => {
         const token = tokenStorage.value
-        config.headers.authorization = token
+        // TODO
+        if (config.headers)
+          config.headers.authorization = token
         return config
       },
       (err: any) => {
@@ -60,22 +62,22 @@ class Request {
   }
 
   // get
-  public get<T = any>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<Result<T>>> {
+  public get<T = any>(url: string, config?: AxiosRequestConfig): Promise<T> {
     return this.instance.get(url, config)
   }
 
   // post
-  public post<T = any>(url: string, data: object, config?: AxiosRequestConfig): Promise<AxiosResponse<Result<T>>> {
+  public post<T = any>(url: string, data: object, config?: AxiosRequestConfig): Promise<T> {
     return this.instance.post(url, data, config)
   }
 
   // put
-  public put<T>(url: string, data: object, config?: AxiosRequestConfig): Promise<AxiosResponse<Result<T>>> {
+  public put<T>(url: string, data: object, config?: AxiosRequestConfig): Promise<T> {
     return this.instance.put(url, data, config)
   }
 
   // delete
-  public delete<T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<Result<T>>> {
+  public delete<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
     return this.instance.delete(url, config)
   }
 }

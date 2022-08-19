@@ -1,4 +1,4 @@
-import type { LoginParams, LoginResult } from './model/userModel'
+import type { GetUserInfo, LoginParams, LoginResult } from './model/userModel'
 import request from '@/utils/request'
 
 enum Api {

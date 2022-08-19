@@ -21,7 +21,7 @@
 - [x] mockjs
 - [x] axios
 - [x] pinia
-- [ ] vueuse
+- [x] vueuse
 - [ ] layout
 - [x] login
 - [x] arco-design
