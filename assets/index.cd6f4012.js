@@ -1,0 +1,1 @@
+import{d as e,o,a as n}from"./vue.b4536dc7.js";import{_ as r}from"./index.187d2185.js";import"./arco.f8a18e67.js";const t=e({name:"Workplace"});function a(c,p,s,i,m,_){return o(),n("div",null,"Workplace")}const u=r(t,[["render",a]]);export{u as default};
