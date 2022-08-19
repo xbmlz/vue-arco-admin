@@ -2,10 +2,12 @@
 import type { ValidatedError } from '@arco-design/web-vue/es/form/interface'
 import { Message } from '@arco-design/web-vue'
 import type { LoginParams } from '@/api/sys/model/userModel'
+import useLoading from '@/hooks/loading'
 
 const errorMessage = ref('')
 const userStore = useUserStore()
 const router = useRouter()
+const { loading, setLoading } = useLoading()
 
 const loginConfig = useStorage('login-config', {
   rememberPassword: true,
@@ -28,7 +30,10 @@ const handleSubmit = async ({
   errors: Record<string, ValidatedError> | undefined
   values: Record<string, any>
 }) => {
+  if (loading.value)
+    return
   if (!errors) {
+    setLoading(true)
     try {
       const { redirect, ...othersQuery } = router.currentRoute.value.query
       const token = await userStore.login(values as LoginParams)
@@ -44,6 +49,9 @@ const handleSubmit = async ({
     }
     catch (error) {
       errorMessage.value = (error as Error).message
+    }
+    finally {
+      setLoading(false)
     }
   }
 }
@@ -92,7 +100,7 @@ const handleSubmit = async ({
           </ACheckbox>
           <ALink>忘记密码</ALink>
         </div>
-        <AButton type="primary" html-type="submit" long>
+        <AButton type="primary" html-type="submit" :loading="loading" long>
           登录
         </AButton>
         <AButton type="text" long>

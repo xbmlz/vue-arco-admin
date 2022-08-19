@@ -18,5 +18,8 @@ import bannerImage from '@/assets/images/login-banner.svg'
     background-image: url(../../../../assets/images/login-bg.jpg);
     background-size: auto 250px;
     background-repeat: no-repeat;
+    @media (max-width: 1024px) {
+      display: none;
+    }
   }
 </style>

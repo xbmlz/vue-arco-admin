@@ -26,7 +26,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
       AutoImport({
         imports: ['vue', 'vue-router', '@vueuse/core', '@vueuse/head'],
         dts: 'src/auto-imports.d.ts',
-        dirs: ['src/composables', 'src/store'],
+        dirs: ['src/store'],
         vueTemplate: true,
         resolvers: [ArcoResolver()],
       }),
