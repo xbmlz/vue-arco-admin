@@ -1,4 +1,4 @@
-export function resultOk<T = Record>(data: T, { msg = 'ok' } = {}) {
+export function resultOk<T = Record>(data: T, { msg = 'success' } = {}) {
   return {
     code: 0,
     msg,

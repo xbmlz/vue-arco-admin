@@ -1,18 +1,37 @@
-import type { RouteRecordNormalized } from 'vue-router'
+import { BASE_HOME_PATH } from '../constants'
+import type { AppRouteRecordRaw } from '@/router/types'
 
+// 一次性导入modules下所有模块
 const modules = import.meta.globEager('./modules/*.ts')
+const routeModuleList: AppRouteRecordRaw[] = []
 
-function formatModules(_modules: any, result: RouteRecordNormalized[]) {
-  Object.keys(_modules).forEach((key) => {
-    const defaultModule = _modules[key].default
-    if (!defaultModule)
-      return
-    const moduleList = Array.isArray(defaultModule)
-      ? [...defaultModule]
-      : [defaultModule]
-    result.push(...moduleList)
-  })
-  return result
-}
+// 加入路由到集合中
+Object.keys(modules).forEach((key) => {
+  // @ts-expect-error Object is of type 'unknown'
+  const mod = modules[key].default || {}
+  const modList = Array.isArray(mod) ? [...mod] : [mod]
+  routeModuleList.push(...modList)
+})
 
-export const appRoutes: RouteRecordNormalized[] = formatModules(modules, [])
+// 静态路由
+export const asyncRoutes = [...routeModuleList]
+
+// 基础路由
+export const appRoutes = [
+  {
+    path: '/',
+    redirect: BASE_HOME_PATH,
+    meta: {
+      title: 'Root',
+    },
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/sys/login/index.vue'),
+    meta: {
+      title: 'Login',
+    },
+  },
+  ...asyncRoutes,
+]

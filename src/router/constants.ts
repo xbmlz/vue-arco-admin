@@ -1,16 +1,10 @@
-export const DEFAULT_LAYOUT = () => import('@/layout/default-layout.vue')
+export const ROOT_PATH = '/'
 
-export const WHITE_LIST = [
-  {
-    name: 'NotFound',
-    children: [],
-  },
-  {
-    name: 'Login',
-    children: [],
-  },
-]
+export const LOGIN_PATH = '/login'
 
-export const NOT_FOUND = {
-  name: 'NotFound',
-}
+export const BASE_HOME_PATH = '/dashboard'
+
+export const PAGE_NOT_FOUND_NAME = 'PageNotFound'
+
+export const LAYOUT = () => import('@/layout/default-layout.vue')
+

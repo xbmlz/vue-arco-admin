@@ -1,6 +1,6 @@
 import type { Router } from 'vue-router'
-import setupUserLoginGuard from './userLogin'
+import { setupPermissionGuard } from './permission'
 
 export default function createRouterGuard(router: Router) {
-  setupUserLoginGuard(router)
+  setupPermissionGuard(router)
 }

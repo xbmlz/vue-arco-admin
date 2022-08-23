@@ -1,10 +1,11 @@
 import type { MockMethod } from 'vite-plugin-mock'
 import { getRequestToken, resultError, resultOk } from '../_util'
-const userList = [
+export const userList = [
   {
     userId: '1',
     username: 'admin',
     realName: 'Super Admin',
+    homePath: '/dashboard/workplace',
     avatar: 'https://dummyimage.com/640x640/1c66c7/fff.png&text=admin',
     desc: 'mock user 1',
     password: '123456',
@@ -20,6 +21,7 @@ const userList = [
     userId: '2',
     username: 'test',
     password: '123456',
+    homePath: '/dashboard/workplace',
     realName: 'test',
     avatar: 'https://dummyimage.com/640x640/1c66c7/fff.png&text=test',
     desc: 'mock user 1',

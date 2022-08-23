@@ -21,3 +21,8 @@ interface ImportMetaEnv {
 interface ImportMeta {
 	readonly env: ImportMetaEnv
 }
+
+interface AppSettings {
+  // 是否从服务器加载菜单
+  backMenu: boolean
+}

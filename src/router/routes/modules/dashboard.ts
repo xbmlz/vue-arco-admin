@@ -1,10 +1,11 @@
-import { DEFAULT_LAYOUT } from '../base'
-import type { AppRouteRecordRaw } from '../../types'
+import { LAYOUT } from '@/router/constants'
+import type { AppRouteRecordRaw } from '@/router/types'
 
 const dashboard: AppRouteRecordRaw = {
   path: '/dashboard',
   name: 'Dashboard',
-  component: DEFAULT_LAYOUT,
+  component: LAYOUT,
+  redirect: '/dashboard/workplace',
   meta: {
     icon: 'icon-dashboard',
     order: 0,

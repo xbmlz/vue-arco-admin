@@ -3,6 +3,8 @@ import type { ValidatedError } from '@arco-design/web-vue/es/form/interface'
 import { Message } from '@arco-design/web-vue'
 import type { LoginParams } from '@/api/sys/model/userModel'
 import useLoading from '@/hooks/loading'
+import { BASE_HOME_PATH } from '@/router/constants'
+import { useUserStore } from '@/store/modules/user'
 
 const errorMessage = ref('')
 const userStore = useUserStore()
@@ -11,9 +13,10 @@ const { loading, setLoading } = useLoading()
 
 const loginConfig = useStorage('login-config', {
   rememberPassword: true,
-  username: '',
-  password: '',
+  username: 'admin',
+  password: '123456',
 })
+
 const userInfo = reactive({
   username: loginConfig.value.username,
   password: loginConfig.value.password,
@@ -36,14 +39,9 @@ const handleSubmit = async ({
     setLoading(true)
     try {
       const { redirect, ...othersQuery } = router.currentRoute.value.query
-      const token = await userStore.login(values as LoginParams)
-      if (token) {
-        router.push({
-          name: (redirect as string) || 'Workplace',
-          query: {
-            ...othersQuery,
-          },
-        })
+      const userInfo = await userStore.login(values as LoginParams)
+      if (userInfo) {
+        router.replace(userInfo?.homePath || BASE_HOME_PATH)
         Message.success('登录成功')
       }
     }

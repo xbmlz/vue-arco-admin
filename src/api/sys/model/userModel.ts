@@ -17,6 +17,7 @@ export interface RoleInfo {
 export interface GetUserInfo {
   userId: string | number
   username: string
+  homePath: string
   realName: string
   avatar: string
   desc?: string

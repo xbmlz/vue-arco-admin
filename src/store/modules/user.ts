@@ -1,10 +1,16 @@
 import { defineStore } from 'pinia'
-import type { UserInfo, UserState } from '../types'
+import type { UserInfo } from '../types'
 import { loginApi, userInfoApi } from '@/api/sys/user'
 import type { LoginParams } from '@/api/sys/model/userModel'
 import { tokenStorage, userStorage } from '@/utils/storage'
+import store from '@/store'
 
-const useUserStore = defineStore('user', {
+interface UserState {
+  userInfo: UserInfo | null
+  token?: string
+}
+
+export const useUserStore = defineStore('app-user', {
   state: (): UserState => ({
     // user info
     userInfo: null,
@@ -28,10 +34,6 @@ const useUserStore = defineStore('user', {
       this.userInfo = info
       userStorage.value = info
     },
-    resetState() {
-      this.userInfo = null
-      this.token = ''
-    },
     // login
     async login(params: LoginParams) {
       const data = await loginApi(params)
@@ -42,7 +44,6 @@ const useUserStore = defineStore('user', {
         return null
       const userInfo = await userInfoApi()
       this.setUserInfo(userInfo)
-      // TODO
       return userInfo
     },
     // logout
@@ -53,4 +54,7 @@ const useUserStore = defineStore('user', {
   },
 })
 
-export default useUserStore
+// Need to be used outside the setup
+export function useUserStoreWithOut() {
+  return useUserStore(store)
+}

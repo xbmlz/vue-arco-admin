@@ -18,15 +18,17 @@
 - [x] commitlint
 - [x] stylelint
 - [x] vue-components-auto-import
+- [x] arco-design
+- [x] unocss
 - [x] mockjs
 - [x] axios
 - [x] pinia
 - [x] vueuse
-- [ ] layout
 - [x] login
-- [x] arco-design
-- [x] unocss
-- [ ] components
+- [ ] menus
+- [ ] layout
+- [ ] permission
+- [ ] demos
 
 ## 特性
 
