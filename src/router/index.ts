@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+// @ts-expect-error no layouts and routes type
 import { setupLayouts } from 'virtual:generated-layouts'
 import generatedRoutes from 'virtual:generated-pages'
 import type { LocationQueryRaw } from 'vue-router'
