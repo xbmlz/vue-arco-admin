@@ -14,7 +14,7 @@
     "skipLibCheck": true,
     "composite": true,
     "allowSyntheticDefaultImports": true,
-    "types": ["unplugin-vue-define-options", "vite/client"],
+    "types": ["unplugin-vue-define-options", "vite/client", "vite-plugin-pages/client"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]

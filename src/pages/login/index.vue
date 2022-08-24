@@ -1,3 +1,8 @@
+<route lang="yaml">
+meta:
+  layout: false
+</route>
+
 <script lang="ts" setup>
 import LoginBanner from './components/banner.vue'
 import LoginForm from './components/login-form.vue'
@@ -13,7 +18,7 @@ defineOptions({
       <img
         w-8
         alt="logo"
-        src="../../../assets/logo.svg"
+        src="../../assets/logo.svg"
       >
       <div ml-2 mr-2 text-2xl font-500 color-white>
         VEnable Admin

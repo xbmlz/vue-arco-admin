@@ -12,6 +12,7 @@
 - [x] vite3
 - [x] vue3+ts
 - [x] vue-router
+- [x] vite-plugin-pages
 - [x] eslint
 - [x] prettier
 - [x] husky

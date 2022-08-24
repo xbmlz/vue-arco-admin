@@ -9,6 +9,8 @@ import { ArcoResolver } from 'unplugin-vue-components/resolvers'
 import { createStyleImportPlugin } from 'vite-plugin-style-import'
 import { viteMockServe } from 'vite-plugin-mock'
 import Unocss from 'unocss/vite'
+import Pages from 'vite-plugin-pages'
+import Layouts from 'vite-plugin-vue-layouts'
 
 // https://cn.vitejs.dev/config/
 export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
@@ -134,6 +136,10 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
       }),
       // https://github.com/unocss/unocss/tree/main/packages/vite
       Unocss(),
+      // https://github.com/hannoeru/vite-plugin-pages
+      Pages(),
+      // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
+      Layouts(),
     ],
     resolve: {
       alias: {
