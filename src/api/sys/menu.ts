@@ -1,4 +1,4 @@
-import type { RouteItem } from './model/menuModel'
+import type { RouteRecordNormalized } from 'vue-router'
 import request from '@/utils/request'
 
 enum Api {
@@ -6,6 +6,6 @@ enum Api {
 }
 
 export function menuListApi() {
-  return request.get<RouteItem[]>(Api.GetMenuList)
+  return request.get<RouteRecordNormalized[]>(Api.GetMenuList)
 }
 

@@ -1,19 +1,25 @@
 import { defineStore } from 'pinia'
-import { appStorage } from '@/utils/storage'
+import appSettings from '@/settings'
+import store from '@/store'
 
 interface AppState {
-  settings: AppSettings
+  serverMenu: boolean
+  siderWidth: number
 }
 
 export const useAppStore = defineStore('app', {
   state: (): AppState => ({
-    settings: appStorage.value,
+    ...appSettings,
   }),
   getters: {
-    getAppSettings(): AppSettings {
-      return this.settings
-    },
+
   },
-  actions: {},
+  actions: {
+
+  },
 })
 
+// Need to be used outside the setup
+export function useAppStoreWithOut() {
+  return useAppStore(store)
+}

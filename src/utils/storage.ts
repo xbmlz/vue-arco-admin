@@ -11,7 +11,3 @@ export const userStorage = useStorage<UserInfo>('userInfo', {
   desc: '',
   roles: [],
 })
-
-export const appStorage = useStorage<AppSettings>('app', {
-  backMenu: false,
-})

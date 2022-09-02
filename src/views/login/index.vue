@@ -1,8 +1,3 @@
-<route lang="yaml">
-meta:
-  layout: false
-</route>
-
 <script lang="ts" setup>
 import LoginBanner from './components/banner.vue'
 import LoginForm from './components/login-form.vue'

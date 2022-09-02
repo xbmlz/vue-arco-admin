@@ -4,6 +4,7 @@ import { loginApi, userInfoApi } from '@/api/sys/user'
 import type { LoginParams } from '@/api/sys/model/userModel'
 import { tokenStorage, userStorage } from '@/utils/storage'
 import store from '@/store'
+import { usePermissionStore } from '@/store/modules/permission'
 
 interface UserState {
   userInfo: UserInfo | null
@@ -44,6 +45,9 @@ export const useUserStore = defineStore('app-user', {
         return null
       const userInfo = await userInfoApi()
       this.setUserInfo(userInfo)
+      // router
+      const permissionStore = usePermissionStore()
+      permissionStore.buildRoutesAction()
       return userInfo
     },
     // logout

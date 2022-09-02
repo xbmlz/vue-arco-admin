@@ -1,5 +1,4 @@
-const settings: AppSettings = {
-  backMenu: false,
+export default {
+  serverMenu: true,
+  siderWidth: 220,
 }
-
-export default settings
