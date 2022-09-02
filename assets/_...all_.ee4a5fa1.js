@@ -1,1 +1,0 @@
-import{b as o}from"./route-block.023af118.js";import{_ as r}from"./index.1a5c7e81.js";import{o as e,a as c}from"./vue.d76fa9ec.js";import"./arco.7eb0c812.js";const t={};function n(_,f){return e(),c("div",null," Not found ")}typeof o=="function"&&o(t);const m=r(t,[["render",n]]);export{m as default};
