@@ -4,13 +4,31 @@ import { compile } from 'vue'
 import useMenuTree from './use-menu-tree'
 import { listenerRouteChange } from '@/utils/route-listener'
 import { openWindow, regexUrl } from '@/utils/url'
+import { useAppStore } from '@/store'
 
 const router = useRouter()
 const route = useRoute()
+const appStore = useAppStore()
 
 const { menuTree } = useMenuTree()
 const openKeys = ref<string[]>([])
 const selectedKey = ref<string[]>([])
+
+const collapsed = computed({
+  get() {
+    if (!appStore.isMobile)
+      return appStore.siderCollapsed
+    return false
+  },
+  set(value: boolean) {
+    appStore.updateSettings({ siderCollapsed: value })
+  },
+})
+
+const setCollapse = (val: boolean) => {
+  if (!appStore.isMobile)
+    appStore.updateSettings({ siderCollapsed: val })
+}
 
 const goto = (item: RouteRecordRaw) => {
   // Open external link
@@ -110,11 +128,14 @@ const renderSubMenu = () => {
 }
 const Render = () => (
   <a-menu
+    v-model:collapsed={collapsed.value}
     v-model:open-keys={openKeys.value}
+    show-collapse-button={!appStore.isMobile}
     auto-open={false}
     selected-keys={selectedKey.value}
     auto-open-selected={true}
     level-indent={34}
+    onCollapse={setCollapse}
     style="height: 100%"
   >
     {renderSubMenu()}

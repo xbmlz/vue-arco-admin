@@ -1,11 +1,7 @@
 import { defineStore } from 'pinia'
+import type { AppState } from '../types'
 import appSettings from '@/settings'
 import store from '@/store'
-
-interface AppState {
-  serverMenu: boolean
-  siderWidth: number
-}
 
 export const useAppStore = defineStore('app', {
   state: (): AppState => ({
@@ -15,7 +11,10 @@ export const useAppStore = defineStore('app', {
 
   },
   actions: {
-
+    // update settings
+    updateSettings(partial: Partial<AppState>) {
+      this.$patch(partial)
+    },
   },
 })
 

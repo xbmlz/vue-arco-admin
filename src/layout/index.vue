@@ -1,8 +1,48 @@
 <script lang="ts" setup>
 import Navbar from './components/navbar/index.vue'
 import Menu from './components/menu/index.vue'
+import { useAppStore } from '@/store'
+import { isMobile } from '@/utils/device'
 
-const menuWidth = ref<number>(220)
+const router = useRouter()
+const route = useRoute()
+const appStore = useAppStore()
+
+const debounceFn = useDebounceFn(() => {
+  if (!document.hidden)
+    appStore.updateSettings({ isMobile: isMobile() })
+}, 100)
+
+useEventListener(window, 'resize', debounceFn)
+
+const siderWidth = computed(() => {
+  return appStore.siderCollapsed ? 48 : appStore.siderWidth
+})
+
+const collapsed = computed(() => {
+  return appStore.siderCollapsed
+})
+
+const siderHidden = computed(() => {
+  return appStore.isMobile
+})
+
+const setCollapsed = (val: boolean) => {
+  appStore.updateSettings({ siderCollapsed: val })
+}
+
+const drawerVisible = ref(false)
+const drawerCancel = () => {
+  drawerVisible.value = false
+}
+
+onMounted(() => {
+  debounceFn()
+})
+
+provide('toggleDrawerMenu', () => {
+  drawerVisible.value = !drawerVisible.value
+})
 </script>
 
 <template>
@@ -14,13 +54,32 @@ const menuWidth = ref<number>(220)
     <a-layout>
       <!-- sider -->
       <a-layout-sider
-        :width="220"
-        class="layout-siderbar"
+        v-show="!siderHidden"
+        class="layout-sider"
+        :width="siderWidth"
+        :hide-trigger="true"
+        :collapsed="collapsed"
+        :collapsible="true"
+        breakpoint="xl"
+        @collapse="setCollapsed"
       >
         <div class="menu-wrapper">
           <Menu />
         </div>
       </a-layout-sider>
+      <!-- mobile menu -->
+      <a-drawer
+        v-if="siderHidden"
+        :visible="drawerVisible"
+        placement="left"
+        :footer="false"
+        :header="false"
+        mask-closable
+        :closable="false"
+        @cancel="drawerCancel"
+      >
+        <Menu />
+      </a-drawer>
       <!-- content -->
       <a-layout-content>
         <RouterView />
@@ -42,7 +101,7 @@ const menuWidth = ref<number>(220)
     height: 100%;
   }
 
-  .layout-siderbar {
+  .layout-sider {
     height: 100%;
     transition: all 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
     &::after {

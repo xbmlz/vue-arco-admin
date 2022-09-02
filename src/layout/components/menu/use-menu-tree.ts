@@ -1,8 +1,10 @@
 import type { RouteRecordNormalized, RouteRecordRaw } from 'vue-router'
 import { usePermissionStoreWithOut } from '@/store/modules/permission'
+import usePermission from '@/hooks/permission'
 
 export default function useMenuTree() {
   const permissionStore = usePermissionStoreWithOut()
+  const permission = usePermission()
   const appRoute = computed(() => {
     return permissionStore.getMenuList
   })
@@ -18,8 +20,8 @@ export default function useMenuTree() {
 
       const collector: any = _routes.map((element) => {
         // no access
-        // if (!permission.accessRouter(element))
-        //   return null
+        if (!permission.accessRouter(element))
+          return null
 
         // leaf node
         if (element.meta?.hideChildrenInMenu || !element.children) {

@@ -10,12 +10,7 @@ export const userList = [
     desc: 'mock user 1',
     password: '123456',
     token: 'mockToken1',
-    roles: [
-      {
-        roleName: 'Super Admin',
-        value: 'super',
-      },
-    ],
+    role: 'admin',
   },
   {
     userId: '2',
@@ -26,12 +21,7 @@ export const userList = [
     avatar: 'https://dummyimage.com/640x640/1c66c7/fff.png&text=test',
     desc: 'mock user 1',
     token: 'mockToken2',
-    roles: [
-      {
-        roleName: 'Tester',
-        value: 'test',
-      },
-    ],
+    role: 'user',
   },
 ]
 

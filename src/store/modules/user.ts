@@ -1,39 +1,32 @@
 import { defineStore } from 'pinia'
-import type { UserInfo } from '../types'
+import type { UserState } from '../types'
 import { loginApi, userInfoApi } from '@/api/sys/user'
 import type { LoginParams } from '@/api/sys/model/userModel'
-import { tokenStorage, userStorage } from '@/utils/storage'
 import store from '@/store'
 import { usePermissionStore } from '@/store/modules/permission'
-
-interface UserState {
-  userInfo: UserInfo | null
-  token?: string
-}
+import { userToken } from '@/utils/storage'
 
 export const useUserStore = defineStore('app-user', {
   state: (): UserState => ({
-    // user info
-    userInfo: null,
-    // token
+    name: undefined,
+    avatar: undefined,
     token: undefined,
   }),
   getters: {
-    getUserInfo(): UserInfo {
-      return this.userInfo || userStorage.value || {}
+    userInfo(state: UserState): UserState {
+      return { ...state }
     },
-    getToken(): string {
-      return this.token || tokenStorage.value
+    userToken(): string {
+      return this.token || userToken.value
     },
   },
   actions: {
-    setToken(token: string | undefined) {
+    setToken(token: string) {
       this.token = token || ''
-      tokenStorage.value = token
+      userToken.value = token
     },
-    setUserInfo(info: UserInfo | null) {
-      this.userInfo = info
-      userStorage.value = info
+    setUserInfo(partial: Partial<UserState>) {
+      this.$patch(partial)
     },
     // login
     async login(params: LoginParams) {
@@ -41,7 +34,7 @@ export const useUserStore = defineStore('app-user', {
       const { token } = data
       // save token
       this.setToken(token)
-      if (!this.getToken)
+      if (!this.token)
         return null
       const userInfo = await userInfoApi()
       this.setUserInfo(userInfo)

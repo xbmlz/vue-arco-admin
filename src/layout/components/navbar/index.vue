@@ -1,5 +1,9 @@
 <script setup lang='ts'>
+import { useAppStore } from '@/store'
 
+const appStore = useAppStore()
+
+const toggleDrawerMenu = inject('toggleDrawerMenu')
 </script>
 
 <template>
@@ -16,6 +20,11 @@
         >
           VEnable
         </a-typography-title>
+        <icon-menu-fold
+          v-if="appStore.isMobile"
+          style="font-size: 22px; cursor: pointer"
+          @click="toggleDrawerMenu"
+        />
       </a-space>
     </div>
   </div>

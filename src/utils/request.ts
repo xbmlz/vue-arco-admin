@@ -1,7 +1,7 @@
 import axios from 'axios'
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import { Message } from '@arco-design/web-vue'
-import { tokenStorage } from './storage'
+import { userToken } from './storage'
 
 export interface Result<T = any> {
   code: number
@@ -26,10 +26,9 @@ class Request {
     // 全局请求拦截器
     this.instance.interceptors.request.use(
       (config: AxiosRequestConfig) => {
-        const token = tokenStorage.value
         // TODO
         if (config.headers)
-          config.headers.authorization = token
+          config.headers.authorization = userToken.value
         return config
       },
       (err: any) => {

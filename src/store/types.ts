@@ -1,11 +1,17 @@
-import type { RoleInfo } from '@/api/sys/model/userModel'
+export interface AppState {
+  isMobile: boolean
+  serverMenu: boolean
+  siderWidth: number
+  siderCollapsed: boolean
+  siderHidden: boolean
+}
 
-export interface UserInfo {
-  userId: string | number
-  username: string
-  realName: string
-  homePath: string
+export interface PermissionState {
+  menuList: RouteRecordNormalized[]
+}
+
+export interface UserState {
+  name: string
   avatar: string
-  desc?: string
-  roles: RoleInfo[]
+  token: string
 }
