@@ -8,9 +8,9 @@ import { userToken } from '@/utils/storage'
 
 export const useUserStore = defineStore('app-user', {
   state: (): UserState => ({
-    name: undefined,
-    avatar: undefined,
-    token: undefined,
+    name: '',
+    avatar: '',
+    token: '',
   }),
   getters: {
     userInfo(state: UserState): UserState {
@@ -27,6 +27,9 @@ export const useUserStore = defineStore('app-user', {
     },
     setUserInfo(partial: Partial<UserState>) {
       this.$patch(partial)
+    },
+    resetInfo() {
+      this.$reset()
     },
     // login
     async login(params: LoginParams) {
@@ -45,8 +48,7 @@ export const useUserStore = defineStore('app-user', {
     },
     // logout
     async logout() {
-      this.setToken(undefined)
-      this.setUserInfo(null)
+      this.resetInfo()
     },
   },
 })

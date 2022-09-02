@@ -1,3 +1,4 @@
+import type { RouteRecordNormalized } from 'vue-router'
 export interface AppState {
   isMobile: boolean
   serverMenu: boolean

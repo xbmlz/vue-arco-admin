@@ -1,8 +1,20 @@
 # venable-admin
 
-🚀A modern vue admin. It is based on vue3.x and TypeScript. It's so fast!
+<p align='center'>
+  <img src='https://raw.githubusercontent.com/xbmlz/venable-admin/main/public/logo.svg' alt='Hexo-theme-maple' width='120'/>
+</p>
 
-[Live Demo](https://xbmlz.github.io/venable-admin/)
+<h1 align="center">VEnable Admin</h1>
+
+
+<p align="center">
+🚀A modern vue admin. It is based on vue3.x and TypeScript. It's so fast!
+</p>
+
+<p align="center">
+<a href="https://xbmlz.github.io/venable-admin/"><img src="https://github.com/xbmlz/venable-admin/actions/workflows/preview.yml/badge.svg?branch=main" alt="preview">
+</a>
+
 
 ## 开发进度
 
@@ -26,7 +38,7 @@
 - [x] pinia
 - [x] vueuse
 - [x] login
-- [ ] menus
+- [x] menus
 - [ ] layout
 - [ ] permission
 - [ ] demos
@@ -45,3 +57,5 @@
 - [Eslint](http://eslint.cn)
 - [Prettier](https://www.prettier.cn)
 - [cz-git](https://cz-git.qbb.sh/zh/)
+- [Pinia](https://pinia.vuejs.org/)
+- [VueUse](https://vueuse.org/)
