@@ -1,1 +1,0 @@
-import{d as o,x as e,y as n}from"./arco.597d90d6.js";import{_ as t}from"./index.4cb363ef.js";import"./vue.cbd1576a.js";const r=o({name:"Monitor"});function s(a,c,i,p,m,_){return e(),n("div",null,"Monitor")}const u=t(r,[["render",s]]);export{u as default};
