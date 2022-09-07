@@ -12,7 +12,25 @@ export function setupPermissionGuard(router: Router) {
     NProgress.start()
     // 判断是否登录
     if (userStore.userToken) {
-      next()
+      if (userStore.role) {
+        next()
+      }
+      else {
+        try {
+          await userStore.userInfoAction()
+          next()
+        }
+        catch (error) {
+          await userStore.logout()
+          next({
+            path: LOGIN_PATH,
+            replace: true,
+            query: {
+              ...to.query as LocationQueryRaw,
+            },
+          })
+        }
+      }
     }
     else {
       // TODO logout

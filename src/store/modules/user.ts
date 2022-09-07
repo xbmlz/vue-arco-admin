@@ -1,16 +1,19 @@
 import { defineStore } from 'pinia'
 import type { UserState } from '../types'
-import { loginApi, userInfoApi } from '@/api/sys/user'
+import { loginApi, logoutApi, userInfoApi } from '@/api/sys/user'
 import type { LoginParams } from '@/api/sys/model/userModel'
 import store from '@/store'
 import { usePermissionStore } from '@/store/modules/permission'
 import { userToken } from '@/utils/storage'
+import router from '@/router'
+import { LOGIN_PATH } from '@/router/constants'
 
 export const useUserStore = defineStore('app-user', {
   state: (): UserState => ({
     name: '',
     avatar: '',
     token: '',
+    role: '',
   }),
   getters: {
     userInfo(state: UserState): UserState {
@@ -29,7 +32,14 @@ export const useUserStore = defineStore('app-user', {
       this.$patch(partial)
     },
     resetInfo() {
+      this.setToken('')
       this.$reset()
+    },
+    // user info
+    async userInfoAction() {
+      const userInfo = await userInfoApi()
+      this.setUserInfo(userInfo)
+      return userInfo
     },
     // login
     async login(params: LoginParams) {
@@ -48,6 +58,9 @@ export const useUserStore = defineStore('app-user', {
     },
     // logout
     async logout() {
+      if (this.token)
+        await logoutApi()
+      router.push(LOGIN_PATH)
       this.resetInfo()
     },
   },

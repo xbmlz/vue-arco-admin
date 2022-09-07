@@ -7,9 +7,12 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AAvatar: typeof import('@arco-design/web-vue')['Avatar']
     AButton: typeof import('@arco-design/web-vue')['Button']
     ACheckbox: typeof import('@arco-design/web-vue')['Checkbox']
+    ADoption: typeof import('@arco-design/web-vue')['Doption']
     ADrawer: typeof import('@arco-design/web-vue')['Drawer']
+    ADropdown: typeof import('@arco-design/web-vue')['Dropdown']
     AForm: typeof import('@arco-design/web-vue')['Form']
     AFormItem: typeof import('@arco-design/web-vue')['FormItem']
     AInput: typeof import('@arco-design/web-vue')['Input']
@@ -23,6 +26,7 @@ declare module '@vue/runtime-core' {
     AMenuItem: typeof import('@arco-design/web-vue')['MenuItem']
     ASpace: typeof import('@arco-design/web-vue')['Space']
     ASubMenu: typeof import('@arco-design/web-vue')['SubMenu']
+    ATooltip: typeof import('@arco-design/web-vue')['Tooltip']
     ATypographyTitle: typeof import('@arco-design/web-vue')['TypographyTitle']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

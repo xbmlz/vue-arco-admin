@@ -1,4 +1,6 @@
 export default {
+  // 主题 light dark auto
+  theme: 'light',
   // 是否移动端
   isMobile: false,
   // 从服务器加载菜单
