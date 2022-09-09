@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia'
 import type { AppState } from '../types'
 import appSettings from '@/settings'
-import store from '@/store'
 
-export const useAppStore = defineStore('app', {
+export const useAppStore = defineStore({
+  id: 'app',
   state: (): AppState => ({
     ...appSettings,
   }),
@@ -28,8 +28,3 @@ export const useAppStore = defineStore('app', {
     },
   },
 })
-
-// Need to be used outside the setup
-export function useAppStoreWithOut() {
-  return useAppStore(store)
-}

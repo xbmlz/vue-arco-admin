@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import Navbar from './components/navbar/index.vue'
 import Menu from './components/menu/index.vue'
-import { useAppStore } from '@/store'
+import { useAppStore, usePermissionStore } from '@/store'
 import { isMobile } from '@/utils/device'
 
-const router = useRouter()
-const route = useRoute()
 const appStore = useAppStore()
+const permissionStore = usePermissionStore()
 
+const renderMenu = computed(() => permissionStore.menuList)
 const debounceFn = useDebounceFn(() => {
   if (!document.hidden)
     appStore.updateSettings({ isMobile: isMobile() })
@@ -30,7 +30,19 @@ const siderHidden = computed(() => {
 const setCollapsed = (val: boolean) => {
   appStore.updateSettings({ siderCollapsed: val })
 }
+const navbarHeight = '52px'
+// TODO is show navbar
+const navbar = ref(true)
+const paddingStyle = computed(() => {
+  const paddingLeft
+      = renderMenu.value && !siderHidden.value
+        ? { paddingLeft: `${siderWidth.value}px` }
+        : {}
+  const paddingTop = navbar.value ? { paddingTop: navbarHeight } : {}
+  return { ...paddingLeft, ...paddingTop }
+})
 
+// draw
 const drawerVisible = ref(false)
 const drawerCancel = () => {
   drawerVisible.value = false
@@ -48,22 +60,25 @@ provide('toggleDrawerMenu', () => {
 <template>
   <a-layout class="layout">
     <!-- header -->
-    <a-layout-header>
+    <a-layout-header class="layout-navbar">
       <Navbar />
     </a-layout-header>
+    <!-- main -->
     <a-layout>
       <!-- sider -->
       <a-layout-sider
+        v-if="renderMenu"
         v-show="!siderHidden"
         class="layout-sider"
         :width="siderWidth"
         :hide-trigger="true"
         :collapsed="collapsed"
         :collapsible="true"
+        :style="{ paddingTop: navbar ? navbarHeight : '' }"
         breakpoint="xl"
         @collapse="setCollapsed"
       >
-        <div class="menu-wrapper">
+        <div class="layout-menu">
           <Menu />
         </div>
       </a-layout-sider>
@@ -81,19 +96,29 @@ provide('toggleDrawerMenu', () => {
         <Menu />
       </a-drawer>
       <!-- content -->
-      <a-layout-content>
-        <RouterView />
-      </a-layout-content>
-      <!-- footer -->
-      <!-- <a-layout-footer>
-        <Footer />
-      </a-layout-footer> -->
+      <a-layout class="layout-content" :style="paddingStyle">
+        <a-layout-content>
+          <router-view />
+        <!-- <router-view v-slot="{ Component, route }">
+          <transition name="fade" mode="out-in" appear>
+            <component
+              :is="Component"
+              v-if="route.meta.ignoreCache"
+              :key="route.fullPath"
+            />
+            <keep-alive v-else :include="cacheList">
+              <component :is="Component" :key="route.fullPath" />
+            </keep-alive>
+          </transition>
+        </router-view> -->
+        </a-layout-content>
+      </a-layout>
     </a-layout>
   </a-layout>
 </template>
 
 <style lang="less" scoped>
-  @nav-size-height: 60px;
+  @nav-size-height: 52px;
   @layout-max-width: 1100px;
 
   .layout {
@@ -101,7 +126,20 @@ provide('toggleDrawerMenu', () => {
     height: 100%;
   }
 
+  .layout-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: @nav-size-height;
+  }
+
   .layout-sider {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
     height: 100%;
     transition: all 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
     &::after {
@@ -119,7 +157,7 @@ provide('toggleDrawerMenu', () => {
     }
   }
 
-  .menu-wrapper {
+  .layout-menu {
     height: 100%;
     overflow: auto;
     overflow-x: hidden;
@@ -138,5 +176,11 @@ provide('toggleDrawerMenu', () => {
         background-color: var(--color-text-3);
       }
     }
+  }
+  .layout-content {
+    min-height: 100vh;
+    overflow-y: hidden;
+    background-color: var(--color-fill-2);
+    transition: padding 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
   }
 </style>

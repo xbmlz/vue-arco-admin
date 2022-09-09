@@ -2,13 +2,13 @@ import { defineStore } from 'pinia'
 import type { UserState } from '../types'
 import { loginApi, logoutApi, userInfoApi } from '@/api/sys/user'
 import type { LoginParams } from '@/api/sys/model/userModel'
-import store from '@/store'
 import { usePermissionStore } from '@/store/modules/permission'
 import { userToken } from '@/utils/storage'
 import router from '@/router'
 import { LOGIN_PATH } from '@/router/constants'
 
-export const useUserStore = defineStore('app-user', {
+export const useUserStore = defineStore({
+  id: 'user',
   state: (): UserState => ({
     name: '',
     avatar: '',
@@ -65,8 +65,3 @@ export const useUserStore = defineStore('app-user', {
     },
   },
 })
-
-// Need to be used outside the setup
-export function useUserStoreWithOut() {
-  return useUserStore(store)
-}

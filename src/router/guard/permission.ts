@@ -1,14 +1,12 @@
 import type { LocationQueryRaw, Router } from 'vue-router'
 import NProgress from 'nprogress' // progress bar
-import { usePermissionStoreWithOut } from '@/store/modules/permission'
-import { useUserStoreWithOut } from '@/store/modules/user'
 import { LOGIN_PATH } from '@/router/constants'
+import { usePermissionStore, useUserStore } from '@/store'
 
 export function setupPermissionGuard(router: Router) {
-  const userStore = useUserStoreWithOut()
-  const permissionStore = usePermissionStoreWithOut()
-
   router.beforeEach(async (to, from, next) => {
+    const userStore = useUserStore()
+    const permissionStore = usePermissionStore()
     NProgress.start()
     // 判断是否登录
     if (userStore.userToken) {

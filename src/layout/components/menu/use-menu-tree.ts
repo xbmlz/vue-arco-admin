@@ -1,9 +1,9 @@
 import type { RouteRecordNormalized, RouteRecordRaw } from 'vue-router'
-import { usePermissionStoreWithOut } from '@/store/modules/permission'
+import { usePermissionStore } from '@/store/modules/permission'
 import usePermission from '@/hooks/permission'
 
 export default function useMenuTree() {
-  const permissionStore = usePermissionStoreWithOut()
+  const permissionStore = usePermissionStore()
   const permission = usePermission()
   const appRoute = computed(() => {
     return permissionStore.getMenuList

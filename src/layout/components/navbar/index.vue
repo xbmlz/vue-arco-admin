@@ -1,12 +1,11 @@
 <script setup lang='ts'>
+import GlobalSettings from '../../components/settings/index.vue'
 import { useAppStore, useUserStore } from '@/store'
 
 const appStore = useAppStore()
 const userStore = useUserStore()
 
 const toggleDrawerMenu = inject('toggleDrawerMenu')
-// full scene
-const { isFullscreen, toggle: toggleFullScreen } = useFullscreen()
 
 // theme
 const theme = computed(() => {
@@ -19,13 +18,21 @@ const isDark = useDark({
   valueLight: 'light',
   storageKey: 'arco-theme',
   onChanged(dark: boolean) {
-    // overridden default behavior
     appStore.toggleTheme(dark)
   },
 })
 const toggleTheme = useToggle(isDark)
 const handleToggleTheme = () => {
   toggleTheme()
+}
+
+// full scene
+const { isFullscreen, toggle: toggleFullScreen } = useFullscreen()
+
+// settings
+const settingsRef = ref()
+const setSettingsVisible = () => {
+  settingsRef.value.visible = true
 }
 // user
 const avatar = computed(() => {
@@ -45,7 +52,7 @@ const handleLogout = () => {
           src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/dfdba5317c0c20ce20e64fac803d52bc.svg~tplv-49unhts6dw-image.image"
         >
         <a-typography-title
-          :style="{ margin: 0, fontSize: '18px' }"
+          :style="{ marginTop: '0.8rem', fontSize: '18px' }"
           :heading="5"
         >
           VEnable
@@ -57,7 +64,7 @@ const handleLogout = () => {
         />
       </a-space>
     </div>
-    <ul class="right-side">
+    <ul class="navbar-right">
       <!-- search -->
       <li>
         <a-tooltip content="搜索">
@@ -112,12 +119,27 @@ const handleLogout = () => {
           </a-button>
         </a-tooltip>
       </li>
+      <!-- settings -->
+      <li>
+        <a-tooltip content="页面配置">
+          <a-button
+            class="nav-btn"
+            type="outline"
+            shape="circle"
+            @click="setSettingsVisible"
+          >
+            <template #icon>
+              <icon-settings />
+            </template>
+          </a-button>
+        </a-tooltip>
+      </li>
       <!-- user -->
       <li>
         <a-dropdown trigger="click">
           <a-avatar
-            :size="32"
-            :style="{ marginRight: '8px', cursor: 'pointer' }"
+            :size="28"
+            :style="{ cursor: 'pointer' }"
           >
             <img alt="avatar" :src="avatar">
           </a-avatar>
@@ -134,6 +156,8 @@ const handleLogout = () => {
         </a-dropdown>
       </li>
     </ul>
+    <!-- page settings -->
+    <GlobalSettings ref="settingsRef" />
   </div>
 </template>
 
@@ -144,7 +168,6 @@ const handleLogout = () => {
     height: 100%;
     background-color: var(--color-bg-2);
     border-bottom: 1px solid var(--color-border);
-    height: 60px;
   }
 
   .navbar-left {
@@ -153,10 +176,11 @@ const handleLogout = () => {
     padding-left: 20px;
   }
 
-  .right-side {
+  .navbar-right {
     display: flex;
     padding-right: 20px;
     list-style: none;
+
     :deep(.locale-select) {
       border-radius: 20px;
     }
@@ -172,7 +196,7 @@ const handleLogout = () => {
     .nav-btn {
       border-color: rgb(var(--gray-2));
       color: rgb(var(--gray-8));
-      font-size: 16px;
+      font-size: 14px;
     }
     .trigger-btn,
     .ref-btn {

@@ -6,6 +6,7 @@ export interface AppState {
   siderWidth: number
   siderCollapsed: boolean
   siderHidden: boolean
+  colorWeakness: boolean
 }
 
 export interface PermissionState {

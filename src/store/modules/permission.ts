@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia'
 import type { RouteRecordNormalized } from 'vue-router'
 import type { PermissionState } from '../types'
-import { useAppStoreWithOut } from './app'
-import store from '@/store'
 import { appRoutes } from '@/router/routes'
 import { menuListApi } from '@/api/sys/menu'
+import { useAppStore } from '@/store'
 
-export const usePermissionStore = defineStore('app-permission', {
+export const usePermissionStore = defineStore({
+  id: 'permission',
   state: (): PermissionState => ({
     menuList: [],
   }),
@@ -20,7 +20,7 @@ export const usePermissionStore = defineStore('app-permission', {
       this.menuList = list
     },
     async buildRoutesAction() {
-      const appStore = useAppStoreWithOut()
+      const appStore = useAppStore()
       let routes: RouteRecordNormalized[] = []
       if (appStore.serverMenu)
         routes = await menuListApi()
@@ -30,8 +30,3 @@ export const usePermissionStore = defineStore('app-permission', {
     },
   },
 })
-
-// Need to be used outside the setup
-export function usePermissionStoreWithOut() {
-  return usePermissionStore(store)
-}
