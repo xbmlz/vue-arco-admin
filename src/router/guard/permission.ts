@@ -1,7 +1,7 @@
-import type { LocationQueryRaw, Router } from 'vue-router'
 import NProgress from 'nprogress' // progress bar
 import { LOGIN_PATH } from '@/router/constants'
 import { usePermissionStore, useUserStore } from '@/store'
+import type { LocationQueryRaw, Router } from 'vue-router'
 
 export function setupPermissionGuard(router: Router) {
   router.beforeEach(async (to, from, next) => {
@@ -12,25 +12,23 @@ export function setupPermissionGuard(router: Router) {
     if (userStore.userToken) {
       if (userStore.role) {
         next()
-      }
-      else {
+      } else {
         try {
           await userStore.userInfoAction()
           next()
-        }
-        catch (error) {
+        } catch (error) {
+          console.error(error)
           await userStore.logout()
           next({
             path: LOGIN_PATH,
             replace: true,
             query: {
-              ...to.query as LocationQueryRaw,
+              ...(to.query as LocationQueryRaw),
             },
           })
         }
       }
-    }
-    else {
+    } else {
       // TODO logout
       if (to.path === LOGIN_PATH) {
         next()
@@ -40,12 +38,12 @@ export function setupPermissionGuard(router: Router) {
         path: LOGIN_PATH,
         replace: true,
         query: {
-          ...to.query as LocationQueryRaw,
+          ...(to.query as LocationQueryRaw),
         },
       })
     }
 
-    if (!permissionStore.getMenuList.length)
+    if (permissionStore.getMenuList.length === 0)
       permissionStore.buildRoutesAction()
 
     next()
@@ -55,4 +53,3 @@ export function setupPermissionGuard(router: Router) {
     NProgress.done()
   })
 }
-

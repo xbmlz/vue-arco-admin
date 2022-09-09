@@ -1,23 +1,20 @@
 import { defineStore } from 'pinia'
-import type { AppState } from '../types'
 import appSettings from '@/settings'
+import type { AppState } from '../types'
 
 export const useAppStore = defineStore({
   id: 'app',
   state: (): AppState => ({
     ...appSettings,
   }),
-  getters: {
-
-  },
+  getters: {},
   actions: {
     // change theme
     toggleTheme(dark: boolean) {
       if (dark) {
         this.theme = 'dark'
         document.body.setAttribute('arco-theme', 'dark')
-      }
-      else {
+      } else {
         this.theme = 'light'
         document.body.removeAttribute('arco-theme')
       }

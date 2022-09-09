@@ -8,4 +8,3 @@ export interface RouteItem {
   redirect?: string
   children?: RouteItem[]
 }
-

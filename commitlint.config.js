@@ -2,7 +2,7 @@
 /** @type {import('cz-git').UserConfig} */
 
 module.exports = {
-  ignores: [commit => commit.includes('init')],
+  ignores: [(commit) => commit.includes('init')],
   extends: ['@commitlint/config-conventional'],
   rules: {
     // @see: https://commitlint.js.org/#/reference-rules
@@ -107,7 +107,7 @@ module.exports = {
       },
       {
         value: 'chore',
-        name: 'chore:    🔨  Other changes that don\'t modify src or test files',
+        name: "chore:    🔨  Other changes that don't modify src or test files",
         emoji: '🔨',
       },
       {
@@ -141,15 +141,17 @@ module.exports = {
     breaklineNumber: 100,
     breaklineChar: '|',
     skipQuestions: [],
-    issuePrefixs: [{ value: 'closed', name: 'closed:   ISSUES has been processed' }],
+    issuePrefixs: [
+      { value: 'closed', name: 'closed:   ISSUES has been processed' },
+    ],
     customIssuePrefixsAlign: 'top',
     emptyIssuePrefixsAlias: 'skip',
     customIssuePrefixsAlias: 'custom',
     allowCustomIssuePrefixs: true,
     allowEmptyIssuePrefixs: true,
     confirmColorize: true,
-    maxHeaderLength: Infinity,
-    maxSubjectLength: Infinity,
+    maxHeaderLength: Number.POSITIVE_INFINITY,
+    maxSubjectLength: Number.POSITIVE_INFINITY,
     minSubjectLength: 0,
     scopeOverrides: undefined,
     defaultBody: '',

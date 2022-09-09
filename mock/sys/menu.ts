@@ -1,6 +1,6 @@
-import type { MockMethod } from 'vite-plugin-mock'
 import { getRequestToken, resultError, resultOk } from '../_util'
 import { userList } from './user'
+import type { MockMethod } from 'vite-plugin-mock'
 
 const menuList = [
   {
@@ -42,11 +42,9 @@ export default [
     method: 'get',
     response: (request: requestParams) => {
       const token = getRequestToken(request)
-      if (!token)
-        return resultError('Invalid token!')
-      const checkUser = userList.find(item => item.token === token)
-      if (!checkUser)
-        return resultError('Invalid user token!')
+      if (!token) return resultError('Invalid token!')
+      const checkUser = userList.find((item) => item.token === token)
+      if (!checkUser) return resultError('Invalid user token!')
       return resultOk(menuList)
     },
   },

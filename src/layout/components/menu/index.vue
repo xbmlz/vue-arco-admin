@@ -1,10 +1,10 @@
 <script lang="tsx" setup>
-import type { RouteMeta, RouteRecordRaw } from 'vue-router'
 import { compile } from 'vue'
-import useMenuTree from './use-menu-tree'
 import { listenerRouteChange } from '@/utils/route-listener'
 import { openWindow, regexUrl } from '@/utils/url'
 import { useAppStore } from '@/store'
+import useMenuTree from './use-menu-tree'
+import type { RouteMeta, RouteRecordRaw } from 'vue-router'
 
 const router = useRouter()
 const route = useRoute()
@@ -16,8 +16,7 @@ const selectedKey = ref<string[]>([])
 
 const collapsed = computed({
   get() {
-    if (!appStore.isMobile)
-      return appStore.siderCollapsed
+    if (!appStore.isMobile) return appStore.siderCollapsed
     return false
   },
   set(value: boolean) {
@@ -26,8 +25,7 @@ const collapsed = computed({
 })
 
 const setCollapse = (val: boolean) => {
-  if (!appStore.isMobile)
-    appStore.updateSettings({ siderCollapsed: val })
+  if (!appStore.isMobile) appStore.updateSettings({ siderCollapsed: val })
 }
 
 const goto = (item: RouteRecordRaw) => {
@@ -52,11 +50,7 @@ const goto = (item: RouteRecordRaw) => {
 const findMenuOpenKeys = (name: string) => {
   const result: string[] = []
   let isFind = false
-  const backtrack = (
-    item: RouteRecordRaw,
-    keys: string[],
-    target: string,
-  ) => {
+  const backtrack = (item: RouteRecordRaw, keys: string[], target: string) => {
     if (item.name === target) {
       isFind = true
       result.push(...keys, item.name as string)
@@ -69,8 +63,7 @@ const findMenuOpenKeys = (name: string) => {
     }
   }
   menuTree.value.forEach((el: RouteRecordRaw) => {
-    if (isFind)
-      return // Performance optimization
+    if (isFind) return // Performance optimization
     backtrack(el, [el.name as string], name)
   })
   return result
@@ -80,7 +73,7 @@ listenerRouteChange((newRoute) => {
   const { requiresAuth, activeMenu, hideInMenu } = newRoute.meta
   if (requiresAuth && (!hideInMenu || activeMenu)) {
     const menuOpenKeys = findMenuOpenKeys(
-      (activeMenu || newRoute.name) as string,
+      (activeMenu || newRoute.name) as string
     )
     const keySet = new Set([...menuOpenKeys, ...openKeys.value])
     openKeys.value = [...keySet]
@@ -98,27 +91,26 @@ const renderSubMenu = () => {
         const icon = element?.meta?.icon
           ? () => h(compile(`<${element?.meta?.icon}/>`))
           : null
-        const node = element?.children && element?.children.length !== 0
-          ? (
-              <a-sub-menu
-                key={element?.name}
-                v-slots={{
-                  icon,
-                  title: () => element?.meta?.title,
-                }}
-              >
-                {travel(element?.children)}
-              </a-sub-menu>
-            )
-          : (
-              <a-menu-item
-                key={element?.name}
-                v-slots={{ icon }}
-                onClick={() => goto(element)}
-              >
-                {element?.meta?.title || ''}
-              </a-menu-item>
-            )
+        const node =
+          element?.children && element?.children.length !== 0 ? (
+            <a-sub-menu
+              key={element?.name}
+              v-slots={{
+                icon,
+                title: () => element?.meta?.title,
+              }}
+            >
+              {travel(element?.children)}
+            </a-sub-menu>
+          ) : (
+            <a-menu-item
+              key={element?.name}
+              v-slots={{ icon }}
+              onClick={() => goto(element)}
+            >
+              {element?.meta?.title || ''}
+            </a-menu-item>
+          )
         nodes.push(node as never)
       })
     }
@@ -148,15 +140,15 @@ const Render = () => (
 </template>
 
 <style lang="less" scoped>
-  :deep(.arco-menu-inner) {
-    .arco-menu-inline-header {
-      display: flex;
-      align-items: center;
-    }
-    .arco-icon {
-      &:not(.arco-icon-down) {
-        font-size: 18px;
-      }
+:deep(.arco-menu-inner) {
+  .arco-menu-inline-header {
+    display: flex;
+    align-items: center;
+  }
+  .arco-icon {
+    &:not(.arco-icon-down) {
+      font-size: 18px;
     }
   }
+}
 </style>

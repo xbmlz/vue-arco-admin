@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia'
-import type { RouteRecordNormalized } from 'vue-router'
-import type { PermissionState } from '../types'
 import { appRoutes } from '@/router/routes'
 import { menuListApi } from '@/api/sys/menu'
 import { useAppStore } from '@/store'
+import type { PermissionState } from '../types'
+import type { RouteRecordNormalized } from 'vue-router'
 
 export const usePermissionStore = defineStore({
   id: 'permission',
@@ -22,10 +22,8 @@ export const usePermissionStore = defineStore({
     async buildRoutesAction() {
       const appStore = useAppStore()
       let routes: RouteRecordNormalized[] = []
-      if (appStore.serverMenu)
-        routes = await menuListApi()
-      else
-        routes = appRoutes
+      if (appStore.serverMenu) routes = await menuListApi()
+      else routes = appRoutes
       this.setMenuList(routes)
     },
   },

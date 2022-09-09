@@ -1,6 +1,6 @@
-<script setup lang='ts'>
-import GlobalSettings from '../../components/settings/index.vue'
+<script setup lang="ts">
 import { useAppStore, useUserStore } from '@/store'
+import GlobalSettings from '../../components/settings/index.vue'
 
 const appStore = useAppStore()
 const userStore = useUserStore()
@@ -50,7 +50,7 @@ const handleLogout = () => {
         <img
           alt="logo"
           src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/dfdba5317c0c20ce20e64fac803d52bc.svg~tplv-49unhts6dw-image.image"
-        >
+        />
         <a-typography-title
           :style="{ marginTop: '0.8rem', fontSize: '18px' }"
           :heading="5"
@@ -79,9 +79,7 @@ const handleLogout = () => {
       <li>
         <a-tooltip
           :content="
-            theme === 'light'
-              ? '点击切换为暗黑模式'
-              : '点击切换为明亮模式'
+            theme === 'light' ? '点击切换为暗黑模式' : '点击切换为明亮模式'
           "
         >
           <a-button
@@ -100,11 +98,7 @@ const handleLogout = () => {
       <!-- full scene -->
       <li>
         <a-tooltip
-          :content="
-            isFullscreen
-              ? '点击退出全屏模式'
-              : '点击切换全屏模式'
-          "
+          :content="isFullscreen ? '点击退出全屏模式' : '点击切换全屏模式'"
         >
           <a-button
             class="nav-btn"
@@ -137,19 +131,14 @@ const handleLogout = () => {
       <!-- user -->
       <li>
         <a-dropdown trigger="click">
-          <a-avatar
-            :size="28"
-            :style="{ cursor: 'pointer' }"
-          >
-            <img alt="avatar" :src="avatar">
+          <a-avatar :size="28" :style="{ cursor: 'pointer' }">
+            <img alt="avatar" :src="avatar" />
           </a-avatar>
           <template #content>
             <a-doption>
               <a-space @click="handleLogout">
                 <icon-export />
-                <span>
-                  退出登录
-                </span>
+                <span> 退出登录 </span>
               </a-space>
             </a-doption>
           </template>
@@ -162,49 +151,49 @@ const handleLogout = () => {
 </template>
 
 <style lang="less" scoped>
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    height: 100%;
-    background-color: var(--color-bg-2);
-    border-bottom: 1px solid var(--color-border);
-  }
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  background-color: var(--color-bg-2);
+  border-bottom: 1px solid var(--color-border);
+}
 
-  .navbar-left {
+.navbar-left {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.navbar-right {
+  display: flex;
+  padding-right: 20px;
+  list-style: none;
+
+  :deep(.locale-select) {
+    border-radius: 20px;
+  }
+  li {
     display: flex;
     align-items: center;
-    padding-left: 20px;
+    padding: 0 10px;
   }
-
-  .navbar-right {
-    display: flex;
-    padding-right: 20px;
-    list-style: none;
-
-    :deep(.locale-select) {
-      border-radius: 20px;
-    }
-    li {
-      display: flex;
-      align-items: center;
-      padding: 0 10px;
-    }
-    a {
-      color: var(--color-text-1);
-      text-decoration: none;
-    }
-    .nav-btn {
-      border-color: rgb(var(--gray-2));
-      color: rgb(var(--gray-8));
-      font-size: 14px;
-    }
-    .trigger-btn,
-    .ref-btn {
-      position: absolute;
-      bottom: 14px;
-    }
-    .trigger-btn {
-      margin-left: 14px;
-    }
+  a {
+    color: var(--color-text-1);
+    text-decoration: none;
   }
+  .nav-btn {
+    border-color: rgb(var(--gray-2));
+    color: rgb(var(--gray-8));
+    font-size: 14px;
+  }
+  .trigger-btn,
+  .ref-btn {
+    position: absolute;
+    bottom: 14px;
+  }
+  .trigger-btn {
+    margin-left: 14px;
+  }
+}
 </style>

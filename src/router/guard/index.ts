@@ -1,6 +1,6 @@
-import type { Router } from 'vue-router'
-import { setupPermissionGuard } from './permission'
 import { setRouteEmitter } from '@/utils/route-listener'
+import { setupPermissionGuard } from './permission'
+import type { Router } from 'vue-router'
 
 function setupPageGuard(router: Router) {
   router.beforeEach(async (to) => {

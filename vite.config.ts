@@ -1,5 +1,4 @@
-import path from 'path'
-import type { ConfigEnv, UserConfig } from 'vite'
+import path from 'node:path'
 import { defineConfig, loadEnv } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import VueJsx from '@vitejs/plugin-vue-jsx'
@@ -10,6 +9,7 @@ import { ArcoResolver } from 'unplugin-vue-components/resolvers'
 import { createStyleImportPlugin } from 'vite-plugin-style-import'
 import { viteMockServe } from 'vite-plugin-mock'
 import Unocss from 'unocss/vite'
+import type { ConfigEnv, UserConfig } from 'vite'
 
 // https://cn.vitejs.dev/config/
 export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
@@ -39,9 +39,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
         // allow auto import and register components used in markdown
         include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
         dts: 'src/components.d.ts',
-        resolvers: [
-          ArcoResolver({ sideEffect: true }),
-        ],
+        resolvers: [ArcoResolver({ sideEffect: true })],
       }),
       // https://github.com/sxzz/unplugin-vue-macros/blob/main/packages/define-options/README-zh-CN.md
       DefineOptions(),
@@ -105,14 +103,13 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
                 'layout-header': 'layout',
                 'month-picker': 'date-picker',
                 'range-picker': 'date-picker',
-                'row': 'grid', // 'grid/row.less'
-                'col': 'grid', // 'grid/col.less'
+                row: 'grid', // 'grid/row.less'
+                col: 'grid', // 'grid/col.less'
                 'avatar-group': 'avatar',
                 'image-preview': 'image',
                 'image-preview-group': 'image',
               }
-              if (ignoreList.includes(name))
-                return ''
+              if (ignoreList.includes(name)) return ''
               // eslint-disable-next-line no-prototype-builtins
               return replaceList.hasOwnProperty(name)
                 ? `@arco-design/web-vue/es/${replaceList[name]}/style/css.js`
@@ -125,7 +122,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
       }),
       // https://github.com/vbenjs/vite-plugin-mock
       viteMockServe({
-        ignore: /^\_/,
+        ignore: /^_/,
         mockPath: 'mock',
         localEnabled: !isBuild,
         prodEnabled: isBuild,
@@ -156,7 +153,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
         '/api': {
           target: VITE_BASE_URL,
           changeOrigin: true,
-          rewrite: path => path.replace(/^\/api/, ''),
+          rewrite: (path) => path.replace(/^\/api/, ''),
           ...(isHttps ? { secure: false } : {}),
         },
       },

@@ -1,5 +1,5 @@
-import type { GetUserInfo, LoginParams, LoginResult } from './model/userModel'
 import request from '@/utils/request'
+import type { GetUserInfo, LoginParams, LoginResult } from './model/userModel'
 
 enum Api {
   Login = '/login',

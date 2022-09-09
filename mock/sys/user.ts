@@ -1,5 +1,5 @@
-import type { MockMethod } from 'vite-plugin-mock'
 import { getRequestToken, resultError, resultOk } from '../_util'
+import type { MockMethod } from 'vite-plugin-mock'
 export const userList = [
   {
     userId: '1',
@@ -32,10 +32,18 @@ export default [
     method: 'post',
     response: ({ body }) => {
       const { username, password } = body
-      const loginUser = userList.find(item => item.username === username && password === item.password)
-      if (!loginUser)
-        return resultError('Incorrect account or password!')
-      const { userId, username: _username, token, realName, desc, roles } = loginUser
+      const loginUser = userList.find(
+        (item) => item.username === username && password === item.password
+      )
+      if (!loginUser) return resultError('Incorrect account or password!')
+      const {
+        userId,
+        username: _username,
+        token,
+        realName,
+        desc,
+        roles,
+      } = loginUser
       return resultOk({
         roles,
         userId,
@@ -52,11 +60,9 @@ export default [
     method: 'get',
     response: (request: requestParams) => {
       const token = getRequestToken(request)
-      if (!token)
-        return resultError('Invalid token')
-      const checkUser = userList.find(item => item.token === token)
-      if (!checkUser)
-        return resultError('Invalid token!')
+      if (!token) return resultError('Invalid token')
+      const checkUser = userList.find((item) => item.token === token)
+      if (!checkUser) return resultError('Invalid token!')
 
       return resultOk(undefined, { message: 'Token has been destroyed' })
     },
@@ -66,11 +72,12 @@ export default [
     method: 'get',
     response: (request: requestParams) => {
       const token = getRequestToken(request)
-      if (!token)
-        return resultError('Invalid token')
-      const checkUser = userList.find(item => item.token === token)
+      if (!token) return resultError('Invalid token')
+      const checkUser = userList.find((item) => item.token === token)
       if (!checkUser)
-        return resultError('The corresponding user information was not obtained!')
+        return resultError(
+          'The corresponding user information was not obtained!'
+        )
 
       return resultOk(checkUser)
     },
@@ -81,11 +88,9 @@ export default [
     method: 'get',
     response: (request: requestParams) => {
       const token = getRequestToken(request)
-      if (!token)
-        return resultError('Invalid token')
-      const checkUser = userList.find(item => item.token === token)
-      if (!checkUser)
-        return resultError('Invalid token!')
+      if (!token) return resultError('Invalid token')
+      const checkUser = userList.find((item) => item.token === token)
+      if (!checkUser) return resultError('Invalid token!')
 
       return resultOk(undefined, { message: 'Token has been destroyed' })
     },

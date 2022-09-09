@@ -1,7 +1,7 @@
 import axios from 'axios'
-import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import { Message } from '@arco-design/web-vue'
 import { userToken } from './storage'
+import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 
 export interface Result<T = any> {
   code: number
@@ -27,32 +27,29 @@ class Request {
     this.instance.interceptors.request.use(
       (config: AxiosRequestConfig) => {
         // TODO
-        if (config.headers)
-          config.headers.authorization = userToken.value
+        if (config.headers) config.headers.authorization = userToken.value
         return config
       },
       (err: any) => {
         return Promise.reject(err)
-      },
+      }
     )
 
     // 全局响应拦截器
     this.instance.interceptors.response.use(
       (res: AxiosResponse) => {
         const result = res.data
-        if (!result)
-          throw new Error('[HTTP] Request has no return value')
-          // 用户可以自定义
+        if (!result) throw new Error('[HTTP] Request has no return value')
+        // 用户可以自定义
         const { code, msg, data } = result
         const hasSuccess = result && Reflect.has(result, 'code') && code === 0
-        if (hasSuccess)
-          return data
+        if (hasSuccess) return data
         Message.error(msg)
         return Promise.reject(new Error(msg || 'Error'))
       },
       (err: any) => {
         return Promise.reject(err)
-      },
+      }
     )
   }
 
@@ -66,12 +63,20 @@ class Request {
   }
 
   // post
-  public post<T = any>(url: string, data: object, config?: AxiosRequestConfig): Promise<T> {
+  public post<T = any>(
+    url: string,
+    data: object,
+    config?: AxiosRequestConfig
+  ): Promise<T> {
     return this.instance.post(url, data, config)
   }
 
   // put
-  public put<T>(url: string, data: object, config?: AxiosRequestConfig): Promise<T> {
+  public put<T>(
+    url: string,
+    data: object,
+    config?: AxiosRequestConfig
+  ): Promise<T> {
     return this.instance.put(url, data, config)
   }
 

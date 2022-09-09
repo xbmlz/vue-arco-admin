@@ -4,8 +4,7 @@ const modules = import.meta.globEager('./**/*.ts')
 
 const mockModules: any[] = []
 Object.keys(modules).forEach((key) => {
-  if (key.includes('/_'))
-    return
+  if (key.includes('/_')) return
   mockModules.push(...modules[key].default)
 })
 

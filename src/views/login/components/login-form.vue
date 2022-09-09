@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import type { ValidatedError } from '@arco-design/web-vue/es/form/interface'
 import { Message } from '@arco-design/web-vue'
-import type { LoginParams } from '@/api/sys/model/userModel'
 import useLoading from '@/hooks/loading'
 import { BASE_HOME_PATH } from '@/router/constants'
 import { useUserStore } from '@/store/modules/user'
+import type { LoginParams } from '@/api/sys/model/userModel'
+import type { ValidatedError } from '@arco-design/web-vue/es/form/interface'
 
 const errorMessage = ref('')
 const userStore = useUserStore()
@@ -33,22 +33,18 @@ const handleSubmit = async ({
   errors: Record<string, ValidatedError> | undefined
   values: Record<string, any>
 }) => {
-  if (loading.value)
-    return
+  if (loading.value) return
   if (!errors) {
     setLoading(true)
     try {
-      const { redirect, ...othersQuery } = router.currentRoute.value.query
       const userInfo = await userStore.login(values as LoginParams)
       if (userInfo) {
         router.replace(userInfo?.homePath || BASE_HOME_PATH)
         Message.success('登录成功')
       }
-    }
-    catch (error) {
+    } catch (error) {
       errorMessage.value = (error as Error).message
-    }
-    finally {
+    } finally {
       setLoading(false)
     }
   }
@@ -57,16 +53,17 @@ const handleSubmit = async ({
 
 <template>
   <div w-320px>
-    <div font-500 text-3xl mb-4>
-      登录 VEnable Admin
-    </div>
-    <div text-2xl color-gray-5 mb-4>
-      登录 VEnable Admin
-    </div>
+    <div font-500 text-3xl mb-4>登录 VEnable Admin</div>
+    <div text-2xl color-gray-5 mb-4>登录 VEnable Admin</div>
     <div h-32px color-red-5 text-xl>
       {{ errorMessage }}
     </div>
-    <AForm ref="loginForm" :model="userInfo" layout="vertical" @submit="handleSubmit">
+    <AForm
+      ref="loginForm"
+      :model="userInfo"
+      layout="vertical"
+      @submit="handleSubmit"
+    >
       <AFormItem
         field="username"
         :rules="[{ required: true, message: '用户名不能为空' }]"
@@ -85,7 +82,11 @@ const handleSubmit = async ({
         :validate-trigger="['change', 'blur']"
         hide-label
       >
-        <AInputPassword v-model="userInfo.password" placeholder="密码: admin" allow-clear>
+        <AInputPassword
+          v-model="userInfo.password"
+          placeholder="密码: admin"
+          allow-clear
+        >
           <template #prefix>
             <icon-lock />
           </template>
@@ -93,7 +94,11 @@ const handleSubmit = async ({
       </AFormItem>
       <ASpace :size="16" direction="vertical">
         <div flex justify-between>
-          <ACheckbox checked="rememberPassword" :model-value="loginConfig.rememberPassword" @change="(setRememberPassword as any)">
+          <ACheckbox
+            checked="rememberPassword"
+            :model-value="loginConfig.rememberPassword"
+            @change="setRememberPassword as any"
+          >
             记住密码
           </ACheckbox>
           <ALink>忘记密码</ALink>
@@ -101,9 +106,7 @@ const handleSubmit = async ({
         <AButton type="primary" html-type="submit" :loading="loading" long>
           登录
         </AButton>
-        <AButton type="text" long>
-          注册账号
-        </AButton>
+        <AButton type="text" long> 注册账号 </AButton>
       </ASpace>
     </AForm>
   </div>

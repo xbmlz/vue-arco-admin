@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { PropType } from 'vue'
-import FormWrapper from './form-wrapper.vue'
 import { useAppStore } from '@/store'
+import FormWrapper from './form-wrapper.vue'
+import type { PropType } from 'vue'
 
 interface OptionsProps {
   name: string
@@ -33,8 +33,7 @@ const handleChange = async ({
   if (key === 'colorWeakness')
     document.body.style.filter = value ? 'invert(80%)' : 'none'
 
-  if (key === 'serverMenu' && value)
-    await permissionStore.buildRoutesAction()
+  if (key === 'serverMenu' && value) await permissionStore.buildRoutesAction()
 
   appStore.updateSettings({ [key]: value })
 }
@@ -58,20 +57,20 @@ const handleChange = async ({
 </template>
 
 <style scoped lang="less">
-  .block {
-    margin-bottom: 24px;
-  }
+.block {
+  margin-bottom: 24px;
+}
 
-  .title {
-    margin: 10px 0;
-    padding: 0;
-    font-size: 14px;
-  }
+.title {
+  margin: 10px 0;
+  padding: 0;
+  font-size: 14px;
+}
 
-  .switch-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 32px;
-  }
+.switch-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 32px;
+}
 </style>

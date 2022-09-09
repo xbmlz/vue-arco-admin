@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { Message } from '@arco-design/web-vue'
 import { useClipboard } from '@vueuse/core'
-import Block from './block.vue'
 import { useAppStore } from '@/store'
+import Block from './block.vue'
 
 const visible = ref(false)
 const appStore = useAppStore()
@@ -60,26 +60,25 @@ defineExpose({
     @cancel="cancel"
     @ok="copySettings"
   >
-    <template #title>
-      页面配置
-    </template>
+    <template #title> 页面配置 </template>
     <Block :options="contentOpts" title="内容区域" />
     <Block :options="othersOpts" title="其他设置" />
     <a-alert>
-      配置之后仅是临时生效，要想真正作用于项目，点击下方的 "复制配置" 按钮，将配置替换到 settings.json 中即可。
+      配置之后仅是临时生效，要想真正作用于项目，点击下方的 "复制配置"
+      按钮，将配置替换到 settings.json 中即可。
     </a-alert>
   </a-drawer>
 </template>
 
 <style scoped lang="less">
-  .fixed-settings {
-    position: fixed;
-    top: 280px;
-    right: 0;
+.fixed-settings {
+  position: fixed;
+  top: 280px;
+  right: 0;
 
-    svg {
-      font-size: 18px;
-      vertical-align: -4px;
-    }
+  svg {
+    font-size: 18px;
+    vertical-align: -4px;
   }
+}
 </style>

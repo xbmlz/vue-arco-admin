@@ -1,4 +1,4 @@
-<script lang='ts' setup>
+<script lang="ts" setup>
 import bannerImage from '@/assets/images/login-banner.svg'
 </script>
 
@@ -7,19 +7,19 @@ import bannerImage from '@/assets/images/login-banner.svg'
     <div w-350px text-3xl font-500 color-white text-left relative mb-10>
       开箱即用的高质量模板
     </div>
-    <img :src="bannerImage" w-350px>
+    <img :src="bannerImage" w-350px />
   </div>
 </template>
 
 <style lang="less" scoped>
-  .banner {
-    background: #235bda;
-    background-position-x: 100%;
-    background-image: url(../../../assets/images/login-bg.jpg);
-    background-size: auto 250px;
-    background-repeat: no-repeat;
-    @media (max-width: 1024px) {
-      display: none;
-    }
+.banner {
+  background: #235bda;
+  background-position-x: 100%;
+  background-image: url(../../../assets/images/login-bg.jpg);
+  background-size: auto 250px;
+  background-repeat: no-repeat;
+  @media (max-width: 1024px) {
+    display: none;
   }
+}
 </style>

@@ -5,9 +5,5 @@ import { usePermissionStore } from './modules/permission'
 
 const pinia = createPinia()
 
-export {
-  useAppStore,
-  useUserStore,
-  usePermissionStore,
-}
+export { useAppStore, useUserStore, usePermissionStore }
 export default pinia

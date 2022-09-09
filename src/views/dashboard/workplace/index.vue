@@ -11,14 +11,10 @@ defineOptions({
         <a-card title="SALES">
           <template #extra>
             <a-dropdown :popup-max-height="false">
-              <a-button type="text">
-                No Max Height <icon-down />
-              </a-button>
+              <a-button type="text"> No Max Height <icon-down /> </a-button>
               <template #content>
                 <a-doption>Option 1</a-doption>
-                <a-doption disabled>
-                  Option 2
-                </a-doption>
+                <a-doption disabled> Option 2 </a-doption>
                 <a-doption>Option 3</a-doption>
                 <a-doption>Option 4</a-doption>
                 <a-doption>Option 5</a-doption>
