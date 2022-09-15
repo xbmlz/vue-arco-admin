@@ -1,5 +1,6 @@
 import { getRequestToken, resultError, resultOk } from '../_util'
 import { userList } from './user'
+import type { requestParams } from '../_util'
 import type { MockMethod } from 'vite-plugin-mock'
 
 const menuList = [

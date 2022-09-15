@@ -1,4 +1,4 @@
-export function resultOk<T = Record>(data: T, { msg = 'success' } = {}) {
+export function resultOk<T = any>(data: T, { msg = 'success' } = {}) {
   return {
     code: 0,
     msg,
@@ -21,4 +21,11 @@ export function getRequestToken({
   headers,
 }: requestParams): string | undefined {
   return headers?.authorization
+}
+
+export interface requestParams {
+  method: string
+  body: any
+  headers?: { authorization?: string }
+  query: any
 }
