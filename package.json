@@ -41,8 +41,10 @@
   "devDependencies": {
     "@arco-design/web-vue": "^2.36.0",
     "@commitlint/config-conventional": "^17.1.0",
+    "@iconify/json": "^2.1.109",
     "@types/lodash-es": "^4.17.6",
     "@types/nprogress": "^0.2.0",
+    "@unocss/preset-icons": "^0.45.21",
     "@vitejs/plugin-vue": "^3.1.0",
     "@vitejs/plugin-vue-jsx": "^2.0.1",
     "@xbmlz/eslint-config": "^0.1.4",

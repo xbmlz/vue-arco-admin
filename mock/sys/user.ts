@@ -31,7 +31,10 @@ export default [
     url: '/api/login',
     timeout: 200,
     method: 'post',
-    response: ({ body }) => {
+    response: ({
+      // @ts-ignore https://github.com/vbenjs/vite-plugin-mock/issues/54
+      body,
+    }) => {
       const { username, password } = body
       const loginUser = userList.find(
         (item) => item.username === username && password === item.password
@@ -43,10 +46,10 @@ export default [
         token,
         realName,
         desc,
-        roles,
+        role,
       } = loginUser
       return resultOk({
-        roles,
+        role,
         userId,
         username: _username,
         token,
@@ -65,7 +68,7 @@ export default [
       const checkUser = userList.find((item) => item.token === token)
       if (!checkUser) return resultError('Invalid token!')
 
-      return resultOk(undefined, { message: 'Token has been destroyed' })
+      return resultOk(undefined, { msg: 'Token has been destroyed' })
     },
   },
   {
@@ -93,7 +96,7 @@ export default [
       const checkUser = userList.find((item) => item.token === token)
       if (!checkUser) return resultError('Invalid token!')
 
-      return resultOk(undefined, { message: 'Token has been destroyed' })
+      return resultOk(undefined, { msg: 'Token has been destroyed' })
     },
   },
-] as MockMethod
+] as MockMethod[]

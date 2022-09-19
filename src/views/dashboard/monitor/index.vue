@@ -5,5 +5,7 @@ defineOptions({
 </script>
 
 <template>
-  <div>Monitor</div>
+  <div container p-4>
+    <div class="i-logos-vue text-3xl" />
+  </div>
 </template>
