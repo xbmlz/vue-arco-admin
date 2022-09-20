@@ -7,6 +7,6 @@ enum Path {
 
 export default class MenuApi {
   static getMenuList() {
-    return request.get<RouteRecordNormalized[]>(Path.GetMenuList)
+    return request.get<RouteRecordNormalized[]>(Path.MenuList)
   }
 }

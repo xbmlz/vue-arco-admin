@@ -8,7 +8,6 @@ export const userList = [
     realName: 'Super Admin',
     homePath: '/dashboard/workplace',
     avatar: 'https://dummyimage.com/640x640/1c66c7/fff.png&text=admin',
-    desc: 'mock user 1',
     password: '123456',
     token: 'mockToken1',
     role: 'admin',
@@ -20,7 +19,6 @@ export const userList = [
     homePath: '/dashboard/workplace',
     realName: 'test',
     avatar: 'https://dummyimage.com/640x640/1c66c7/fff.png&text=test',
-    desc: 'mock user 1',
     token: 'mockToken2',
     role: 'user',
   },
@@ -40,21 +38,13 @@ export default [
         (item) => item.username === username && password === item.password
       )
       if (!loginUser) return resultError('Incorrect account or password!')
-      const {
-        userId,
-        username: _username,
-        token,
-        realName,
-        desc,
-        role,
-      } = loginUser
+      const { userId, username: _username, token, realName, role } = loginUser
       return resultOk({
         role,
         userId,
         username: _username,
         token,
         realName,
-        desc,
       })
     },
   },

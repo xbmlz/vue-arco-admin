@@ -7,7 +7,9 @@ export default function usePermission() {
       return (
         !route.meta?.requiresAuth ||
         !route.meta?.roles ||
+        // @ts-ignore
         route.meta?.roles?.includes('*') ||
+        // @ts-ignore
         route.meta?.roles?.includes(userStore.role)
       )
     },

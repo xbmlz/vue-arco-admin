@@ -1,14 +1,14 @@
 import { BASE_HOME_PATH, LAYOUT, NOT_FOUND_NAME } from '../constants'
-import type { AppRouteRecordRaw } from '@/router/types'
+import type { RouteRecordRaw } from 'vue-router'
 
 // 根路由
-export const ROOT_ROUTE: AppRouteRecordRaw = {
+export const ROOT_ROUTE: RouteRecordRaw = {
   path: '/',
   redirect: BASE_HOME_PATH,
 }
 
 // 登录
-export const LOGIN_ROUTE: AppRouteRecordRaw = {
+export const LOGIN_ROUTE: RouteRecordRaw = {
   path: '/login',
   name: 'login',
   component: () => import('@/views/login/index.vue'),
@@ -18,7 +18,7 @@ export const LOGIN_ROUTE: AppRouteRecordRaw = {
 }
 
 // 404
-export const NOT_FOUND_ROUTE: AppRouteRecordRaw = {
+export const NOT_FOUND_ROUTE: RouteRecordRaw = {
   path: '/:pathMatch(.*)*',
   name: NOT_FOUND_NAME,
   component: LAYOUT,
@@ -40,7 +40,7 @@ export const NOT_FOUND_ROUTE: AppRouteRecordRaw = {
 }
 
 // redirect
-export const REDIRECT_ROUTE: AppRouteRecordRaw = {
+export const REDIRECT_ROUTE: RouteRecordRaw = {
   path: '/redirect/:path',
   name: 'Redirect',
   component: LAYOUT,

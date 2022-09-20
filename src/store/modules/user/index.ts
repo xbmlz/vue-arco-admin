@@ -10,12 +10,12 @@ import type { UserState } from './types'
 export const useUserStore = defineStore({
   id: 'user',
   state: (): UserState => ({
-    userId: undefined,
-    username: undefined,
-    name: undefined,
-    homePath: undefined,
-    avatar: undefined,
-    token: undefined,
+    userId: '',
+    username: '',
+    realName: '',
+    homePath: '',
+    avatar: '',
+    token: '',
     role: '',
   }),
   getters: {
@@ -35,7 +35,7 @@ export const useUserStore = defineStore({
       this.$patch(partial)
     },
     resetInfo() {
-      this.setToken(undefined)
+      this.setToken('')
       this.$reset()
     },
     // user info

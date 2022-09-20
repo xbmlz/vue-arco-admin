@@ -9,12 +9,13 @@ export interface LoginResult {
   role: string
 }
 
+export type RoleType = '' | '*' | 'admin' | 'user'
+
 export interface UserInfoResult {
   userId: number
   username: string
-  homePath: string
   realName: string
+  homePath: string
   avatar: string
-  desc?: string
-  role: string
+  role: RoleType
 }

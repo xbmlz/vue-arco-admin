@@ -66,10 +66,7 @@ export function setupPermissionGuard(router: Router) {
     }
 
     // not found
-    if (
-      permissionStore.getMenuList.length === 0 &&
-      !WHITE_PATH_LIST.includes(to.name)
-    ) {
+    if (permissionStore.getMenuList.length === 0) {
       permissionStore.buildRoutesAction()
     }
     // console.log(permissionStore.menuList)

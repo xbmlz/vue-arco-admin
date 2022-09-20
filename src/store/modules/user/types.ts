@@ -1,9 +1,9 @@
 export type RoleType = '' | '*' | 'admin' | 'user'
 
 export interface UserState {
-  userId: number
-  username: string
-  name?: string
+  userId?: string | number
+  username?: string
+  realName?: string
   homePath?: string
   avatar?: string
   token?: string
