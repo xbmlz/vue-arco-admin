@@ -38,7 +38,7 @@ const menuList = [
 
 export default [
   {
-    url: '/api/getMenuList',
+    url: '/api/menu/list',
     timeout: 200,
     method: 'get',
     response: (request: requestParams) => {

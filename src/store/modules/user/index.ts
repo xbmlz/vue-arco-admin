@@ -1,26 +1,29 @@
 import { defineStore } from 'pinia'
-import { loginApi, logoutApi, userInfoApi } from '@/api/sys/user'
-import { usePermissionStore } from '@/store/modules/permission'
+import UserApi from '@/api/sys/user/index'
+import { usePermissionStore } from '@/store/modules/permission/index'
 import { userToken } from '@/utils/storage'
 import router from '@/router'
 import { LOGIN_PATH } from '@/router/constants'
-import type { LoginParams } from '@/api/sys/model/userModel'
-import type { UserState } from '../types'
+import type { LoginParams } from '@/api/sys/user/types'
+import type { UserState } from './types'
 
 export const useUserStore = defineStore({
   id: 'user',
   state: (): UserState => ({
-    name: '',
-    avatar: '',
-    token: '',
+    userId: undefined,
+    username: undefined,
+    name: undefined,
+    homePath: undefined,
+    avatar: undefined,
+    token: undefined,
     role: '',
   }),
   getters: {
     userInfo(state: UserState): UserState {
       return { ...state }
     },
-    userToken(): string {
-      return this.token || userToken.value
+    isLogin(): boolean {
+      return !!userToken.value
     },
   },
   actions: {
@@ -32,23 +35,22 @@ export const useUserStore = defineStore({
       this.$patch(partial)
     },
     resetInfo() {
-      this.setToken('')
+      this.setToken(undefined)
       this.$reset()
     },
     // user info
-    async userInfoAction() {
-      const userInfo = await userInfoApi()
+    async info() {
+      const userInfo = await UserApi.getUserInfo()
       this.setUserInfo(userInfo)
-      return userInfo
     },
     // login
     async login(params: LoginParams) {
-      const data = await loginApi(params)
+      const data = await UserApi.login(params)
       const { token } = data
       // save token
       this.setToken(token)
       if (!this.token) return null
-      const userInfo = await userInfoApi()
+      const userInfo = await UserApi.getUserInfo()
       this.setUserInfo(userInfo)
       // router
       const permissionStore = usePermissionStore()
@@ -57,7 +59,7 @@ export const useUserStore = defineStore({
     },
     // logout
     async logout() {
-      if (this.token) await logoutApi()
+      if (this.token) await UserApi.logout()
       router.push(LOGIN_PATH)
       this.resetInfo()
     },

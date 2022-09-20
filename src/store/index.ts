@@ -1,7 +1,7 @@
 import { createPinia } from 'pinia'
-import { useAppStore } from './modules/app'
-import { useUserStore } from './modules/user'
-import { usePermissionStore } from './modules/permission'
+import { useAppStore } from './modules/app/index'
+import { useUserStore } from './modules/user/index'
+import { usePermissionStore } from './modules/permission/index'
 
 const pinia = createPinia()
 

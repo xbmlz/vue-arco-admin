@@ -1,4 +1,4 @@
-import { usePermissionStore } from '@/store/modules/permission'
+import { usePermissionStore } from '@/store/modules/permission/index'
 import usePermission from '@/hooks/permission'
 import type { RouteRecordNormalized, RouteRecordRaw } from 'vue-router'
 

@@ -4,22 +4,17 @@ export interface LoginParams {
 }
 
 export interface LoginResult {
-  userId: string | number
+  userId: number
   token: string
-  role: RoleInfo
+  role: string
 }
 
-export interface RoleInfo {
-  roleName: string
-  value: string
-}
-
-export interface GetUserInfo {
-  userId: string | number
+export interface UserInfoResult {
+  userId: number
   username: string
   homePath: string
   realName: string
   avatar: string
   desc?: string
-  roles: RoleInfo[]
+  role: string
 }

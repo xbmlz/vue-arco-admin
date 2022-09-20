@@ -66,7 +66,7 @@ const handleLogout = () => {
     </div>
     <ul class="navbar-right">
       <!-- search -->
-      <li>
+      <!-- <li>
         <a-tooltip content="搜索">
           <a-button class="nav-btn" type="outline" shape="circle">
             <template #icon>
@@ -74,7 +74,7 @@ const handleLogout = () => {
             </template>
           </a-button>
         </a-tooltip>
-      </li>
+      </li> -->
       <!-- theme -->
       <li>
         <a-tooltip

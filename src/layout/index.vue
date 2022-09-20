@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useAppStore, usePermissionStore } from '@/store'
 import { isMobile } from '@/utils/device'
-import Navbar from './components/navbar/index.vue'
+import Header from './components/header/index.vue'
 import Menu from './components/menu/index.vue'
 
 const appStore = useAppStore()
@@ -59,8 +59,8 @@ provide('toggleDrawerMenu', () => {
 <template>
   <a-layout class="layout">
     <!-- header -->
-    <a-layout-header class="layout-navbar">
-      <Navbar />
+    <a-layout-header class="layout-header">
+      <Header />
     </a-layout-header>
     <!-- main -->
     <a-layout>
@@ -125,7 +125,7 @@ provide('toggleDrawerMenu', () => {
   height: 100%;
 }
 
-.layout-navbar {
+.layout-header {
   position: fixed;
   top: 0;
   left: 0;
