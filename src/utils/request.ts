@@ -15,7 +15,6 @@ class Request {
   // 基础配置
   baseConfig: AxiosRequestConfig = {
     baseURL: import.meta.env.VITE_BASE_URL,
-    // url: import.meta.env.VITE_BASE_URL,
     timeout: 60000,
   }
 
