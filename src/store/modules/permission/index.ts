@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia'
-import { appRoutes } from '@/router/routes'
 import MenuApi from '@/api/sys/menu/index'
-import { useAppStore } from '@/store'
+import { appRoutes } from '@/router/routes'
 import type { PermissionState } from './types'
 import type { RouteRecordNormalized } from 'vue-router'
 
@@ -19,11 +18,14 @@ export const usePermissionStore = defineStore({
     setMenuList(list: RouteRecordNormalized[]) {
       this.menuList = list
     },
-    async buildRoutesAction() {
+    async buildRoutes() {
       const appStore = useAppStore()
       let routes: RouteRecordNormalized[] = []
-      if (appStore.serverMenu) routes = await MenuApi.getMenuList()
-      else routes = appRoutes
+      if (appStore.serverMenu) {
+        routes = await MenuApi.getMenuList()
+      } else {
+        routes = appRoutes
+      }
       this.setMenuList(routes)
     },
   },

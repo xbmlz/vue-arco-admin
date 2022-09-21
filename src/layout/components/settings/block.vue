@@ -33,7 +33,7 @@ const handleChange = async ({
   if (key === 'colorWeakness')
     document.body.style.filter = value ? 'invert(80%)' : 'none'
 
-  if (key === 'serverMenu' && value) await permissionStore.buildRoutesAction()
+  if (key === 'serverMenu' && value) await permissionStore.buildRoutes()
 
   appStore.updateSettings({ [key]: value })
 }

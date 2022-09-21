@@ -6,6 +6,11 @@ export const LOGIN_PATH = '/login'
 
 export const BASE_HOME_PATH = '/dashboard/workplace'
 
+export const LOGIN_NAME = 'Login'
+
 export const NOT_FOUND_NAME = 'NotFound'
 
-export const WHITE_PATH_LIST: string[] = [LOGIN_PATH, NOT_FOUND_NAME]
+export const WHITE_LIST = [
+  { name: NOT_FOUND_NAME, children: [] },
+  { name: LOGIN_NAME, children: [] },
+]

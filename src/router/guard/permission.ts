@@ -3,15 +3,23 @@ import {
   LOGIN_PATH,
   NOT_FOUND_NAME,
   ROOT_PATH,
-  WHITE_PATH_LIST,
+  WHITE_LIST,
 } from '@/router/constants'
 import { usePermissionStore, useUserStore } from '@/store'
-import type { LocationQueryRaw, Router } from 'vue-router'
+import usePermission from '@/hooks/permission'
+import type {
+  LocationQueryRaw,
+  RouteRecordNormalized,
+  Router,
+} from 'vue-router'
 
 export function setupPermissionGuard(router: Router) {
   router.beforeEach(async (to, from, next) => {
     const userStore = useUserStore()
+    const appStore = useAppStore()
     const permissionStore = usePermissionStore()
+    const { accessRouter } = usePermission()
+    const permissionsAllow = accessRouter(to)
     // console.log(
     //   `from====${from.path}, to====${to.path}, isLogin====${userStore.isLogin}`
     // )
@@ -26,8 +34,12 @@ export function setupPermissionGuard(router: Router) {
       return
     }
 
+    if (permissionStore.getMenuList.length === 0) {
+      permissionStore.buildRoutes()
+    }
+
     // white
-    if (WHITE_PATH_LIST.includes(to.path)) {
+    if (WHITE_LIST.some((el) => el.name === to.name)) {
       if (to.path === LOGIN_PATH && userStore.isLogin) {
         next({
           path: userStore.homePath || BASE_HOME_PATH,
@@ -38,14 +50,12 @@ export function setupPermissionGuard(router: Router) {
       next()
       return
     }
-
     // login
     if (!userStore.isLogin) {
       if (!to.meta?.requiresAuth) {
         next()
         return
       }
-
       next({
         path: LOGIN_PATH,
         replace: true,
@@ -54,27 +64,51 @@ export function setupPermissionGuard(router: Router) {
         },
       })
       return
-    }
-
-    // not found to 404
-    if (
-      from.path === LOGIN_PATH &&
-      to.name === NOT_FOUND_NAME &&
-      to.fullPath !== (userStore.homePath || BASE_HOME_PATH)
-    ) {
-      next(userStore.homePath || BASE_HOME_PATH)
-    }
-
-    // not found
-    if (permissionStore.getMenuList.length === 0) {
-      permissionStore.buildRoutesAction()
-    }
-    // console.log(permissionStore.menuList)
-
-    if (to.name === NOT_FOUND_NAME) {
-      next({ path: to.fullPath, replace: true, query: to.query })
     } else {
-      next()
+      // eslint-disable-next-line no-lonely-if
+      if (userStore.role) {
+        next()
+      } else {
+        try {
+          await userStore.info()
+          next()
+        } catch {
+          await userStore.logout()
+          next({
+            name: 'login',
+            query: {
+              redirect: to.name,
+              ...to.query,
+            } as LocationQueryRaw,
+          })
+        }
+      }
+    }
+    // permission
+    if (appStore.serverMenu) {
+      const asyncMenus = [...permissionStore.menuList, ...WHITE_LIST]
+      let exist = false
+      while (asyncMenus.length > 0 && !exist) {
+        const element = asyncMenus.shift()
+        if (element?.name === to.name) exist = true
+        if (element?.children) {
+          asyncMenus.push(
+            ...(element.children as unknown as RouteRecordNormalized[])
+          )
+        }
+      }
+      if (exist && permissionsAllow) {
+        next()
+      } else {
+        next({ name: NOT_FOUND_NAME })
+      }
+    } else {
+      // eslint-disable-next-line no-lonely-if
+      if (permissionsAllow) {
+        next()
+      } else {
+        next(userStore.homePath || BASE_HOME_PATH)
+      }
     }
   })
 }

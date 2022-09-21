@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 import { useRouter } from 'vue-router'
 
+defineOptions({
+  name: 'NoteFound',
+})
+
 const router = useRouter()
 const back = () => {
   // warning： Go to the node that has the permission
@@ -9,22 +13,20 @@ const back = () => {
 </script>
 
 <template>
-  <div class="content">
-    <a-result class="result" status="404" subtitle="not found" />
-    <div class="operation-row">
-      <a-button key="back" type="primary" @click="back"> back </a-button>
+  <div container p-4>
+    <div bg-white relative flex flex-col items-center p10>
+      <a-result
+        class="result"
+        status="404"
+        subtitle="抱歉，页面不见了～
+"
+      />
+      <div class="operation-row">
+        <a-button key="again" style="margin-right: 16px">重试</a-button>
+        <a-button key="back" type="primary" @click="back()"> 返回 </a-button>
+      </div>
     </div>
   </div>
 </template>
 
-<style scoped lang="less">
-.content {
-  // padding-top: 100px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -95px;
-  margin-top: -121px;
-  text-align: center;
-}
-</style>
+<style scoped lang="less"></style>

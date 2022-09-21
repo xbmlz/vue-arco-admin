@@ -54,7 +54,7 @@ export const useUserStore = defineStore({
       this.setUserInfo(userInfo)
       // router
       const permissionStore = usePermissionStore()
-      permissionStore.buildRoutesAction()
+      permissionStore.buildRoutes()
       return userInfo
     },
     // logout
