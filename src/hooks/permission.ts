@@ -5,12 +5,10 @@ export default function usePermission() {
   return {
     accessRouter(route: RouteLocationNormalized | RouteRecordRaw) {
       return (
-        !route.meta?.requiresAuth ||
+        route.meta?.ignoreAuth ||
         !route.meta?.roles ||
-        // @ts-ignore
         route.meta?.roles?.includes('*') ||
-        // @ts-ignore
-        route.meta?.roles?.includes(userStore.role)
+        route.meta?.roles?.includes(userStore.role as string)
       )
     },
   }

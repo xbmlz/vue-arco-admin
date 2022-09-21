@@ -13,7 +13,7 @@ export const LOGIN_ROUTE: RouteRecordRaw = {
   name: 'login',
   component: () => import('@/views/login/index.vue'),
   meta: {
-    requiresAuth: false,
+    ignoreAuth: true,
   },
 }
 
@@ -24,7 +24,6 @@ export const NOT_FOUND_ROUTE: RouteRecordRaw = {
   component: LAYOUT,
   meta: {
     title: 'NotFound',
-    requiresAuth: true,
   },
   children: [
     {
@@ -33,7 +32,7 @@ export const NOT_FOUND_ROUTE: RouteRecordRaw = {
       component: () => import('@/views/not-found/index.vue'),
       meta: {
         title: 'NotFound',
-        requiresAuth: false,
+        ignoreAuth: true,
       },
     },
   ],
@@ -44,17 +43,11 @@ export const REDIRECT_ROUTE: RouteRecordRaw = {
   path: '/redirect/:path',
   name: 'Redirect',
   component: LAYOUT,
-  meta: {
-    requiresAuth: true,
-  },
   children: [
     {
       path: '/redirect/:path',
       name: 'Redirect',
       component: () => import('@/views/redirect/index.vue'),
-      meta: {
-        requiresAuth: true,
-      },
     },
   ],
 }

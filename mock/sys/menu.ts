@@ -10,7 +10,6 @@ const menuList = [
     meta: {
       title: '仪表盘',
       icon: 'icon-dashboard',
-      requiresAuth: true,
       order: 1,
     },
     children: [
@@ -19,7 +18,6 @@ const menuList = [
         name: 'Workplace',
         meta: {
           title: '工作台',
-          requiresAuth: true,
           order: 1,
         },
       },
@@ -28,7 +26,6 @@ const menuList = [
         name: 'arcoWebsite',
         meta: {
           title: 'ArcoWebsite',
-          requiresAuth: true,
           order: 1,
         },
       },

@@ -1,5 +1,5 @@
 import { LAYOUT } from '@/router/constants'
-import type { AppRouteRecordRaw } from '@/router/types'
+import type { AppRouteRecordRaw } from '../types'
 
 const dashboard: AppRouteRecordRaw = {
   path: '/dashboard',
@@ -17,7 +17,6 @@ const dashboard: AppRouteRecordRaw = {
       component: () => import('@/views/dashboard/workplace/index.vue'),
       meta: {
         title: '工作台',
-        requiresAuth: true,
       },
     },
     /** simple */
@@ -27,7 +26,6 @@ const dashboard: AppRouteRecordRaw = {
       component: () => import('@/views/dashboard/monitor/index.vue'),
       meta: {
         title: 'Monitor',
-        requiresAuth: true,
       },
     },
     /** simple end */

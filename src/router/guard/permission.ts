@@ -52,7 +52,7 @@ export function setupPermissionGuard(router: Router) {
     }
     // login
     if (!userStore.isLogin) {
-      if (!to.meta?.requiresAuth) {
+      if (to.meta?.ignoreAuth) {
         next()
         return
       }

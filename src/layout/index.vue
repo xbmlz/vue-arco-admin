@@ -47,6 +47,9 @@ const drawerCancel = () => {
   drawerVisible.value = false
 }
 
+// cache
+const cacheList = ref([])
+
 onMounted(() => {
   debounceFn()
 })
@@ -97,19 +100,14 @@ provide('toggleDrawerMenu', () => {
       <!-- content -->
       <a-layout class="layout-content" :style="paddingStyle">
         <a-layout-content>
-          <router-view />
-          <!-- <router-view v-slot="{ Component, route }">
-          <transition name="fade" mode="out-in" appear>
-            <component
-              :is="Component"
-              v-if="route.meta.ignoreCache"
-              :key="route.fullPath"
-            />
-            <keep-alive v-else :include="cacheList">
-              <component :is="Component" :key="route.fullPath" />
-            </keep-alive>
-          </transition>
-        </router-view> -->
+          <router-view v-slot="{ Component, route }">
+            <transition name="fade" mode="out-in" appear>
+              <keep-alive v-if="route.meta.cache" :include="cacheList">
+                <component :is="Component" :key="route.fullPath" />
+              </keep-alive>
+              <component :is="Component" v-else :key="route.fullPath" />
+            </transition>
+          </router-view>
         </a-layout-content>
       </a-layout>
     </a-layout>
