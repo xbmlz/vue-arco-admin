@@ -1,0 +1,1 @@
+import{d as e,z as o,A as t,D as s}from"./arco.64b52f11.js";import{_ as n}from"./index.f4ed2ccb.js";import"./vue.d8384494.js";const c=e({name:"Monitor"}),r={container:"","p-4":""},a=s("div",{class:"i-logos-vue text-3xl"},null,-1),i=[a];function _(d,p,l,m,f,u){return o(),t("div",r,i)}const v=n(c,[["render",_]]);export{v as default};
