@@ -28,5 +28,8 @@ export const usePermissionStore = defineStore({
       }
       this.setMenuList(routes)
     },
+    clearMenuList() {
+      this.menuList = []
+    },
   },
 })

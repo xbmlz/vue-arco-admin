@@ -50,7 +50,7 @@ export function setupPermissionGuard(router: Router) {
       next()
       return
     }
-    // login
+    // TODO login
     if (!userStore.isLogin) {
       if (to.meta?.ignoreAuth) {
         next()
@@ -68,6 +68,7 @@ export function setupPermissionGuard(router: Router) {
       // eslint-disable-next-line no-lonely-if
       if (userStore.role) {
         next()
+        return
       } else {
         try {
           await userStore.info()
@@ -82,6 +83,7 @@ export function setupPermissionGuard(router: Router) {
             } as LocationQueryRaw,
           })
         }
+        return
       }
     }
     // permission
@@ -93,6 +95,7 @@ export function setupPermissionGuard(router: Router) {
         if (element?.name === to.name) exist = true
         if (element?.children) {
           asyncMenus.push(
+            // @ts-ignore
             ...(element.children as unknown as RouteRecordNormalized[])
           )
         }

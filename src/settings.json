@@ -1,0 +1,10 @@
+{
+  "theme": "light",
+  "colorWeakness": false,
+  "multiTabs": true,
+  "isMobile": false,
+  "serverMenu": false,
+  "siderWidth": 210,
+  "siderCollapsed": false,
+  "siderHidden": false
+}

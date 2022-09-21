@@ -19,6 +19,7 @@ const contentOpts = computed(() => [
     defaultVal: appStore.siderWidth,
     type: 'number',
   },
+  { name: '多页签', key: 'multiTabs', defaultVal: appStore.multiTabs },
 ])
 const othersOpts = computed(() => [
   {

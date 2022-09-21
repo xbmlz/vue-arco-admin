@@ -14,3 +14,13 @@ export const WHITE_LIST = [
   { name: NOT_FOUND_NAME, children: [] },
   { name: LOGIN_NAME, children: [] },
 ]
+
+export const REDIRECT_ROUTE_NAME = 'Redirect'
+
+export const DEFAULT_ROUTE_NAME = 'Workplace'
+
+export const DEFAULT_ROUTE = {
+  title: '工作台',
+  name: DEFAULT_ROUTE_NAME,
+  fullPath: '/dashboard/workplace',
+}

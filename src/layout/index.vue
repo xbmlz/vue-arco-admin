@@ -1,11 +1,13 @@
 <script lang="ts" setup>
-import { useAppStore, usePermissionStore } from '@/store'
+import { useAppStore, usePermissionStore, useTabsStore } from '@/store'
 import { isMobile } from '@/utils/device'
 import Header from './components/header/index.vue'
 import Menu from './components/menu/index.vue'
+import Tabs from './components/tabs/index.vue'
 
 const appStore = useAppStore()
 const permissionStore = usePermissionStore()
+const tabsStore = useTabsStore()
 
 const renderMenu = computed(() => permissionStore.menuList)
 const debounceFn = useDebounceFn(() => {
@@ -48,7 +50,7 @@ const drawerCancel = () => {
 }
 
 // cache
-const cacheList = ref([])
+const cacheList = computed(() => tabsStore.getTabCacheList)
 
 onMounted(() => {
   debounceFn()
@@ -99,6 +101,7 @@ provide('toggleDrawerMenu', () => {
       </a-drawer>
       <!-- content -->
       <a-layout class="layout-content" :style="paddingStyle">
+        <Tabs v-if="appStore.multiTabs" />
         <a-layout-content>
           <router-view v-slot="{ Component, route }">
             <transition name="fade" mode="out-in" appear>

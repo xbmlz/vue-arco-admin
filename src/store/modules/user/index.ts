@@ -4,6 +4,7 @@ import { usePermissionStore } from '@/store/modules/permission/index'
 import { userToken } from '@/utils/storage'
 import router from '@/router'
 import { LOGIN_PATH } from '@/router/constants'
+import { removeRouteListener } from '@/utils/route-listener'
 import type { LoginParams } from '@/api/sys/user/types'
 import type { UserState } from './types'
 
@@ -60,8 +61,11 @@ export const useUserStore = defineStore({
     // logout
     async logout() {
       if (this.token) await UserApi.logout()
+      const permissionStore = usePermissionStore()
       router.push(LOGIN_PATH)
       this.resetInfo()
+      removeRouteListener()
+      permissionStore.clearMenuList()
     },
   },
 })
