@@ -8,10 +8,11 @@ import TabItem from './tab-item.vue'
 import type { RouteLocationNormalized } from 'vue-router'
 
 const tabsStore = useTabsStore()
+const appStore = useAppStore()
 const affixRef = ref()
 
 // TODO navbar height
-const offsetTop = 50
+const offsetTop = computed(() => appStore.navbarHeight)
 
 const tabList = computed(() => {
   return tabsStore.getTabList

@@ -121,7 +121,7 @@ provide('toggleDrawerMenu', () => {
       <!-- content -->
       <a-layout class="layout-content" :style="contentStyle">
         <Tabs v-if="appStore.multiTabs" />
-        <a-layout-content>
+        <a-layout-content style="padding: 1rem">
           <router-view v-slot="{ Component, route }">
             <transition name="fade" mode="out-in" appear>
               <keep-alive

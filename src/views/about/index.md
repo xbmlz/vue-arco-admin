@@ -1,21 +1,9 @@
+---
+title: About
+name: About
+---
+
 # venable-admin
-
-<p align='center'>
-  <img src='https://raw.githubusercontent.com/xbmlz/venable-admin/main/public/logo.svg' alt='Hexo-theme-maple' width='120'/>
-</p>
-
-<h1 align="center">VEnable Admin</h1>
-
-
-<p align="center">
-🚀A modern vue admin. It is based on vue3.x and TypeScript. It's so fast!
-</p>
-
-<p align="center">
-  <a href="https://xbmlz.github.io/venable-admin/">Live Demo</a>
-</a>
-
-🚧work in progress🚧
 
 ## Features
 
@@ -72,3 +60,4 @@ pnpm build
 ```
 
 And you will see the generated file in `dist` that ready to be served.
+

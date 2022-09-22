@@ -14,9 +14,11 @@ export const useAppStore = defineStore({
       if (dark) {
         this.theme = 'dark'
         document.body.setAttribute('arco-theme', 'dark')
+        document.documentElement.classList.toggle('dark', true)
       } else {
         this.theme = 'light'
         document.body.removeAttribute('arco-theme')
+        document.documentElement.classList.toggle('dark', false)
       }
     },
     // update settings

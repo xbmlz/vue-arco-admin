@@ -9,10 +9,13 @@ import DefineOptions from 'unplugin-vue-define-options/vite'
 import Eslint from 'vite-plugin-eslint'
 import ViteCompression from 'vite-plugin-compression'
 import ViteImagemin from 'vite-plugin-imagemin'
+import ViteMarkdown from 'vite-plugin-vue-markdown'
 import { ArcoResolver } from 'unplugin-vue-components/resolvers'
 import { createStyleImportPlugin } from 'vite-plugin-style-import'
 import { viteMockServe } from 'vite-plugin-mock'
 import Unocss from 'unocss/vite'
+import Shiki from 'markdown-it-shiki'
+import LinkAttributes from 'markdown-it-link-attributes'
 import type { ConfigEnv, UserConfig } from 'vite'
 
 // https://cn.vitejs.dev/config/
@@ -26,7 +29,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
   return {
     base: VITE_PUBLIC_PATH,
     plugins: [
-      Vue(),
+      Vue({ include: [/\.vue$/, /\.md$/] }),
       VueJsx(),
       // https://github.com/vitejs/vite/tree/main/packages/plugin-legacy
       ViteLegacy({ targets: ['defaults', 'not IE 11'] }),
@@ -175,6 +178,27 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
         }),
         apply: 'build',
       },
+      // https://github.com/antfu/vite-plugin-vue-markdown
+      ViteMarkdown({
+        wrapperClasses: 'prose prose-sm m-auto text-left',
+        headEnabled: false,
+        markdownItSetup(md) {
+          // https://prismjs.com/
+          md.use(Shiki, {
+            theme: {
+              light: 'vitesse-light',
+              dark: 'vitesse-dark',
+            },
+          })
+          md.use(LinkAttributes, {
+            matcher: (link: string) => /^https?:\/\//.test(link),
+            attrs: {
+              target: '_blank',
+              rel: 'noopener',
+            },
+          })
+        },
+      }),
     ],
     resolve: {
       alias: [

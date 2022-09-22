@@ -8,7 +8,7 @@ const res = ref([])
 </script>
 
 <template>
-  <div container p-4>
+  <div container>
     <a-card>
       <a-input-tag
         v-model="res"
