@@ -47,10 +47,7 @@ const handleLogout = () => {
   <div class="navbar">
     <div class="navbar-left">
       <a-space>
-        <img
-          alt="logo"
-          src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/dfdba5317c0c20ce20e64fac803d52bc.svg~tplv-49unhts6dw-image.image"
-        />
+        <img alt="logo" src="../../../assets/logo.png" />
         <a-typography-title
           :style="{ marginTop: '0.8rem', fontSize: '18px' }"
           :heading="5"
@@ -163,6 +160,9 @@ const handleLogout = () => {
   display: flex;
   align-items: center;
   padding-left: 20px;
+  img {
+    width: 28px;
+  }
 }
 
 .navbar-right {

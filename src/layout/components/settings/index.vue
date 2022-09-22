@@ -14,9 +14,15 @@ const contentOpts = computed(() => [
     defaultVal: appStore.serverMenu,
   },
   {
+    name: '顶栏高度',
+    key: 'navbarheight',
+    defaultVal: appStore.navbarHeight,
+    type: 'number',
+  },
+  {
     name: '侧边栏宽度',
-    key: 'siderWidth',
-    defaultVal: appStore.siderWidth,
+    key: 'sidebarWidth',
+    defaultVal: appStore.sidebarWidth,
     type: 'number',
   },
   { name: '多页签', key: 'multiTabs', defaultVal: appStore.multiTabs },

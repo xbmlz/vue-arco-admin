@@ -3,8 +3,9 @@
   "colorWeakness": false,
   "multiTabs": true,
   "isMobile": false,
+  "navbarHeight": 52,
   "serverMenu": false,
-  "siderWidth": 210,
-  "siderCollapsed": false,
-  "siderHidden": false
+  "sidebarWidth": 210,
+  "sidebarCollapsed": false,
+  "sidebarHidden": false
 }

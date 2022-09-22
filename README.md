@@ -12,50 +12,61 @@
 </p>
 
 <p align="center">
-<a href="https://xbmlz.github.io/venable-admin/"><img src="https://github.com/xbmlz/venable-admin/actions/workflows/preview.yml/badge.svg?branch=main" alt="preview">
+[Live Demo](https://xbmlz.github.io/venable-admin/)
 </a>
-
-
-## 开发进度
 
 🚧work in progress🚧
 
-- [x] pnpm
-- [x] vite3
-- [x] vue3+ts
-- [x] vue-router
-- [x] vite-plugin-pages
-- [x] eslint
-- [x] prettier
-- [x] husky
-- [x] commitlint
-- [x] stylelint
-- [x] vue-components-auto-import
-- [x] arco-design
-- [x] unocss
-- [x] mockjs
-- [x] axios
-- [x] pinia
-- [x] vueuse
-- [x] login
-- [x] menus
-- [ ] layout
-- [ ] permission
-- [ ] demos
-
-## 特性
+## Features
 
 - ⚡️ [Vite3](https://cn.vitejs.dev/), [Vue3](https://cn.vuejs.org/), [pnpm](https://pnpm.io/)
 
-## 参考文档
+- 📦 Components auto importing
 
-- [pnpm](https://pnpm.io/zh/)
-- [TypeScript](https://www.typescriptlang.org/zh/)
-- [Vite3](https://cn.vitejs.dev/)
-- [Vue3](https://cn.vuejs.org/)
-- [Vue-Router](https://router.vuejs.org/zh)
-- [Eslint](http://eslint.cn)
-- [Prettier](https://www.prettier.cn)
-- [cz-git](https://cz-git.qbb.sh/zh/)
-- [Pinia](https://pinia.vuejs.org/)
-- [VueUse](https://vueuse.org/)
+- 🍍 [State Management via Pinia](https://pinia.vuejs.org/)
+
+- 📑 [Arco Design](https://arco.design/vue)
+
+- 🎨 [UnoCSS](https://github.com/antfu/unocss) - the instant on-demand atomic CSS engine
+
+- 😃 [Use icons from any icon sets with classes](https://github.com/antfu/unocss/tree/main/packages/preset-icons)
+
+- 🔥 Use the [new `<script setup>` syntax](https://github.com/vuejs/rfcs/pull/227)
+
+- 📥 [APIs auto importing](https://github.com/antfu/unplugin-auto-import) - use Composition API and others directly
+
+- 🦾 TypeScript, of course
+
+## Try it now!
+
+> VEnable requires Node >=14.18
+
+### Clone to local
+
+If you prefer to do it manually with the cleaner git history
+
+```bash
+npx degit xbmlz/venable-admin my-app
+cd my-app
+pnpm i # If you don't have pnpm installed, run: npm install -g pnpm
+```
+
+## Usage
+
+### Development
+
+Just run and visit http://localhost:5173
+
+```bash
+pnpm dev
+```
+
+### Build
+
+To build the App, run
+
+```bash
+pnpm build
+```
+
+And you will see the generated file in `dist` that ready to be served.

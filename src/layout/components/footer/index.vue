@@ -1,7 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <ALayoutFooter class="footer"> VEnable Admin </ALayoutFooter>
+  <ALayoutFooter class="footer"> Copyright ©2022 VEnable Admin </ALayoutFooter>
 </template>
 
 <style lang="less" scoped>

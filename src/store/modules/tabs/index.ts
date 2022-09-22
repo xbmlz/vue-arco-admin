@@ -41,7 +41,8 @@ export const useTabsStore = defineStore({
         return
       }
       this.tabList.push(formatTag(route))
-      if (route.meta.cache) {
+      const appStore = useAppStore()
+      if (route.meta.cache || appStore.multiTabs) {
         this.tabCacheList.add(route.name as string)
       }
     },

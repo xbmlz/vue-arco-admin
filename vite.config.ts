@@ -2,9 +2,13 @@ import path from 'node:path'
 import { defineConfig, loadEnv } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import VueJsx from '@vitejs/plugin-vue-jsx'
+import ViteLegacy from '@vitejs/plugin-legacy'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import DefineOptions from 'unplugin-vue-define-options/vite'
+import Eslint from 'vite-plugin-eslint'
+import ViteCompression from 'vite-plugin-compression'
+import ViteImagemin from 'vite-plugin-imagemin'
 import { ArcoResolver } from 'unplugin-vue-components/resolvers'
 import { createStyleImportPlugin } from 'vite-plugin-style-import'
 import { viteMockServe } from 'vite-plugin-mock'
@@ -24,6 +28,8 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
     plugins: [
       Vue(),
       VueJsx(),
+      // https://github.com/vitejs/vite/tree/main/packages/plugin-legacy
+      ViteLegacy({ targets: ['defaults', 'not IE 11'] }),
       // https://github.com/antfu/unplugin-auto-import
       AutoImport({
         imports: ['vue', 'vue-router', '@vueuse/core', '@vueuse/head'],
@@ -133,6 +139,42 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
       }),
       // https://github.com/unocss/unocss/tree/main/packages/vite
       Unocss(),
+      // https://github.com/gxmari007/vite-plugin-eslint
+      // https://cn.vitejs.dev/guide/using-plugins.html#enforcing-plugin-ordering
+      { ...Eslint(), apply: 'serve' },
+      // https://github.com/vbenjs/vite-plugin-compression
+      { ...ViteCompression(), apply: 'build' },
+      // https://github.com/vbenjs/vite-plugin-imagemin
+      {
+        ...ViteImagemin({
+          gifsicle: {
+            optimizationLevel: 7,
+            interlaced: false,
+          },
+          optipng: {
+            optimizationLevel: 7,
+          },
+          mozjpeg: {
+            quality: 20,
+          },
+          pngquant: {
+            quality: [0.8, 0.9],
+            speed: 4,
+          },
+          svgo: {
+            plugins: [
+              {
+                name: 'removeViewBox',
+              },
+              {
+                name: 'removeEmptyAttrs',
+                active: false,
+              },
+            ],
+          },
+        }),
+        apply: 'build',
+      },
     ],
     resolve: {
       alias: [

@@ -3,8 +3,9 @@ export interface AppState {
   isMobile: boolean
   multiTabs: boolean
   serverMenu: boolean
-  siderWidth: number
-  siderCollapsed: boolean
-  siderHidden: boolean
+  navbarHeight: number
+  sidebarWidth: number
+  sidebarCollapsed: boolean
+  sidebarHidden: boolean
   colorWeakness: boolean
 }

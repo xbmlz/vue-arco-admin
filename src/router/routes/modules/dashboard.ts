@@ -7,7 +7,7 @@ const dashboard: AppRouteRecordRaw = {
   component: LAYOUT,
   meta: {
     title: '仪表盘',
-    icon: 'icon-dashboard',
+    icon: 'icon-computer',
     order: 0,
   },
   children: [
@@ -22,10 +22,10 @@ const dashboard: AppRouteRecordRaw = {
     /** simple */
     {
       path: 'monitor',
-      name: '实时监控',
+      name: 'Monitor',
       component: () => import('@/views/dashboard/monitor/index.vue'),
       meta: {
-        title: 'Monitor',
+        title: '实时监控',
       },
     },
     /** simple end */

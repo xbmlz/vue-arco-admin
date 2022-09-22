@@ -16,16 +16,16 @@ const selectedKey = ref<string[]>([])
 
 const collapsed = computed({
   get() {
-    if (!appStore.isMobile) return appStore.siderCollapsed
+    if (!appStore.isMobile) return appStore.sidebarCollapsed
     return false
   },
   set(value: boolean) {
-    appStore.updateSettings({ siderCollapsed: value })
+    appStore.updateSettings({ sidebarCollapsed: value })
   },
 })
 
 const setCollapse = (val: boolean) => {
-  if (!appStore.isMobile) appStore.updateSettings({ siderCollapsed: val })
+  if (!appStore.isMobile) appStore.updateSettings({ sidebarCollapsed: val })
 }
 
 const goto = (item: RouteRecordRaw) => {

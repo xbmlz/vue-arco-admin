@@ -4,6 +4,7 @@ import { isMobile } from '@/utils/device'
 import Header from './components/header/index.vue'
 import Menu from './components/menu/index.vue'
 import Tabs from './components/tabs/index.vue'
+import Footer from './components/footer/index.vue'
 
 const appStore = useAppStore()
 const permissionStore = usePermissionStore()
@@ -16,31 +17,47 @@ const debounceFn = useDebounceFn(() => {
 
 useEventListener(window, 'resize', debounceFn)
 
-const siderWidth = computed(() => {
-  return appStore.siderCollapsed ? 48 : appStore.siderWidth
+const sidebarWidth = computed(() => {
+  return appStore.sidebarCollapsed ? 48 : appStore.sidebarWidth
 })
 
 const collapsed = computed(() => {
-  return appStore.siderCollapsed
+  return appStore.sidebarCollapsed
 })
 
-const siderHidden = computed(() => {
+const sidebarHidden = computed(() => {
   return appStore.isMobile
 })
 
 const setCollapsed = (val: boolean) => {
-  appStore.updateSettings({ siderCollapsed: val })
+  appStore.updateSettings({ sidebarCollapsed: val })
 }
-const navbarHeight = '52px'
+
 // TODO is show navbar
 const navbar = ref(true)
-const paddingStyle = computed(() => {
+const navbarHeight = computed(() => appStore.navbarHeight)
+
+// layout content style
+const contentStyle = computed(() => {
   const paddingLeft =
-    renderMenu.value && !siderHidden.value
-      ? { paddingLeft: `${siderWidth.value}px` }
+    renderMenu.value && !sidebarHidden.value
+      ? { paddingLeft: `${sidebarWidth.value}px` }
       : {}
-  const paddingTop = navbar.value ? { paddingTop: navbarHeight } : {}
+  const paddingTop = navbar.value
+    ? { paddingTop: `${navbarHeight.value}px` }
+    : {}
   return { ...paddingLeft, ...paddingTop }
+})
+
+const navbarStyle = computed(() => {
+  return { height: `${navbarHeight.value}px` }
+})
+
+const sidebarStyle = computed(() => {
+  const paddingTop = navbar.value
+    ? { paddingTop: `${navbarHeight.value}px` }
+    : {}
+  return { ...paddingTop }
 })
 
 // draw
@@ -51,6 +68,8 @@ const drawerCancel = () => {
 
 // cache
 const cacheList = computed(() => tabsStore.getTabCacheList)
+
+const multiTabs = computed(() => appStore.multiTabs)
 
 onMounted(() => {
   debounceFn()
@@ -64,7 +83,7 @@ provide('toggleDrawerMenu', () => {
 <template>
   <a-layout class="layout">
     <!-- header -->
-    <a-layout-header class="layout-header">
+    <a-layout-header class="layout-header" :style="navbarStyle">
       <Header />
     </a-layout-header>
     <!-- main -->
@@ -72,13 +91,13 @@ provide('toggleDrawerMenu', () => {
       <!-- sider -->
       <a-layout-sider
         v-if="renderMenu"
-        v-show="!siderHidden"
+        v-show="!sidebarHidden"
         class="layout-sider"
-        :width="siderWidth"
+        :width="sidebarWidth"
         :hide-trigger="true"
         :collapsed="collapsed"
         :collapsible="true"
-        :style="{ paddingTop: navbar ? navbarHeight : '' }"
+        :style="sidebarStyle"
         breakpoint="xl"
         @collapse="setCollapsed"
       >
@@ -88,7 +107,7 @@ provide('toggleDrawerMenu', () => {
       </a-layout-sider>
       <!-- mobile menu -->
       <a-drawer
-        v-if="siderHidden"
+        v-if="sidebarHidden"
         :visible="drawerVisible"
         placement="left"
         :footer="false"
@@ -100,25 +119,28 @@ provide('toggleDrawerMenu', () => {
         <Menu />
       </a-drawer>
       <!-- content -->
-      <a-layout class="layout-content" :style="paddingStyle">
+      <a-layout class="layout-content" :style="contentStyle">
         <Tabs v-if="appStore.multiTabs" />
         <a-layout-content>
           <router-view v-slot="{ Component, route }">
             <transition name="fade" mode="out-in" appear>
-              <keep-alive v-if="route.meta.cache" :include="cacheList">
+              <keep-alive
+                v-if="route.meta.cache || multiTabs"
+                :include="cacheList"
+              >
                 <component :is="Component" :key="route.fullPath" />
               </keep-alive>
               <component :is="Component" v-else :key="route.fullPath" />
             </transition>
           </router-view>
         </a-layout-content>
+        <Footer />
       </a-layout>
     </a-layout>
   </a-layout>
 </template>
 
 <style lang="less" scoped>
-@nav-size-height: 52px;
 @layout-max-width: 1100px;
 
 .layout {
@@ -132,7 +154,6 @@ provide('toggleDrawerMenu', () => {
   left: 0;
   z-index: 100;
   width: 100%;
-  height: @nav-size-height;
 }
 
 .layout-sider {
