@@ -15,7 +15,9 @@
   <a href="https://xbmlz.github.io/venable-admin/">Live Demo</a>
 </a>
 
-🚧work in progress🚧
+<p align="center">
+  🚧Work in progress🚧
+</a>
 
 ## Features
 
