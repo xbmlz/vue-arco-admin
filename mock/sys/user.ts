@@ -62,7 +62,7 @@ export default [
     },
   },
   {
-    url: '/api/getUserInfo',
+    url: '/api/user/info',
     method: 'get',
     response: (request: requestParams) => {
       const token = getRequestToken(request)

@@ -23,7 +23,7 @@ const menuList = [
       },
       {
         path: 'https://arco.design',
-        name: 'arcoWebsite',
+        name: 'ArcoWebsite',
         meta: {
           title: 'ArcoWebsite',
           order: 1,

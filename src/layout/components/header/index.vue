@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useAppStore, useUserStore } from '@/store'
 import GlobalSettings from '../../components/settings/index.vue'
+import Notify from '../../components/notify/index.vue'
 
 const appStore = useAppStore()
 const userStore = useUserStore()
@@ -24,6 +25,17 @@ const isDark = useDark({
 const toggleTheme = useToggle(isDark)
 const handleToggleTheme = () => {
   toggleTheme()
+}
+
+// message box
+const msgBoxRef = ref()
+const setMessageBoxVisible = () => {
+  const event = new MouseEvent('click', {
+    view: window,
+    bubbles: true,
+    cancelable: true,
+  })
+  msgBoxRef.value.dispatchEvent(event)
 }
 
 // full scene
@@ -91,6 +103,34 @@ const handleLogout = () => {
             </template>
           </a-button>
         </a-tooltip>
+      </li>
+      <!-- message-box -->
+      <li>
+        <a-tooltip content="消息通知">
+          <div class="message-box-trigger">
+            <a-badge :count="9" dot>
+              <a-button
+                class="nav-btn"
+                type="outline"
+                :shape="'circle'"
+                @click="setMessageBoxVisible"
+              >
+                <icon-notification />
+              </a-button>
+            </a-badge>
+          </div>
+        </a-tooltip>
+        <a-popover
+          trigger="click"
+          :arrow-style="{ display: 'none' }"
+          :content-style="{ padding: 0, minWidth: '400px' }"
+          content-class="message-popover"
+        >
+          <div ref="msgBoxRef" class="ref-btn" />
+          <template #content>
+            <Notify />
+          </template>
+        </a-popover>
       </li>
       <!-- full scene -->
       <li>
@@ -162,6 +202,7 @@ const handleLogout = () => {
   padding-left: 20px;
   img {
     width: 28px;
+    margin-right: 8px;
   }
 }
 
@@ -194,6 +235,13 @@ const handleLogout = () => {
   }
   .trigger-btn {
     margin-left: 14px;
+  }
+}
+</style>
+<style lang="less">
+.message-popover {
+  .arco-popover-content {
+    margin-top: 0;
   }
 }
 </style>

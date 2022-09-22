@@ -1,4 +1,5 @@
 @import './markdown.css';
+/* @import './custom.less'; */
 
 * {
   box-sizing: border-box;
@@ -18,7 +19,6 @@ body {
 }
 
 html.dark {
-  background: #121212;
   color-scheme: dark;
 }
 
@@ -26,7 +26,6 @@ html.dark {
   width: 100%;
   height: 100%;
 }
-
 
 ::-webkit-scrollbar {
   width: 7px;

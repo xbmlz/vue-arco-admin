@@ -4,7 +4,7 @@ import type { LoginParams, LoginResult, UserInfoResult } from './types'
 enum Path {
   Login = '/login',
   Logout = '/logout',
-  GetUserInfo = '/getUserInfo',
+  GetUserInfo = '/user/info',
 }
 
 export default class UserApi {
