@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { PropType } from 'vue'
-import type { NotifyResult } from '@/api/sys/notify/types'
+import type { NotifyResult } from '@/api/sys/notify/model'
 
 const props = defineProps({
   renderList: {

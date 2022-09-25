@@ -2,7 +2,7 @@
 import useLoading from '@/hooks/loading'
 import NotifyApi from '@/api/sys/notify/index'
 import NotifyList from './notify-list.vue'
-import type { NotifyResult } from '@/api/sys/notify/types'
+import type { NotifyResult } from '@/api/sys/notify/model'
 
 const { loading, setLoading } = useLoading(true)
 

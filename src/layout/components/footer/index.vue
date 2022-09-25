@@ -1,7 +1,9 @@
 <script lang="ts" setup></script>
 
 <template>
-  <ALayoutFooter class="footer"> Copyright ©2022 VEnable Admin </ALayoutFooter>
+  <a-layout-footer class="footer">
+    Copyright ©2022 VEnable Admin
+  </a-layout-footer>
 </template>
 
 <style lang="less" scoped>

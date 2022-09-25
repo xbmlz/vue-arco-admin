@@ -1,5 +1,5 @@
 import request from '@/utils/request'
-import type { NotifyReadParams, NotifyResult } from './types'
+import type { NotifyReadParams, NotifyResult } from './model'
 
 enum Path {
   List = '/notify/list',

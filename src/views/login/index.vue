@@ -10,7 +10,7 @@ defineOptions({
 <template>
   <div flex h-100vh>
     <div fixed top-4 left-4 z-1 inline-flex items-center>
-      <img w-8 alt="logo" src="../../assets/logo.svg" />
+      <img w-8 alt="logo" src="../../assets/svg/logo.svg" />
       <div ml-2 mr-2 text-2xl font-500 color-white>VEnable Admin</div>
     </div>
     <LoginBanner />

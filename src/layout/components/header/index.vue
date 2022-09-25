@@ -59,7 +59,7 @@ const handleLogout = () => {
   <div class="navbar">
     <div class="navbar-left">
       <a-space>
-        <img alt="logo" src="../../../assets/logo.png" />
+        <img alt="logo" src="../../../assets/images/logo.png" />
         <a-typography-title
           :style="{ marginTop: '0.8rem', fontSize: '18px' }"
           :heading="5"

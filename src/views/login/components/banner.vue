@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import bannerImage from '@/assets/images/login-banner.svg'
+import bannerImage from '@/assets/svg/login-banner.svg'
 </script>
 
 <template>

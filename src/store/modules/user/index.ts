@@ -5,7 +5,7 @@ import { userToken } from '@/utils/storage'
 import router from '@/router'
 import { LOGIN_PATH } from '@/router/constants'
 import { removeRouteListener } from '@/utils/route-listener'
-import type { LoginParams } from '@/api/sys/user/types'
+import type { LoginParams } from '@/api/sys/user/model'
 import type { UserState } from './types'
 
 export const useUserStore = defineStore({
