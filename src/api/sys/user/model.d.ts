@@ -1,3 +1,4 @@
+export type RoleType = '' | '*' | 'admin' | 'user'
 export interface LoginParams {
   username: string
   password: string
@@ -8,8 +9,6 @@ export interface LoginResult {
   token: string
   role: string
 }
-
-export type RoleType = '' | '*' | 'admin' | 'user'
 
 export interface UserInfoResult {
   userId: number
