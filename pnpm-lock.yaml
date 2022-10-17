@@ -9,7 +9,7 @@ specifiers:
   '@iconify/json': ^2.1.123
   '@types/lodash-es': ^4.17.6
   '@types/markdown-it-link-attributes': ^3.0.1
-  '@types/node': ^18.11.0
+  '@types/node': 18.7.18
   '@types/nprogress': ^0.2.0
   '@unocss/preset-icons': ^0.45.29
   '@vitejs/plugin-legacy': ^2.2.0
@@ -52,7 +52,6 @@ specifiers:
   vue-tsc: ^0.39.5
 
 dependencies:
-  '@types/node': 18.11.0
   '@vueuse/core': 9.3.1_vue@3.2.41
   axios: 0.27.2
   lodash-es: 4.17.21
@@ -69,6 +68,7 @@ devDependencies:
   '@iconify/json': 2.1.123
   '@types/lodash-es': 4.17.6
   '@types/markdown-it-link-attributes': 3.0.1
+  '@types/node': 18.7.18
   '@types/nprogress': 0.2.0
   '@unocss/preset-icons': 0.45.29
   '@vitejs/plugin-legacy': 2.2.0_terser@5.15.1+vite@3.1.8
@@ -997,6 +997,11 @@ packages:
 
   /@types/node/18.11.0:
     resolution: {integrity: sha512-IOXCvVRToe7e0ny7HpT/X9Rb2RYtElG1a+VshjwT00HxrM2dWBApHQoqsI6WiY7Q03vdf2bCrIGzVrkF/5t10w==}
+    dev: true
+
+  /@types/node/18.7.18:
+    resolution: {integrity: sha512-m+6nTEOadJZuTPkKR/SYK3A2d7FZrgElol9UP1Kae90VVU4a6mxnPuLiIW1m4Cq4gZ/nWb9GrdVXJCoCazDAbg==}
+    dev: true
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}

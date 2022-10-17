@@ -1,7 +1,7 @@
 import type { RouteRecordNormalized } from 'vue-router'
 
 // 一次性导入modules下所有模块
-const modules = import.meta.globEager('./modules/*.ts')
+const modules = import.meta.glob('./modules/*.ts', { eager: true })
 
 function formatModules(_modules: any, result: RouteRecordNormalized[]) {
   Object.keys(_modules).forEach((key) => {
