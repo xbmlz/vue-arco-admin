@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { Message } from '@arco-design/web-vue'
 import { useClipboard } from '@vueuse/core'
-import { useAppStore } from '@/store'
 import Block from './block.vue'
+import { useAppStore } from '@/store'
 
 const visible = ref(false)
 const appStore = useAppStore()
@@ -67,7 +67,7 @@ defineExpose({
     @cancel="cancel"
     @ok="copySettings"
   >
-    <template #title> 页面配置 </template>
+    <template #title>页面配置</template>
     <Block :options="contentOpts" title="内容区域" />
     <Block :options="othersOpts" title="其他设置" />
     <a-alert>

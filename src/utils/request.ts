@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Message } from '@arco-design/web-vue'
-import { userToken } from './storage'
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
+import { userToken } from './storage'
 
 export interface Result<T = any> {
   code: number

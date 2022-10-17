@@ -1,7 +1,7 @@
 <script lang="ts" setup>
+import NotifyList from './notify-list.vue'
 import useLoading from '@/hooks/loading'
 import NotifyApi from '@/api/sys/notify/index'
-import NotifyList from './notify-list.vue'
 import type { NotifyResult } from '@/api/sys/notify/model'
 
 const { loading, setLoading } = useLoading(true)
@@ -85,15 +85,16 @@ const emptyList = () => {
 
 getNotifyList()
 </script>
+
 <template>
   <a-spin style="display: block" :loading="loading">
     <a-tabs v-model:activeKey="notifyType" type="rounded" destroy-on-hide>
       <a-tab-pane v-for="item in tabList" :key="item.key">
         <template #title>
-          <span> {{ item.title }}{{ formatUnreadLength(item.key) }} </span>
+          <span>{{ item.title }}{{ formatUnreadLength(item.key) }}</span>
         </template>
         <a-result v-if="renderList.length === 0" status="404">
-          <template #subtitle> 暂无内容 </template>
+          <template #subtitle>暂无内容</template>
         </a-result>
         <NotifyList
           :render-list="renderList"
@@ -102,11 +103,12 @@ getNotifyList()
         />
       </a-tab-pane>
       <template #extra>
-        <a-button type="text" @click="emptyList"> 清空 </a-button>
+        <a-button type="text" @click="emptyList">清空</a-button>
       </template>
     </a-tabs>
   </a-spin>
 </template>
+
 <style scoped lang="less">
 :deep(.arco-popover-popup-content) {
   padding: 0;

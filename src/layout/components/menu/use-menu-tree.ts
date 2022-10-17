@@ -1,6 +1,6 @@
+import type { RouteRecordNormalized, RouteRecordRaw } from 'vue-router'
 import { usePermissionStore } from '@/store/modules/permission/index'
 import usePermission from '@/hooks/permission'
-import type { RouteRecordNormalized, RouteRecordRaw } from 'vue-router'
 
 export default function useMenuTree() {
   const permissionStore = usePermissionStore()

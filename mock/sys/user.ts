@@ -1,6 +1,6 @@
+import type { MockMethod } from 'vite-plugin-mock'
 import { getRequestToken, resultError, resultOk } from '../_util'
 import type { requestParams } from '../_util'
-import type { MockMethod } from 'vite-plugin-mock'
 export const userList = [
   {
     userId: '1',
@@ -30,7 +30,7 @@ export default [
     timeout: 200,
     method: 'post',
     response: ({
-      // @ts-ignore https://github.com/vbenjs/vite-plugin-mock/issues/54
+      // @ts-expect-error https://github.com/vbenjs/vite-plugin-mock/issues/54
       body,
     }) => {
       const { username, password } = body

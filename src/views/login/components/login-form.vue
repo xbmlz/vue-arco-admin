@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { Message } from '@arco-design/web-vue'
+import type { ValidatedError } from '@arco-design/web-vue/es/form/interface'
 import useLoading from '@/hooks/loading'
 import { BASE_HOME_PATH } from '@/router/constants'
 import { useUserStore } from '@/store/modules/user'
 import type { LoginParams } from '@/api/sys/user/model'
-import type { ValidatedError } from '@arco-design/web-vue/es/form/interface'
 
 const errorMessage = ref('')
 const userStore = useUserStore()
@@ -106,7 +106,7 @@ const handleSubmit = async ({
         <AButton type="primary" html-type="submit" :loading="loading" long>
           登录
         </AButton>
-        <AButton type="text" long> 注册账号 </AButton>
+        <AButton type="text" long>注册账号</AButton>
       </ASpace>
     </AForm>
   </div>

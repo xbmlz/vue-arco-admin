@@ -1,10 +1,10 @@
 <script lang="tsx" setup>
 import { compile } from 'vue'
+import type { RouteMeta, RouteRecordRaw } from 'vue-router'
+import useMenuTree from './use-menu-tree'
 import { listenerRouteChange } from '@/utils/route-listener'
 import { openWindow, regexUrl } from '@/utils/url'
 import { useAppStore } from '@/store'
-import useMenuTree from './use-menu-tree'
-import type { RouteMeta, RouteRecordRaw } from 'vue-router'
 
 const router = useRouter()
 const route = useRoute()

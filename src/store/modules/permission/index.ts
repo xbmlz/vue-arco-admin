@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
+import type { RouteRecordNormalized } from 'vue-router'
+import type { PermissionState } from './types'
 import MenuApi from '@/api/sys/menu/index'
 import { appRoutes } from '@/router/routes'
-import type { PermissionState } from './types'
-import type { RouteRecordNormalized } from 'vue-router'
 
 export const usePermissionStore = defineStore({
   id: 'permission',

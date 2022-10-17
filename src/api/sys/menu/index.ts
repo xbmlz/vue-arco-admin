@@ -1,5 +1,5 @@
-import request from '@/utils/request'
 import type { RouteRecordNormalized } from 'vue-router'
+import request from '@/utils/request'
 
 enum Path {
   MenuList = '/menu/list',

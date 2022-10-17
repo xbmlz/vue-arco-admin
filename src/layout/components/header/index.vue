@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useAppStore, useUserStore } from '@/store'
 import GlobalSettings from '../../components/settings/index.vue'
 import Notify from '../../components/notify/index.vue'
+import { useAppStore, useUserStore } from '@/store'
 
 const appStore = useAppStore()
 const userStore = useUserStore()
@@ -112,7 +112,7 @@ const handleLogout = () => {
               <a-button
                 class="nav-btn"
                 type="outline"
-                :shape="'circle'"
+                shape="circle"
                 @click="setMessageBoxVisible"
               >
                 <icon-notification />
@@ -175,7 +175,7 @@ const handleLogout = () => {
             <a-doption>
               <a-space @click="handleLogout">
                 <icon-export />
-                <span> 退出登录 </span>
+                <span>退出登录</span>
               </a-space>
             </a-doption>
           </template>
@@ -238,6 +238,7 @@ const handleLogout = () => {
   }
 }
 </style>
+
 <style lang="less">
 .message-popover {
   .arco-popover-content {

@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { useAppStore, usePermissionStore, useTabsStore } from '@/store'
-import { isMobile } from '@/utils/device'
 import Header from './components/header/index.vue'
 import Menu from './components/menu/index.vue'
 import Tabs from './components/tabs/index.vue'
 import Footer from './components/footer/index.vue'
+import { isMobile } from '@/utils/device'
+import { useAppStore, usePermissionStore, useTabsStore } from '@/store'
 
 const appStore = useAppStore()
 const permissionStore = usePermissionStore()

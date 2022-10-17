@@ -1,11 +1,11 @@
 <script lang="ts" setup>
+import type { RouteLocationNormalized } from 'vue-router'
+import TabItem from './tab-item.vue'
 import { useTabsStore } from '@/store'
 import {
   listenerRouteChange,
   removeRouteListener,
 } from '@/utils/route-listener'
-import TabItem from './tab-item.vue'
-import type { RouteLocationNormalized } from 'vue-router'
 
 const tabsStore = useTabsStore()
 const appStore = useAppStore()
@@ -28,13 +28,14 @@ onUnmounted(() => {
   removeRouteListener()
 })
 </script>
+
 <template>
   <div class="tab-bar-container">
     <a-affix ref="affixRef" :offset-top="offsetTop">
       <div class="tab-bar-box">
         <div class="tab-bar-scroll">
           <div class="tags-wrap">
-            <tab-item
+            <TabItem
               v-for="(tag, index) in tabList"
               :key="tag.fullPath"
               :index="index"

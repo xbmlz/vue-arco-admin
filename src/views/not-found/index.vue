@@ -23,7 +23,7 @@ const back = () => {
       />
       <div class="operation-row">
         <a-button key="again" style="margin-right: 16px">重试</a-button>
-        <a-button key="back" type="primary" @click="back()"> 返回 </a-button>
+        <a-button key="back" type="primary" @click="back()">返回</a-button>
       </div>
     </div>
   </div>

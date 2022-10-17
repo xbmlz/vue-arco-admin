@@ -1,5 +1,5 @@
-import request from '@/utils/request'
 import type { LoginParams, LoginResult, UserInfoResult } from './model'
+import request from '@/utils/request'
 
 enum Path {
   Login = '/login',
@@ -12,10 +12,12 @@ export default class UserApi {
   static login(params: LoginParams) {
     return request.post<LoginResult>(Path.Login, params)
   }
+
   // 登出
   static logout() {
     return request.get(Path.Logout)
   }
+
   // 获取用户信息
   static getUserInfo() {
     return request.get<UserInfoResult>(Path.GetUserInfo)

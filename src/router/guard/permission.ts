@@ -1,3 +1,8 @@
+import type {
+  LocationQueryRaw,
+  RouteRecordNormalized,
+  Router,
+} from 'vue-router'
 import {
   BASE_HOME_PATH,
   LOGIN_PATH,
@@ -7,11 +12,6 @@ import {
 } from '@/router/constants'
 import { usePermissionStore, useUserStore } from '@/store'
 import usePermission from '@/hooks/permission'
-import type {
-  LocationQueryRaw,
-  RouteRecordNormalized,
-  Router,
-} from 'vue-router'
 
 export function setupPermissionGuard(router: Router) {
   router.beforeEach(async (to, from, next) => {
@@ -95,7 +95,8 @@ export function setupPermissionGuard(router: Router) {
         if (element?.name === to.name) exist = true
         if (element?.children) {
           asyncMenus.push(
-            // @ts-ignore
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
             ...(element.children as unknown as RouteRecordNormalized[])
           )
         }

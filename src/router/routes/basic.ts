@@ -1,5 +1,5 @@
-import { BASE_HOME_PATH, LAYOUT, NOT_FOUND_NAME } from '../constants'
 import type { RouteRecordRaw } from 'vue-router'
+import { BASE_HOME_PATH, LAYOUT, NOT_FOUND_NAME } from '../constants'
 
 // 根路由
 export const ROOT_ROUTE: RouteRecordRaw = {

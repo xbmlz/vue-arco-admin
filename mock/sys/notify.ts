@@ -1,6 +1,6 @@
 // import Mock, { Random } from 'mockjs'
-import { resultOk } from '../_util'
 import type { MockMethod } from 'vite-plugin-mock'
+import { resultOk } from '../_util'
 
 const haveReadIds: number[] = []
 
@@ -86,7 +86,7 @@ export default [
     timeout: 500,
     method: 'post',
     response: ({
-      // @ts-ignore https://github.com/vbenjs/vite-plugin-mock/issues/54
+      // @ts-expect-error https://github.com/vbenjs/vite-plugin-mock/issues/54
       body,
     }) => {
       const { ids } = body

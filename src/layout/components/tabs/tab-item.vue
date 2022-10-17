@@ -1,12 +1,8 @@
 <script lang="ts" setup>
+import type { PropType } from 'vue'
 import { useTabsStore } from '@/store'
 import { DEFAULT_ROUTE_NAME, REDIRECT_ROUTE_NAME } from '@/router/constants'
-import type { PropType } from 'vue'
 import type { TabProps } from '@/store/modules/tabs/types'
-
-const router = useRouter()
-const route = useRoute()
-const tabsStore = useTabsStore()
 
 const props = defineProps({
   tabData: {
@@ -20,6 +16,9 @@ const props = defineProps({
     default: 0,
   },
 })
+const router = useRouter()
+const route = useRoute()
+const tabsStore = useTabsStore()
 
 enum TabAction {
   reload = 'reload',
@@ -110,6 +109,7 @@ const handleSelect = async (val: any) => {
   }
 }
 </script>
+
 <template>
   <a-dropdown
     trigger="contextMenu"

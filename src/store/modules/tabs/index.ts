@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia'
+import type { RouteLocationNormalized } from 'vue-router'
+import type { TabProps, TabsState } from './types'
 import {
   DEFAULT_ROUTE,
   DEFAULT_ROUTE_NAME,
   REDIRECT_ROUTE_NAME,
 } from '@/router/constants'
 import { isString } from '@/utils/is'
-import type { RouteLocationNormalized } from 'vue-router'
-import type { TabProps, TabsState } from './types'
 
 const BAN_LIST = [REDIRECT_ROUTE_NAME]
 

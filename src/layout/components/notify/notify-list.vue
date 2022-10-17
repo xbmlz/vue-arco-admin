@@ -63,8 +63,9 @@ const showMax = 3
                 :ellipsis="{
                   rows: 1,
                 }"
-                >{{ item.content }}</a-typography-paragraph
               >
+                {{ item.content }}
+              </a-typography-paragraph>
               <a-typography-text
                 v-if="item.type === 'message'"
                 class="time-text"
@@ -92,7 +93,7 @@ const showMax = 3
     </template>
     <div
       v-if="renderList.length > 0 && renderList.length < 3"
-      :style="{ height: (showMax - renderList.length) * 86 + 'px' }"
+      :style="{ height: `${(showMax - renderList.length) * 86}px` }"
     />
   </a-list>
 </template>

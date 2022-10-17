@@ -1,5 +1,5 @@
-import { LAYOUT } from '@/router/constants'
 import type { AppRouteRecordRaw } from '../types'
+import { LAYOUT } from '@/router/constants'
 
 const dashboard: AppRouteRecordRaw = {
   path: '/dashboard',

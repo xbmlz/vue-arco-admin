@@ -1,20 +1,20 @@
 import NProgress from 'nprogress' // progress bar
-import { setRouteEmitter } from '@/utils/route-listener'
-import { setupPermissionGuard } from './permission'
 import type { Router } from 'vue-router'
+import { setupPermissionGuard } from './permission'
+import { setRouteEmitter } from '@/utils/route-listener'
 
 function setupPageGuard(router: Router) {
-  router.beforeEach(async (to) => {
+  router.beforeEach((to) => {
     // emit route change
     setRouteEmitter(to)
   })
 }
 
 function setupProgressGuard(router: Router) {
-  router.beforeEach(async () => {
+  router.beforeEach(() => {
     NProgress.start()
   })
-  router.afterEach(async () => {
+  router.afterEach(() => {
     NProgress.done()
   })
 }

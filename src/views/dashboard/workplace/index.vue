@@ -6,6 +6,6 @@ defineOptions({
 
 <template>
   <div container>
-    <a-card> Workplace </a-card>
+    <a-card>Workplace</a-card>
   </div>
 </template>
