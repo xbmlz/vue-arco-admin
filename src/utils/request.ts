@@ -62,20 +62,12 @@ class Request {
   }
 
   // post
-  public post<T = any>(
-    url: string,
-    data: object,
-    config?: AxiosRequestConfig
-  ): Promise<T> {
+  public post<T = any>(url: string, data: object, config?: AxiosRequestConfig): Promise<T> {
     return this.instance.post(url, data, config)
   }
 
   // put
-  public put<T>(
-    url: string,
-    data: object,
-    config?: AxiosRequestConfig
-  ): Promise<T> {
+  public put<T>(url: string, data: object, config?: AxiosRequestConfig): Promise<T> {
     return this.instance.put(url, data, config)
   }
 

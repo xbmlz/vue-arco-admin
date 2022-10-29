@@ -72,14 +72,10 @@ const findMenuOpenKeys = (name: string) => {
 listenerRouteChange((newRoute) => {
   const { ignoreAuth, activeMenu, hideInMenu } = newRoute.meta
   if (!ignoreAuth && (!hideInMenu || activeMenu)) {
-    const menuOpenKeys = findMenuOpenKeys(
-      (activeMenu || newRoute.name) as string
-    )
+    const menuOpenKeys = findMenuOpenKeys((activeMenu || newRoute.name) as string)
     const keySet = new Set([...menuOpenKeys, ...openKeys.value])
     openKeys.value = [...keySet]
-    selectedKey.value = [
-      (activeMenu || menuOpenKeys[menuOpenKeys.length - 1]) as string,
-    ]
+    selectedKey.value = [(activeMenu || menuOpenKeys[menuOpenKeys.length - 1]) as string]
   }
 }, true)
 
@@ -88,9 +84,7 @@ const renderSubMenu = () => {
     if (_route) {
       _route.forEach((element) => {
         // This is demo, modify nodes as needed
-        const icon = element?.meta?.icon
-          ? () => h(compile(`<${element?.meta?.icon}/>`))
-          : null
+        const icon = element?.meta?.icon ? () => h(compile(`<${element?.meta?.icon}/>`)) : null
         const node =
           element?.children && element?.children.length !== 0 ? (
             <a-sub-menu
@@ -103,11 +97,7 @@ const renderSubMenu = () => {
               {travel(element?.children)}
             </a-sub-menu>
           ) : (
-            <a-menu-item
-              key={element?.name}
-              v-slots={{ icon }}
-              onClick={() => goto(element)}
-            >
+            <a-menu-item key={element?.name} v-slots={{ icon }} onClick={() => goto(element)}>
               {element?.meta?.title || ''}
             </a-menu-item>
           )

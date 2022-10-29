@@ -46,9 +46,7 @@ const unreadCount = computed(() => {
 })
 
 const getUnreadList = (type: string) => {
-  const list = notifyData.notifyList.filter(
-    (item) => item.type === type && !item.status
-  )
+  const list = notifyData.notifyList.filter((item) => item.type === type && !item.status)
   return list
 }
 
@@ -96,11 +94,7 @@ getNotifyList()
         <a-result v-if="renderList.length === 0" status="404">
           <template #subtitle>暂无内容</template>
         </a-result>
-        <NotifyList
-          :render-list="renderList"
-          :unread-count="unreadCount"
-          @item-click="handleItemClick"
-        />
+        <NotifyList :render-list="renderList" :unread-count="unreadCount" @item-click="handleItemClick" />
       </a-tab-pane>
       <template #extra>
         <a-button type="text" @click="emptyList">清空</a-button>

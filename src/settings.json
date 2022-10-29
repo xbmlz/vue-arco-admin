@@ -4,7 +4,7 @@
   "multiTabs": true,
   "isMobile": false,
   "navbarHeight": 52,
-  "serverMenu": false,
+  "serverMenu": true,
   "sidebarWidth": 250,
   "sidebarCollapsed": false,
   "sidebarHidden": false

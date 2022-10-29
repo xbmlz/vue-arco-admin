@@ -4,9 +4,7 @@ import bannerImage from '@/assets/svg/login-banner.svg'
 
 <template>
   <div class="banner" flex w-520px flex-col justify-center items-center>
-    <div w-350px text-3xl font-500 color-white text-left relative mb-10>
-      开箱即用的高质量模板
-    </div>
+    <div w-350px text-3xl font-500 color-white text-left relative mb-10>开箱即用的高质量模板</div>
     <img :src="bannerImage" w-350px />
   </div>
 </template>

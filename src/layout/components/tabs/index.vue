@@ -2,10 +2,7 @@
 import type { RouteLocationNormalized } from 'vue-router'
 import TabItem from './tab-item.vue'
 import { useTabsStore } from '@/store'
-import {
-  listenerRouteChange,
-  removeRouteListener,
-} from '@/utils/route-listener'
+import { listenerRouteChange, removeRouteListener } from '@/utils/route-listener'
 
 const tabsStore = useTabsStore()
 const appStore = useAppStore()
@@ -35,12 +32,7 @@ onUnmounted(() => {
       <div class="tab-bar-box">
         <div class="tab-bar-scroll">
           <div class="tags-wrap">
-            <TabItem
-              v-for="(tag, index) in tabList"
-              :key="tag.fullPath"
-              :index="index"
-              :tab-data="tag"
-            />
+            <TabItem v-for="(tag, index) in tabList" :key="tag.fullPath" :index="index" :tab-data="tag" />
           </div>
         </div>
         <div class="tag-bar-operation" />

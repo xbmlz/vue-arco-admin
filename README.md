@@ -21,7 +21,7 @@
 
 ## Features
 
-- ⚡️ [Vite3](https://cn.vitejs.dev/), [Vue3](https://cn.vuejs.org/), [pnpm](https://pnpm.io/)
+- ⚡️ [Vite3](https://cn.vitejs.dev/), [Vue3](https://cn.vuejs.org/), [pnpm](https://pnpm.io/), [turbo](https://turbo.build/) - Fast and modern
 
 - 📦 Components auto importing
 
@@ -40,6 +40,7 @@
 - 📥 [APIs auto importing](https://github.com/antfu/unplugin-auto-import) - use Composition API and others directly
 
 - 🦾 TypeScript, of course
+
 
 ## Try it now!
 
@@ -62,7 +63,7 @@ pnpm i # If you don't have pnpm installed, run: npm install -g pnpm
 Just run and visit http://localhost:5173
 
 ```bash
-pnpm dev
+pnpm turbo dev
 ```
 
 ### Build
@@ -70,7 +71,7 @@ pnpm dev
 To build the App, run
 
 ```bash
-pnpm build
+pnpm turbo build
 ```
 
 And you will see the generated file in `dist` that ready to be served.

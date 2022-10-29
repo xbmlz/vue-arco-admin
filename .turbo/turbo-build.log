@@ -1,0 +1,101 @@
+
+> venable-admin@1.0.0 build /Users/chenxc/code/web/venable-admin
+> vue-tsc --noEmit && vite build
+
+vite v3.1.8 building for production...
+transforming...
+
+ WARN  Use of eval is strongly discouraged, as it poses security risks and may cause issues with minification
+
+✓ 1294 modules transformed.
+rendering chunks...
+dist/assets/vue-legacy.94ae083b.js         35.87 KiB / gzip: 13.56 KiB
+dist/assets/index-legacy.47a80c1c.js       15.10 KiB / gzip: 3.33 KiB
+dist/assets/loading-legacy.d21c8cd2.js     40.65 KiB / gzip: 5.05 KiB
+dist/assets/index-legacy.791c9745.js       22.81 KiB / gzip: 2.45 KiB
+dist/assets/index-legacy.d5b0dad1.js       0.85 KiB / gzip: 0.58 KiB
+dist/assets/index-legacy.791c97452.js      1.54 KiB / gzip: 0.54 KiB
+dist/assets/index-legacy.fa24053e.js       0.50 KiB / gzip: 0.32 KiB
+dist/assets/index-legacy.791c97453.js      3.67 KiB / gzip: 1.02 KiB
+dist/assets/index-legacy.791c97454.js      3.70 KiB / gzip: 1.01 KiB
+dist/assets/index-legacy.2fed4873.js       0.75 KiB / gzip: 0.44 KiB
+dist/assets/index-legacy.917fda13.js       0.33 KiB / gzip: 0.27 KiB
+dist/assets/index-legacy.9221ae99.js       0.33 KiB / gzip: 0.27 KiB
+dist/assets/index-legacy.c3b136e7.js       0.31 KiB / gzip: 0.25 KiB
+dist/assets/index-legacy.73999841.js       23.57 KiB / gzip: 2.77 KiB
+dist/assets/polyfills-legacy.9fa5d84d.js   30.39 KiB / gzip: 11.95 KiB
+dist/assets/index-legacy.ab4bf817.js       4.41 KiB / gzip: 1.38 KiB
+dist/assets/index-legacy.61260afe.js       0.33 KiB / gzip: 0.25 KiB
+dist/assets/index-legacy.085c0564.js       135.31 KiB / gzip: 20.84 KiB
+dist/assets/index-legacy.9e19b4af.js       533.17 KiB / gzip: 108.12 KiB
+dist/assets/arco-legacy.3c7fe8f5.js        514.45 KiB / gzip: 152.41 KiB
+dist/assets/logo.85d92f24.svg           1.30 KiB
+dist/assets/login-bg.50a357b8.jpg       3.56 KiB
+dist/assets/login-banner.1dd0ed81.svg   61.44 KiB
+dist/assets/logo.e70dcf41.png           12.02 KiB
+dist/index.html                         1.80 KiB
+dist/assets/index.632076f8.js           3.61 KiB / gzip: 1.68 KiB
+dist/assets/loading.fc6ca50e.js         0.16 KiB / gzip: 0.14 KiB
+dist/assets/index.c511d396.js           0.81 KiB / gzip: 0.52 KiB
+dist/assets/vue.612980c2.js             36.25 KiB / gzip: 14.22 KiB
+dist/assets/index.fa680ed7.js           0.23 KiB / gzip: 0.19 KiB
+dist/assets/index.8aeac2d5.js           4.44 KiB / gzip: 1.35 KiB
+dist/assets/index.15a68e87.js           0.40 KiB / gzip: 0.28 KiB
+dist/assets/index.b8d9375b.js           0.27 KiB / gzip: 0.22 KiB
+dist/assets/index.9e800f9b.js           0.62 KiB / gzip: 0.39 KiB
+dist/assets/index.abd7a3a2.js           0.27 KiB / gzip: 0.22 KiB
+dist/assets/index.d2b90df0.js           0.25 KiB / gzip: 0.21 KiB
+dist/assets/index.3b1a7eb7.css          11.60 KiB / gzip: 1.61 KiB
+dist/assets/index.bc76e569.js           18.55 KiB / gzip: 7.18 KiB
+dist/assets/index.27ab35af.css          1.38 KiB / gzip: 0.42 KiB
+dist/assets/index.9bce21bc.css          3.54 KiB / gzip: 0.90 KiB
+dist/assets/index.38c086b7.css          23.41 KiB / gzip: 2.64 KiB
+dist/assets/loading.b36f49a7.css        40.33 KiB / gzip: 4.80 KiB
+dist/assets/index.cdf28073.css          117.95 KiB / gzip: 13.49 KiB
+dist/assets/index.bd69be46.css          3.51 KiB / gzip: 0.90 KiB
+dist/assets/index.4ad72129.css          22.65 KiB / gzip: 2.32 KiB
+dist/assets/index.99e8ea87.css          403.57 KiB / gzip: 48.31 KiB
+dist/assets/index.124c9efb.js           600.17 KiB / gzip: 110.58 KiB
+dist/assets/arco.62b7abbc.js            518.70 KiB / gzip: 158.20 KiB
+
+✨ [vite-plugin-imagemin]- compressed image resource successfully: 
+dist/assets/logo.85d92f24.svg          -3%   1.34kb / tiny: 1.30kb
+dist/assets/login-banner.1dd0ed81.svg  -1%   61.89kb / tiny: 61.44kb
+dist/assets/login-bg.50a357b8.jpg      -98%  151.44kb / tiny: 3.56kb
+dist/assets/logo.e70dcf41.png          -70%  39.28kb / tiny: 12.02kb
+dist/logo.svg                          -3%   1.34kb / tiny: 1.31kb
+
+
+
+✨ [vite-plugin-compression]:algorithm=gzip - compressed file successfully: 
+dist//Users/chenxc/code/web/venable-admin/assets/index-legacy.47a80c1c.js.gz       15.19kb / gzip: 3.32kb
+dist//Users/chenxc/code/web/venable-admin/assets/index-legacy.73999841.js.gz       23.57kb / gzip: 2.74kb
+dist//Users/chenxc/code/web/venable-admin/assets/index-legacy.791c97452.js.gz      1.54kb / gzip: 0.54kb
+dist//Users/chenxc/code/web/venable-admin/assets/index-legacy.791c9745.js.gz       22.81kb / gzip: 2.42kb
+dist//Users/chenxc/code/web/venable-admin/assets/index-legacy.791c97454.js.gz      3.70kb / gzip: 1.01kb
+dist//Users/chenxc/code/web/venable-admin/assets/index-legacy.791c97453.js.gz      3.67kb / gzip: 1.02kb
+dist//Users/chenxc/code/web/venable-admin/assets/index-legacy.ab4bf817.js.gz       4.44kb / gzip: 1.38kb
+dist//Users/chenxc/code/web/venable-admin/assets/index.27ab35af.css.gz             1.38kb / gzip: 0.42kb
+dist//Users/chenxc/code/web/venable-admin/assets/index.38c086b7.css.gz             23.41kb / gzip: 2.61kb
+dist//Users/chenxc/code/web/venable-admin/assets/index.4ad72129.css.gz             22.65kb / gzip: 2.30kb
+dist//Users/chenxc/code/web/venable-admin/assets/index.632076f8.js.gz              3.61kb / gzip: 1.68kb
+dist//Users/chenxc/code/web/venable-admin/assets/index.8aeac2d5.js.gz              4.44kb / gzip: 1.35kb
+dist//Users/chenxc/code/web/venable-admin/assets/index.9bce21bc.css.gz             3.54kb / gzip: 0.89kb
+dist//Users/chenxc/code/web/venable-admin/assets/index.bc76e569.js.gz              18.55kb / gzip: 7.17kb
+dist//Users/chenxc/code/web/venable-admin/assets/index.bd69be46.css.gz             3.51kb / gzip: 0.91kb
+dist//Users/chenxc/code/web/venable-admin/assets/index.3b1a7eb7.css.gz             11.60kb / gzip: 1.60kb
+dist//Users/chenxc/code/web/venable-admin/assets/loading-legacy.d21c8cd2.js.gz     40.65kb / gzip: 5.03kb
+dist//Users/chenxc/code/web/venable-admin/assets/polyfills-legacy.9fa5d84d.js.gz   30.39kb / gzip: 11.93kb
+dist//Users/chenxc/code/web/venable-admin/assets/vue-legacy.94ae083b.js.gz         35.87kb / gzip: 13.56kb
+dist//Users/chenxc/code/web/venable-admin/index.html.gz                            1.80kb / gzip: 0.82kb
+dist//Users/chenxc/code/web/venable-admin/assets/vue.612980c2.js.gz                36.25kb / gzip: 14.21kb
+dist//Users/chenxc/code/web/venable-admin/assets/loading.b36f49a7.css.gz           40.33kb / gzip: 4.78kb
+dist//Users/chenxc/code/web/venable-admin/assets/index.cdf28073.css.gz             117.95kb / gzip: 13.33kb
+dist//Users/chenxc/code/web/venable-admin/assets/index-legacy.085c0564.js.gz       135.72kb / gzip: 20.68kb
+dist//Users/chenxc/code/web/venable-admin/assets/index.99e8ea87.css.gz             403.57kb / gzip: 47.79kb
+dist//Users/chenxc/code/web/venable-admin/assets/arco-legacy.3c7fe8f5.js.gz        515.00kb / gzip: 152.10kb
+dist//Users/chenxc/code/web/venable-admin/assets/arco.62b7abbc.js.gz               518.71kb / gzip: 157.91kb
+dist//Users/chenxc/code/web/venable-admin/assets/index.124c9efb.js.gz              600.19kb / gzip: 109.84kb
+dist//Users/chenxc/code/web/venable-admin/assets/index-legacy.9e19b4af.js.gz       560.28kb / gzip: 107.92kb
+
+

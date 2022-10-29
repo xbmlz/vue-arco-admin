@@ -58,12 +58,7 @@ const handleSubmit = async ({
     <div h-32px color-red-5 text-xl>
       {{ errorMessage }}
     </div>
-    <AForm
-      ref="loginForm"
-      :model="userInfo"
-      layout="vertical"
-      @submit="handleSubmit"
-    >
+    <AForm ref="loginForm" :model="userInfo" layout="vertical" @submit="handleSubmit">
       <AFormItem
         field="username"
         :rules="[{ required: true, message: '用户名不能为空' }]"
@@ -82,11 +77,7 @@ const handleSubmit = async ({
         :validate-trigger="['change', 'blur']"
         hide-label
       >
-        <AInputPassword
-          v-model="userInfo.password"
-          placeholder="密码: admin"
-          allow-clear
-        >
+        <AInputPassword v-model="userInfo.password" placeholder="密码: admin" allow-clear>
           <template #prefix>
             <icon-lock />
           </template>
@@ -103,9 +94,7 @@ const handleSubmit = async ({
           </ACheckbox>
           <ALink>忘记密码</ALink>
         </div>
-        <AButton type="primary" html-type="submit" :loading="loading" long>
-          登录
-        </AButton>
+        <AButton type="primary" html-type="submit" :loading="loading" long>登录</AButton>
         <AButton type="text" long>注册账号</AButton>
       </ASpace>
     </AForm>

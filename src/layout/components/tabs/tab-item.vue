@@ -64,9 +64,7 @@ const tabClose = (index: number, tab: TabProps) => {
 const handleSelect = async (val: any) => {
   const { tabData, index } = props
   const copyTabList = [...tabList.value]
-  const currentIndex = tabList.value.findIndex(
-    (el) => el.fullPath === route.fullPath
-  )
+  const currentIndex = tabList.value.findIndex((el) => el.fullPath === route.fullPath)
   switch (val) {
     case TabAction.current:
       tabClose(index, tabData)
@@ -111,11 +109,7 @@ const handleSelect = async (val: any) => {
 </script>
 
 <template>
-  <a-dropdown
-    trigger="contextMenu"
-    :popup-max-height="false"
-    @select="handleSelect"
-  >
+  <a-dropdown trigger="contextMenu" :popup-max-height="false" @select="handleSelect">
     <span
       class="arco-tag arco-tag-size-medium arco-tag-checked"
       :class="{ 'link-activated': tabData.fullPath === $route.fullPath }"
@@ -136,11 +130,7 @@ const handleSelect = async (val: any) => {
         <icon-refresh />
         <span>重新加载</span>
       </a-doption>
-      <a-doption
-        class="sperate-line"
-        :disabled="disabledCurrent"
-        :value="TabAction.current"
-      >
+      <a-doption class="sperate-line" :disabled="disabledCurrent" :value="TabAction.current">
         <icon-close />
         <span>关闭当前标签页</span>
       </a-doption>
@@ -148,11 +138,7 @@ const handleSelect = async (val: any) => {
         <icon-to-left />
         <span>关闭左侧标签页</span>
       </a-doption>
-      <a-doption
-        class="sperate-line"
-        :disabled="disabledRight"
-        :value="TabAction.right"
-      >
+      <a-doption class="sperate-line" :disabled="disabledRight" :value="TabAction.right">
         <icon-to-right />
         <span>关闭右侧标签页</span>
       </a-doption>

@@ -34,9 +34,7 @@ export default [
       body,
     }) => {
       const { username, password } = body
-      const loginUser = userList.find(
-        (item) => item.username === username && password === item.password
-      )
+      const loginUser = userList.find((item) => item.username === username && password === item.password)
       if (!loginUser) return resultError('Incorrect account or password!')
       const { userId, username: _username, token, realName, role } = loginUser
       return resultOk({
@@ -68,10 +66,7 @@ export default [
       const token = getRequestToken(request)
       if (!token) return resultError('Invalid token')
       const checkUser = userList.find((item) => item.token === token)
-      if (!checkUser)
-        return resultError(
-          'The corresponding user information was not obtained!'
-        )
+      if (!checkUser) return resultError('The corresponding user information was not obtained!')
 
       return resultOk(checkUser)
     },

@@ -6,7 +6,7 @@ import { userList } from './user'
 const menuList = [
   {
     path: '/dashboard',
-    name: 'dashboard',
+    name: 'Dashboard',
     meta: {
       title: '仪表盘',
       icon: 'icon-dashboard',
@@ -27,6 +27,33 @@ const menuList = [
         meta: {
           title: 'ArcoWebsite',
           order: 1,
+        },
+      },
+    ],
+  },
+  {
+    path: '/system',
+    name: 'System',
+    meta: {
+      title: '系统管理',
+      icon: 'icon-settings',
+      order: 2,
+    },
+    children: [
+      {
+        path: 'user',
+        name: 'User',
+        meta: {
+          title: '用户管理',
+          order: 1,
+        },
+      },
+      {
+        path: 'role',
+        name: 'Role',
+        meta: {
+          title: '角色管理',
+          order: 2,
         },
       },
     ],

@@ -71,8 +71,8 @@ defineExpose({
     <Block :options="contentOpts" title="内容区域" />
     <Block :options="othersOpts" title="其他设置" />
     <a-alert>
-      配置之后仅是临时生效，要想真正作用于项目，点击下方的 "复制配置"
-      按钮，将配置替换到 settings.json 中即可。
+      配置之后仅是临时生效，要想真正作用于项目，点击下方的 "复制配置" 按钮，将配置替换到 settings.json
+      中即可。
     </a-alert>
   </a-drawer>
 </template>

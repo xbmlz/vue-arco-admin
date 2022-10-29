@@ -23,15 +23,8 @@ defineProps({
 })
 const appStore = useAppStore()
 const permissionStore = usePermissionStore()
-const handleChange = async ({
-  key,
-  value,
-}: {
-  key: string
-  value: unknown
-}) => {
-  if (key === 'colorWeakness')
-    document.body.style.filter = value ? 'invert(80%)' : 'none'
+const handleChange = async ({ key, value }: { key: string; value: unknown }) => {
+  if (key === 'colorWeakness') document.body.style.filter = value ? 'invert(80%)' : 'none'
 
   if (key === 'serverMenu' && value) await permissionStore.buildRoutes()
 

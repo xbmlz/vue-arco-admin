@@ -1,15 +1,5 @@
-import type {
-  LocationQueryRaw,
-  RouteRecordNormalized,
-  Router,
-} from 'vue-router'
-import {
-  BASE_HOME_PATH,
-  LOGIN_PATH,
-  NOT_FOUND_NAME,
-  ROOT_PATH,
-  WHITE_LIST,
-} from '@/router/constants'
+import type { LocationQueryRaw, RouteRecordNormalized, Router } from 'vue-router'
+import { BASE_HOME_PATH, LOGIN_PATH, NOT_FOUND_NAME, ROOT_PATH, WHITE_LIST } from '@/router/constants'
 import { usePermissionStore, useUserStore } from '@/store'
 import usePermission from '@/hooks/permission'
 

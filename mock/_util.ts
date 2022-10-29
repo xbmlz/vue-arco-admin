@@ -6,10 +6,7 @@ export function resultOk<T = any>(data: T, { msg = 'success' } = {}) {
   }
 }
 
-export function resultError(
-  msg = 'Request failed',
-  { code = -1, data = null } = {}
-) {
+export function resultError(msg = 'Request failed', { code = -1, data = null } = {}) {
   return {
     code,
     msg,
@@ -17,9 +14,7 @@ export function resultError(
   }
 }
 
-export function getRequestToken({
-  headers,
-}: requestParams): string | undefined {
+export function getRequestToken({ headers }: requestParams): string | undefined {
   return headers?.authorization
 }
 

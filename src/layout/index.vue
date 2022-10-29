@@ -40,12 +40,8 @@ const navbarHeight = computed(() => appStore.navbarHeight)
 // layout content style
 const contentStyle = computed(() => {
   const paddingLeft =
-    renderMenu.value && !sidebarHidden.value
-      ? { paddingLeft: `${sidebarWidth.value}px` }
-      : {}
-  const paddingTop = navbar.value
-    ? { paddingTop: `${navbarHeight.value}px` }
-    : {}
+    renderMenu.value && !sidebarHidden.value ? { paddingLeft: `${sidebarWidth.value}px` } : {}
+  const paddingTop = navbar.value ? { paddingTop: `${navbarHeight.value}px` } : {}
   return { ...paddingLeft, ...paddingTop }
 })
 
@@ -54,9 +50,7 @@ const navbarStyle = computed(() => {
 })
 
 const sidebarStyle = computed(() => {
-  const paddingTop = navbar.value
-    ? { paddingTop: `${navbarHeight.value}px` }
-    : {}
+  const paddingTop = navbar.value ? { paddingTop: `${navbarHeight.value}px` } : {}
   return { ...paddingTop }
 })
 
@@ -124,10 +118,7 @@ provide('toggleDrawerMenu', () => {
         <a-layout-content style="padding: 1rem">
           <router-view v-slot="{ Component, route }">
             <transition name="fade" mode="out-in" appear>
-              <keep-alive
-                v-if="route.meta.cache || multiTabs"
-                :include="cacheList"
-              >
+              <keep-alive v-if="route.meta.cache || multiTabs" :include="cacheList">
                 <component :is="Component" :key="route.fullPath" />
               </keep-alive>
               <component :is="Component" v-else :key="route.fullPath" />

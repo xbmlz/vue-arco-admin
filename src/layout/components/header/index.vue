@@ -60,10 +60,7 @@ const handleLogout = () => {
     <div class="navbar-left">
       <a-space>
         <img alt="logo" src="../../../assets/images/logo.png" />
-        <a-typography-title
-          :style="{ marginTop: '0.8rem', fontSize: '18px' }"
-          :heading="5"
-        >
+        <a-typography-title :style="{ marginTop: '0.8rem', fontSize: '18px' }" :heading="5">
           VEnable
         </a-typography-title>
         <icon-menu-fold
@@ -86,17 +83,8 @@ const handleLogout = () => {
       </li> -->
       <!-- theme -->
       <li>
-        <a-tooltip
-          :content="
-            theme === 'light' ? '点击切换为暗黑模式' : '点击切换为明亮模式'
-          "
-        >
-          <a-button
-            class="nav-btn"
-            type="outline"
-            shape="circle"
-            @click="handleToggleTheme"
-          >
+        <a-tooltip :content="theme === 'light' ? '点击切换为暗黑模式' : '点击切换为明亮模式'">
+          <a-button class="nav-btn" type="outline" shape="circle" @click="handleToggleTheme">
             <template #icon>
               <icon-moon-fill v-if="theme === 'dark'" />
               <icon-sun-fill v-else />
@@ -109,12 +97,7 @@ const handleLogout = () => {
         <a-tooltip content="消息通知">
           <div class="message-box-trigger">
             <a-badge :count="9" dot>
-              <a-button
-                class="nav-btn"
-                type="outline"
-                shape="circle"
-                @click="setMessageBoxVisible"
-              >
+              <a-button class="nav-btn" type="outline" shape="circle" @click="setMessageBoxVisible">
                 <icon-notification />
               </a-button>
             </a-badge>
@@ -134,15 +117,8 @@ const handleLogout = () => {
       </li>
       <!-- full scene -->
       <li>
-        <a-tooltip
-          :content="isFullscreen ? '点击退出全屏模式' : '点击切换全屏模式'"
-        >
-          <a-button
-            class="nav-btn"
-            type="outline"
-            shape="circle"
-            @click="toggleFullScreen"
-          >
+        <a-tooltip :content="isFullscreen ? '点击退出全屏模式' : '点击切换全屏模式'">
+          <a-button class="nav-btn" type="outline" shape="circle" @click="toggleFullScreen">
             <template #icon>
               <icon-fullscreen-exit v-if="isFullscreen" />
               <icon-fullscreen v-else />
@@ -153,12 +129,7 @@ const handleLogout = () => {
       <!-- settings -->
       <li>
         <a-tooltip content="页面配置">
-          <a-button
-            class="nav-btn"
-            type="outline"
-            shape="circle"
-            @click="setSettingsVisible"
-          >
+          <a-button class="nav-btn" type="outline" shape="circle" @click="setSettingsVisible">
             <template #icon>
               <icon-settings />
             </template>
