@@ -4,8 +4,6 @@ dist
 .npmrc
 .cache
 
-tests/server/static
-tests/server/static/upload
 
 .local
 # local env files
@@ -33,3 +31,6 @@ pnpm-lock.yaml
 
 
 tsconfig.tsbuildinfo
+
+# turbo
+.turbo/

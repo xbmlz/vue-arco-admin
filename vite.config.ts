@@ -36,8 +36,8 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
       // https://github.com/antfu/unplugin-auto-import
       AutoImport({
         imports: ['vue', 'vue-router', '@vueuse/core', '@vueuse/head'],
-        dts: 'src/auto-imports.d.ts',
-        dirs: ['src/store'],
+        dts: 'types/auto-imports.d.ts',
+        dirs: ['src/composables'],
         vueTemplate: true,
         resolvers: [ArcoResolver()],
       }),
@@ -47,7 +47,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
         extensions: ['vue', 'md'],
         // allow auto import and register components used in markdown
         include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
-        dts: 'src/components.d.ts',
+        dts: 'types/components.d.ts',
         resolvers: [ArcoResolver({ sideEffect: true })],
       }),
       // https://github.com/sxzz/unplugin-vue-macros/blob/main/packages/define-options/README-zh-CN.md
@@ -137,6 +137,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
         prodEnabled: isBuild,
         injectCode: `
         import { setupProdMockServer } from '../mock/_createProductionServer';
+
         setupProdMockServer();
         `,
       }),

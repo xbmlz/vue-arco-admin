@@ -3,6 +3,7 @@ import type { RouteRecordNormalized } from 'vue-router'
 import type { PermissionState } from './types'
 import MenuApi from '@/api/sys/menu/index'
 import { appRoutes } from '@/router/routes'
+import { useAppStore } from '@/store'
 
 export const usePermissionStore = defineStore({
   id: 'permission',
