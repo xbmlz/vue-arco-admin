@@ -4,7 +4,7 @@ import type { ValidatedError } from '@arco-design/web-vue/es/form/interface'
 import useLoading from '@/hooks/loading'
 import { BASE_HOME_PATH } from '@/router/constants'
 import { useUserStore } from '@/store/modules/user'
-import type { LoginParams } from '@/api/sys/user/model'
+import type { LoginParams } from '@/api/system/user/model'
 
 const errorMessage = ref('')
 const userStore = useUserStore()
