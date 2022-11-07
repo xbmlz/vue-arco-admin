@@ -1,6 +1,7 @@
 import type { MockMethod } from 'vite-plugin-mock'
 import { getRequestToken, resultError, resultOk } from '../_util'
 import type { requestParams } from '../_util'
+
 export const userList = [
   {
     userId: '1',
@@ -21,6 +22,71 @@ export const userList = [
     avatar: 'https://dummyimage.com/640x640/1c66c7/fff.png&text=test',
     token: 'mockToken2',
     role: 'user',
+  },
+]
+
+const userMenus = [
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    meta: {
+      title: '仪表盘',
+      icon: 'icon-dashboard',
+      order: 1,
+    },
+    children: [
+      {
+        path: 'workplace',
+        name: 'Workplace',
+        meta: {
+          title: '工作台',
+          order: 1,
+        },
+      },
+      {
+        path: 'https://arco.design',
+        name: 'ArcoWebsite',
+        meta: {
+          title: 'ArcoWebsite',
+          order: 1,
+        },
+      },
+    ],
+  },
+  {
+    path: '/system',
+    name: 'System',
+    meta: {
+      title: '系统管理',
+      icon: 'icon-settings',
+      order: 2,
+    },
+    children: [
+      {
+        path: 'user',
+        name: 'User',
+        meta: {
+          title: '用户管理',
+          order: 1,
+        },
+      },
+      {
+        path: 'role',
+        name: 'Role',
+        meta: {
+          title: '角色管理',
+          order: 2,
+        },
+      },
+      {
+        path: 'menu',
+        name: 'Menu',
+        meta: {
+          title: '菜单管理',
+          order: 3,
+        },
+      },
+    ],
   },
 ]
 
@@ -69,6 +135,18 @@ export default [
       if (!checkUser) return resultError('The corresponding user information was not obtained!')
 
       return resultOk(checkUser)
+    },
+  },
+  {
+    url: '/api/user/menu',
+    timeout: 200,
+    method: 'get',
+    response: (request: requestParams) => {
+      const token = getRequestToken(request)
+      if (!token) return resultError('Invalid token!')
+      const checkUser = userList.find((item) => item.token === token)
+      if (!checkUser) return resultError('Invalid user token!')
+      return resultOk(userMenus)
     },
   },
   {

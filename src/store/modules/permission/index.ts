@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import type { RouteRecordNormalized } from 'vue-router'
 import type { PermissionState } from './types'
-import MenuApi from '@/api/sys/menu/index'
+import UserApi from '@/api/system/user/index'
 import { appRoutes } from '@/router/routes'
 import { useAppStore } from '@/store'
 
@@ -23,7 +23,7 @@ export const usePermissionStore = defineStore({
       const appStore = useAppStore()
       let routes: RouteRecordNormalized[] = []
       if (appStore.serverMenu) {
-        routes = await MenuApi.getMenuList()
+        routes = await UserApi.getUserMenu()
       } else {
         routes = appRoutes
       }

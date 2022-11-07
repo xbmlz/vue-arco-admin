@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia'
 import type { UserState } from './types'
-import UserApi from '@/api/sys/user/index'
+import UserApi from '@/api/system/user/index'
 import { usePermissionStore } from '@/store/modules/permission/index'
 import { userToken } from '@/utils/storage'
 import router from '@/router'
 import { LOGIN_PATH } from '@/router/constants'
 import { removeRouteListener } from '@/utils/route-listener'
-import type { LoginParams } from '@/api/sys/user/model'
+import type { LoginParams } from '@/api/system/user/model'
 
 export const useUserStore = defineStore({
   id: 'user',

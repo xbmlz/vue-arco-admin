@@ -22,9 +22,9 @@ import type { ConfigEnv, UserConfig } from 'vite'
 export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
   const root = process.cwd()
   const env = loadEnv(mode, root)
-  const { VITE_PORT, VITE_PUBLIC_PATH } = env
+  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_BASE_URL } = env
   const isBuild = command === 'build'
-  // const isHttps = /^https:\/\//.test(VITE_BASE_URL)
+  const isHttps = /^https:\/\//.test(VITE_BASE_URL)
 
   return {
     base: VITE_PUBLIC_PATH,
@@ -216,14 +216,14 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
     server: {
       host: true,
       port: Number(VITE_PORT),
-      // proxy: {
-      //   '/api': {
-      //     target: VITE_BASE_URL,
-      //     changeOrigin: true,
-      //     rewrite: (path) => path.replace(/^\/api/, ''),
-      //     ...(isHttps ? { secure: false } : {}),
-      //   },
-      // },
+      proxy: {
+        '/api': {
+          target: VITE_BASE_URL,
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, ''),
+          ...(isHttps ? { secure: false } : {}),
+        },
+      },
     },
     build: {
       rollupOptions: {

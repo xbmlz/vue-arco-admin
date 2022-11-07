@@ -5,7 +5,7 @@ import router from './router'
 import store from './store'
 import '@arco-design/web-vue/dist/arco.css'
 import 'uno.css'
-import './styles/main.css'
+import '@/styles/global.less'
 
 const app = createApp(App)
 app.use(ArcoVueIcon)

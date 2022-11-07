@@ -25,7 +25,6 @@ class Request {
     // 全局请求拦截器
     this.instance.interceptors.request.use(
       (config: AxiosRequestConfig) => {
-        // TODO
         if (config.headers) config.headers.authorization = userToken.value
         return config
       },
@@ -40,6 +39,7 @@ class Request {
         const result = res.data
         if (!result) throw new Error('[HTTP] Request has no return value')
         // 用户可以自定义
+        // TODO raw data
         const { code, msg, data } = result
         const hasSuccess = result && Reflect.has(result, 'code') && code === 0
         if (hasSuccess) return data

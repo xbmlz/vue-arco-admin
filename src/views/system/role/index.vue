@@ -4,6 +4,10 @@ import type { SelectOptionData } from '@arco-design/web-vue'
 import cloneDeep from 'lodash-es/cloneDeep'
 import Sortable from 'sortablejs'
 
+defineOptions({
+  name: 'RoleManagement',
+})
+
 type SizeProps = 'mini' | 'small' | 'medium' | 'large'
 type Column = TableColumnData & { checked?: true }
 
@@ -95,40 +99,43 @@ const handleChange = (checked: boolean | (string | boolean | number)[], column: 
 </script>
 
 <template>
-  <div class="container">
+  <div>
     <!-- search -->
-    <a-card title="角色管理">
-      <a-row>
-        <a-col :flex="1">
-          <a-form :model="formModel">
-            <a-row :gutter="16">
-              <a-col :span="10">
-                <a-form-item field="number" label="角色名称">
-                  <a-input v-model="formModel.name" placeholder="请输入角色名称" />
-                </a-form-item>
-              </a-col>
-              <a-col :span="10">
-                <a-form-item field="number" label="角色状态">
-                  <a-select
-                    v-model="formModel.status"
-                    :options="roleStatusOptions"
-                    placeholder="请选择角色状态"
-                  />
-                </a-form-item>
-              </a-col>
-            </a-row>
-          </a-form>
-        </a-col>
-        <a-divider style="height: 42px" direction="vertical" />
-        <a-col flex="42px" style="text-align: right">
-          <a-button type="primary" @click="search">
-            <template #icon>
-              <icon-search />
-            </template>
-            查询
-          </a-button>
-        </a-col>
-      </a-row>
+    <a-card title="角色管理" class="general-card">
+      <a-form :model="formModel">
+        <a-row :gutter="24">
+          <a-col :span="8">
+            <a-form-item field="number" label="名称">
+              <a-input v-model="formModel.name" placeholder="请输入角色名称" />
+            </a-form-item>
+          </a-col>
+          <a-col :span="8">
+            <a-form-item field="number" label="状态">
+              <a-select
+                v-model="formModel.status"
+                :options="roleStatusOptions"
+                placeholder="请选择角色状态"
+              />
+            </a-form-item>
+          </a-col>
+          <a-col :span="8">
+            <a-space>
+              <a-button type="primary" @click="search">
+                <template #icon>
+                  <icon-search />
+                </template>
+                查询
+              </a-button>
+              <a-button @click="search">
+                <template #icon>
+                  <icon-refresh />
+                </template>
+                重置
+              </a-button>
+            </a-space>
+          </a-col>
+        </a-row>
+      </a-form>
       <a-divider style="margin-top: 0" />
       <a-row style="margin-bottom: 16px">
         <a-col :span="12">
@@ -192,5 +199,6 @@ const handleChange = (checked: boolean | (string | boolean | number)[], column: 
         </a-col>
       </a-row>
     </a-card>
+    <!-- table -->
   </div>
 </template>

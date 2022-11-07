@@ -53,7 +53,7 @@ const findMenuOpenKeys = (target: string) => {
   const backtrack = (item: RouteRecordRaw, keys: string[]) => {
     if (item.name === target) {
       isFind = true
-      result.push(...keys)
+      result.push(...keys, item.name as string)
       return
     }
     if (item.children?.length) {
