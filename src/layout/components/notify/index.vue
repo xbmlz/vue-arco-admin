@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import NotifyList from './notify-list.vue'
-import useLoading from '@/hooks/loading'
+import useLoading from '@/hooks/useLoading'
 import NotifyApi from '@/api/system/notify/index'
 import type { NotifyResult } from '@/api/system/notify/model'
 

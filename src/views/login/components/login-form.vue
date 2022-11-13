@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { Message } from '@arco-design/web-vue'
 import type { ValidatedError } from '@arco-design/web-vue/es/form/interface'
-import useLoading from '@/hooks/loading'
+import useLoading from '@/hooks/useLoading'
 import { BASE_HOME_PATH } from '@/router/constants'
 import { useUserStore } from '@/store/modules/user'
 import type { LoginParams } from '@/api/system/user/model'

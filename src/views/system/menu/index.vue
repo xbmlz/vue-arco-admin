@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import type { SelectOptionData } from '@arco-design/web-vue/es/select/interface'
-import type { TableColumnData } from '@arco-design/web-vue'
 import type { RouteRecordNormalized } from 'vue-router'
-import { compile } from 'vue'
+import { columns, menuStatusOptions } from './data'
 import MenuApi from '@/api/system/menu'
 
 defineOptions({
   name: 'MenuManagement',
 })
+
+const tableRef = ref()
 
 const formModel = ref<{
   name: string
@@ -19,65 +19,11 @@ const formModel = ref<{
 
 const expandAll = ref(true)
 
-const menuStatusOptions = computed<SelectOptionData[]>(() => [
-  {
-    label: '启用',
-    value: 1,
-  },
-  {
-    label: '禁用',
-    value: 0,
-  },
-])
-
 const menuList = ref<RouteRecordNormalized[]>([])
 
 const search = async () => {
   menuList.value = await MenuApi.getMenuList()
 }
-
-const columns: TableColumnData[] = [
-  {
-    title: '菜单名称',
-    dataIndex: 'title',
-  },
-  {
-    title: '图标',
-    dataIndex: 'icon',
-    render: ({ record }) => {
-      return h(compile(`<${record.icon}/>`))
-    },
-  },
-  {
-    title: '权限标识',
-    dataIndex: 'permission',
-  },
-  {
-    title: '组件地址',
-    dataIndex: 'path',
-  },
-  {
-    title: '排序',
-    dataIndex: 'order',
-  },
-  {
-    title: '状态',
-    dataIndex: 'status',
-    render: ({ record }) => {
-      return h(
-        ATag,
-        {
-          color: record.status === 1 ? 'green' : 'red',
-        },
-        record.status === 1 ? '启用' : '禁用'
-      )
-    },
-  },
-  {
-    title: '创建时间',
-    dataIndex: 'createTime',
-  },
-]
 
 onMounted(() => {
   search()
@@ -151,7 +97,7 @@ onMounted(() => {
         </a-col>
       </a-row>
       <!-- table -->
-      <a-table :columns="columns" :data="menuList" :default-expand-all-rows="true" />
+      <a-table ref="tableRef" :columns="columns" :data="menuList" :default-expand-all-rows="true" />
     </a-card>
   </div>
 </template>

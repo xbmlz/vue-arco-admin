@@ -1,15 +1,14 @@
 import type { LocationQueryRaw, RouteRecordNormalized, Router } from 'vue-router'
 import { BASE_HOME_PATH, LOGIN_PATH, NOT_FOUND_NAME, ROOT_PATH, WHITE_LIST } from '@/router/constants'
 import { useAppStore, usePermissionStore, useUserStore } from '@/store'
-import usePermission from '@/hooks/permission'
 
 export function setupPermissionGuard(router: Router) {
   router.beforeEach(async (to, from, next) => {
     const userStore = useUserStore()
     const appStore = useAppStore()
     const permissionStore = usePermissionStore()
-    const { accessRouter } = usePermission()
-    const permissionsAllow = accessRouter(to)
+    const userPermission = useUserPermission()
+    const permissionsAllow = userPermission.accessRouter(to)
     // console.log(
     //   `from====${from.path}, to====${to.path}, isLogin====${userStore.isLogin}`
     // )
