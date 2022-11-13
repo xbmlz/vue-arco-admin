@@ -5,6 +5,7 @@ overrides:
 
 specifiers:
   '@arco-design/web-vue': ^2.37.4
+  '@ckpack/vue-color': ^1.2.4
   '@commitlint/config-conventional': ^17.1.0
   '@iconify/json': ^2.1.123
   '@types/lodash-es': ^4.17.6
@@ -55,6 +56,7 @@ specifiers:
   vue-tsc: ^0.39.5
 
 dependencies:
+  '@ckpack/vue-color': 1.2.4_vue@3.2.41
   '@vueuse/core': 9.3.1_vue@3.2.41
   axios: 0.27.2
   lodash-es: 4.17.21
@@ -444,6 +446,17 @@ packages:
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
 
+  /@ckpack/vue-color/1.2.4_vue@3.2.41:
+    resolution: {integrity: sha512-3IJFlocRd+As2ba6+f8cq4K+G2zfaRM63MtPAE+yxtcIuSHRbtToe+Zix8nqkjQuQxmzRHmUkfsXibtJae51kQ==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      '@ctrl/tinycolor': 3.4.1
+      material-colors: 1.2.6
+      vue: 3.2.41
+    dev: false
+
   /@commitlint/cli/17.1.2:
     resolution: {integrity: sha512-h/4Hlka3bvCLbnxf0Er2ri5A44VMlbMSkdTRp8Adv2tRiklSTRIoPGs7OEXDv3EoDs2AAzILiPookgM4Gi7LOw==}
     engines: {node: '>=v14'}
@@ -612,6 +625,11 @@ packages:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
     dev: true
+
+  /@ctrl/tinycolor/3.4.1:
+    resolution: {integrity: sha512-ej5oVy6lykXsvieQtqZxCOaLT+xD4+QNarq78cIYISHmZXshCvROLudpQN3lfL8G0NL7plMSSK+zlyvCaIJ4Iw==}
+    engines: {node: '>=10'}
+    dev: false
 
   /@esbuild/android-arm/0.15.11:
     resolution: {integrity: sha512-PzMcQLazLBkwDEkrNPi9AbjFt6+3I7HKbiYF2XtWQ7wItrHvEOeO3T8Am434zAozWtVP7lrTue1bEfc2nYWeCA==}
@@ -5304,6 +5322,10 @@ packages:
       mdurl: 1.0.1
       uc.micro: 1.0.6
     dev: true
+
+  /material-colors/1.2.6:
+    resolution: {integrity: sha512-6qE4B9deFBIa9YSpOc9O0Sgc43zTeVYbgDT5veRKSlB2+ZuHNoVVxA1L/ckMUayV9Ay9y7Z/SZCLcGteW9i7bg==}
+    dev: false
 
   /mdast-util-from-markdown/0.8.5:
     resolution: {integrity: sha512-2hkTXtYYnr+NubD/g6KGBS/0mFmBcifAsI0yIWRiRo0PjVs6SSOSOdtzbp6kSGnShDN6G5aWZpKQ2lWRy27mWQ==}

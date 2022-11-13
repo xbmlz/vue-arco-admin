@@ -6,7 +6,6 @@ import ViteLegacy from '@vitejs/plugin-legacy'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import DefineOptions from 'unplugin-vue-define-options/vite'
-import Eslint from 'vite-plugin-eslint'
 import ViteCompression from 'vite-plugin-compression'
 import ViteImagemin from 'vite-plugin-imagemin'
 import ViteMarkdown from 'vite-plugin-vue-markdown'
@@ -143,9 +142,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
       }),
       // https://github.com/unocss/unocss/tree/main/packages/vite
       Unocss(),
-      // https://github.com/gxmari007/vite-plugin-eslint
       // https://cn.vitejs.dev/guide/using-plugins.html#enforcing-plugin-ordering
-      { ...Eslint(), apply: 'serve' },
       // https://github.com/vbenjs/vite-plugin-compression
       { ...ViteCompression(), apply: 'build' },
       // https://github.com/vbenjs/vite-plugin-imagemin

@@ -1,5 +1,6 @@
 {
   "theme": "light",
+  "themeColor": "#165DFF",
   "colorWeakness": false,
   "multiTabs": true,
   "isMobile": false,

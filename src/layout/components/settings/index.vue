@@ -2,6 +2,7 @@
 import { Message } from '@arco-design/web-vue'
 import { useClipboard } from '@vueuse/core'
 import Block from './block.vue'
+import ColorPanel from './color.vue'
 import { useAppStore } from '@/store'
 
 const visible = ref(false)
@@ -38,7 +39,7 @@ const othersOpts = computed(() => [
 const copySettings = async () => {
   const text = JSON.stringify(appStore.$state, null, 2)
   await copy(text)
-  Message.success('复制成功')
+  Message.success('复制成功，请粘贴到 src/settings.json 文件中')
 }
 
 const cancel = () => {
@@ -68,6 +69,9 @@ defineExpose({
     @ok="copySettings"
   >
     <template #title>页面配置</template>
+    <Block title="主题色">
+      <ColorPanel />
+    </Block>
     <Block :options="contentOpts" title="内容区域" />
     <Block :options="othersOpts" title="其他设置" />
     <a-alert>

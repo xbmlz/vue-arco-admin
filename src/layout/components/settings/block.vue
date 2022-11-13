@@ -46,6 +46,8 @@ const handleChange = async ({ key, value }: { key: string; value: unknown }) => 
         @input-change="handleChange"
       />
     </div>
+    <slot />
+    <ADivider />
   </div>
 </template>
 
