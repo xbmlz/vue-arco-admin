@@ -4,4 +4,5 @@ module.exports = {
   rules: {
     // Your custom rules
   },
+  ignorePatterns: ['types/auto-imports.d.ts', 'types/auto-imports.d.ts'],
 }
