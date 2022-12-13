@@ -23,7 +23,7 @@ export function setupPermissionGuard(router: Router) {
       return
     }
 
-    if (permissionStore.getMenuList.length === 0) {
+    if (permissionStore.getMenuList.length === 0 && userStore.isLogin) {
       permissionStore.buildRoutes()
     }
 

@@ -26,8 +26,10 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext .js,.ts,.json,.json5,.vue,.md --fix",
-    "prepare": "husky install"
+    "lint": "eslint . --ext .js,.ts,.json,.json5,.vue,.md",
+    "lint:fix": "eslint . --ext .js,.ts,.json,.json5,.vue,.md --fix",
+    "prepare": "husky install",
+    "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
     "@ckpack/vue-color": "^1.2.4",
@@ -45,7 +47,7 @@
   "devDependencies": {
     "@arco-design/web-vue": "^2.37.4",
     "@commitlint/config-conventional": "^17.1.0",
-    "@iconify/json": "^2.1.123",
+    "@iconify-json/carbon": "^1.1.11",
     "@types/lodash-es": "^4.17.6",
     "@types/markdown-it-link-attributes": "^3.0.1",
     "@types/node": "18.7.18",
@@ -76,7 +78,6 @@
     "unplugin-vue-define-options": "^0.7.3",
     "vite": "^3.1.8",
     "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-imagemin": "^0.6.1",
     "vite-plugin-mock": "^2.9.6",
     "vite-plugin-style-import": "^2.0.0",
     "vite-plugin-vue-markdown": "^0.22.1",

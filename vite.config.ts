@@ -7,7 +7,6 @@ import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 import ViteCompression from 'vite-plugin-compression'
-import ViteImagemin from 'vite-plugin-imagemin'
 import ViteMarkdown from 'vite-plugin-vue-markdown'
 import { ArcoResolver } from 'unplugin-vue-components/resolvers'
 import { createStyleImportPlugin } from 'vite-plugin-style-import'
@@ -145,37 +144,6 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
       // https://cn.vitejs.dev/guide/using-plugins.html#enforcing-plugin-ordering
       // https://github.com/vbenjs/vite-plugin-compression
       { ...ViteCompression(), apply: 'build' },
-      // https://github.com/vbenjs/vite-plugin-imagemin
-      {
-        ...ViteImagemin({
-          gifsicle: {
-            optimizationLevel: 7,
-            interlaced: false,
-          },
-          optipng: {
-            optimizationLevel: 7,
-          },
-          mozjpeg: {
-            quality: 20,
-          },
-          pngquant: {
-            quality: [0.8, 0.9],
-            speed: 4,
-          },
-          svgo: {
-            plugins: [
-              {
-                name: 'removeViewBox',
-              },
-              {
-                name: 'removeEmptyAttrs',
-                active: false,
-              },
-            ],
-          },
-        }),
-        apply: 'build',
-      },
       // https://github.com/antfu/vite-plugin-vue-markdown
       ViteMarkdown({
         wrapperClasses: 'prose prose-sm m-auto text-left',

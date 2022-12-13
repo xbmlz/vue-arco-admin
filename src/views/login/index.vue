@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import LoginBanner from './components/banner.vue'
 import LoginForm from './components/login-form.vue'
+import Footer from '@/layout/components/footer/index.vue'
 
 defineOptions({
   name: 'Login',
