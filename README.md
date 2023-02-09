@@ -1,10 +1,9 @@
-# venable-admin
-
+# vue-arco-admin
 <p align='center'>
-  <img src='https://raw.githubusercontent.com/xbmlz/venable-admin/main/public/logo.svg' alt='Hexo-theme-maple' width='120'/>
+  <img src='https://raw.githubusercontent.com/xbmlz/vue-arco-admin/main/public/logo.svg' alt='vue-arco-admin' width='120'/>
 </p>
 
-<h1 align="center">VEnable Admin</h1>
+<h1 align="center">Arco Design Admin</h1>
 
 
 <p align="center">
@@ -12,7 +11,7 @@
 </p>
 
 <p align="center">
-  <a href="https://xbmlz.github.io/venable-admin/">Live Demo</a>
+  <a href="https://xbmlz.github.io/vue-arco-admin/">Live Demo</a>
 </a>
 
 <p align="center">
