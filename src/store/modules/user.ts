@@ -1,12 +1,23 @@
 import { defineStore } from 'pinia'
-import type { UserState } from './types'
+import { usePermissionStore } from '../modules/permission'
 import UserApi from '@/api/system/user/index'
-import { usePermissionStore } from '@/store/modules/permission/index'
 import { userToken } from '@/utils/storage'
 import router from '@/router'
 import { LOGIN_PATH } from '@/router/constants'
 import { removeRouteListener } from '@/utils/route-listener'
 import type { LoginParams } from '@/api/system/user/model'
+
+type RoleType = '' | '*' | 'admin' | 'user'
+
+interface UserState {
+  userId?: string | number
+  username?: string
+  realName?: string
+  homePath?: string
+  avatar?: string
+  token?: string
+  role?: RoleType
+}
 
 export const useUserStore = defineStore({
   id: 'user',

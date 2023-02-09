@@ -4,7 +4,8 @@ overrides:
   bin-wrapper: npm:bin-wrapper-china
 
 specifiers:
-  '@arco-design/web-vue': ^2.37.4
+  '@arco-design/web-vue': ^2.42.1
+  '@arco-themes/vue-arco-pro': ^0.0.3
   '@ckpack/vue-color': ^1.2.4
   '@commitlint/config-conventional': ^17.1.0
   '@iconify-json/carbon': ^1.1.11
@@ -67,7 +68,8 @@ dependencies:
   vue-router: 4.1.5_vue@3.2.41
 
 devDependencies:
-  '@arco-design/web-vue': 2.37.4_vue@3.2.41
+  '@arco-design/web-vue': 2.42.1_vue@3.2.41
+  '@arco-themes/vue-arco-pro': 0.0.3_vlhqajahfffpjaatviyrke6rqm
   '@commitlint/config-conventional': 17.1.0
   '@iconify-json/carbon': 1.1.11
   '@types/lodash-es': 4.17.6
@@ -132,8 +134,8 @@ packages:
       color: 3.2.1
     dev: true
 
-  /@arco-design/web-vue/2.37.4_vue@3.2.41:
-    resolution: {integrity: sha512-h8mK/I0jxlYKG/q5EiOOTqOdE12bRLxMFIkmNYr5XiixbvlI2YBYuyOjoDtlr1FY68cp6o77ysPmmedG5rmeng==}
+  /@arco-design/web-vue/2.42.1_vue@3.2.41:
+    resolution: {integrity: sha512-zzXmayX/DIJiPuxIntj3KJrLe6VrFoX6ixpmbrLl7SAnoecGAMSXnaAy6sw0xOybrZid3ytYEzAuqTI/p9aOQw==}
     peerDependencies:
       vue: ^3.1.0
     dependencies:
@@ -146,6 +148,14 @@ packages:
       resize-observer-polyfill: 1.5.1
       scroll-into-view-if-needed: 2.2.29
       vue: 3.2.41
+    dev: true
+
+  /@arco-themes/vue-arco-pro/0.0.3_vlhqajahfffpjaatviyrke6rqm:
+    resolution: {integrity: sha512-m3+Pf0ejp7waK55cSUV8XjeZdN5/NZ6/cBCJ9ZlF6OhstfrSz7y2ksSNVfuX7jjehtrnWETn4k7GNhSr+YjhGQ==}
+    peerDependencies:
+      '@arco-design/web-vue': ^2.19.0
+    dependencies:
+      '@arco-design/web-vue': 2.42.1_vue@3.2.41
     dev: true
 
   /@babel/code-frame/7.18.6:

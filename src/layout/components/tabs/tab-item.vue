@@ -2,7 +2,7 @@
 import type { PropType } from 'vue'
 import { useTabsStore } from '@/store'
 import { DEFAULT_ROUTE_NAME, REDIRECT_ROUTE_NAME } from '@/router/constants'
-import type { TabProps } from '@/store/modules/tabs/types'
+import type { TabProps } from '@/store/modules/tabs'
 
 const props = defineProps({
   tabData: {

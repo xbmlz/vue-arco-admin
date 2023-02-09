@@ -1,11 +1,23 @@
 import { defineStore } from 'pinia'
 import type { RouteLocationNormalized } from 'vue-router'
-import type { TabProps, TabsState } from './types'
 import { DEFAULT_ROUTE, DEFAULT_ROUTE_NAME, REDIRECT_ROUTE_NAME } from '@/router/constants'
 import { isString } from '@/utils/is'
 import { useAppStore } from '@/store'
 
 const BAN_LIST = [REDIRECT_ROUTE_NAME]
+
+export interface TabProps {
+  title: string
+  name: string
+  fullPath: string
+  query?: any
+  cache?: boolean
+}
+
+interface TabsState {
+  tabList: TabProps[]
+  tabCacheList: Set<string>
+}
 
 const formatTag = (route: RouteLocationNormalized): TabProps => {
   const { name, meta, fullPath, query } = route

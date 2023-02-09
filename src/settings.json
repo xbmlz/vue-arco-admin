@@ -1,12 +1,12 @@
 {
-  "theme": "light",
-  "themeColor": "#165DFF",
+  "theme": "dark",
+  "themeColor": "#D0021B",
   "colorWeakness": false,
   "multiTabs": true,
   "isMobile": false,
   "navbarHeight": 52,
   "serverMenu": true,
-  "sidebarWidth": 250,
+  "sidebarWidth": 220,
   "sidebarCollapsed": false,
   "sidebarHidden": false
 }

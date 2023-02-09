@@ -6,11 +6,14 @@ import { useAppStore, useUserStore } from '@/store'
 const appStore = useAppStore()
 const userStore = useUserStore()
 
-const toggleDrawerMenu = inject('toggleDrawerMenu')
+const toggleDrawerMenu = inject('toggleDrawerMenu') as (ev: MouseEvent) => any
 
 // theme
 const theme = computed(() => {
   return appStore.theme
+})
+const themeColor = computed(() => {
+  return appStore.themeColor
 })
 const isDark = useDark({
   selector: 'body',
@@ -139,8 +142,9 @@ const handleLogout = () => {
       <!-- user -->
       <li>
         <a-dropdown trigger="click">
-          <a-avatar :size="28" :style="{ cursor: 'pointer' }">
-            <img alt="avatar" :src="avatar" />
+          <a-avatar :size="28" :style="{ cursor: 'pointer', backgroundColor: themeColor }">
+            <img v-if="avatar" alt="avatar" :src="avatar" />
+            <span v-else>{{ userStore.username }}</span>
           </a-avatar>
           <template #content>
             <a-doption>

@@ -15,6 +15,7 @@ import Unocss from 'unocss/vite'
 import Shiki from 'markdown-it-shiki'
 import LinkAttributes from 'markdown-it-link-attributes'
 import type { ConfigEnv, UserConfig } from 'vite'
+import settings from './src/settings.json'
 
 // https://cn.vitejs.dev/config/
 export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
@@ -46,7 +47,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
         // allow auto import and register components used in markdown
         include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
         dts: 'types/components.d.ts',
-        resolvers: [ArcoResolver({ sideEffect: true })],
+        resolvers: [ArcoResolver({ sideEffect: true, importStyle: 'less' })],
       }),
       // https://github.com/sxzz/unplugin-vue-macros/blob/main/packages/define-options/README-zh-CN.md
       DefineOptions(),
@@ -115,14 +116,16 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
                 'avatar-group': 'avatar',
                 'image-preview': 'image',
                 'image-preview-group': 'image',
+                'cascader-panel': 'cascader',
               }
               if (ignoreList.includes(name)) return ''
+
               // eslint-disable-next-line no-prototype-builtins
               return replaceList.hasOwnProperty(name)
-                ? `@arco-design/web-vue/es/${replaceList[name]}/style/css.js`
-                : `@arco-design/web-vue/es/${name}/style/css.js`
+                ? `@arco-design/web-vue/es/${replaceList[name]}/style/index.js`
+                : `@arco-design/web-vue/es/${name}/style/index.js`
               // less
-              // return `@arco-design/web-vue/es/${name}/style/index.js`;
+              // return `@arco-design/web-vue/es/${name}/style/index.js`
             },
           },
         ],
@@ -166,6 +169,16 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
         },
       }),
     ],
+    css: {
+      preprocessorOptions: {
+        less: {
+          modifyVars: {
+            'arcoblue-6': settings.themeColor,
+          },
+          javascriptEnabled: true,
+        },
+      },
+    },
     resolve: {
       alias: [
         {
