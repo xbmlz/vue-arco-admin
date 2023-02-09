@@ -23,7 +23,7 @@ jobs:
       - name: Setup config ⚙️
         shell: bash
         run: |
-          sed -i  's#VITE_PUBLIC_PATH\s*=.*#VITE_PUBLIC_PATH = /vur-arco-admin/#g' ./.env.production
+          sed -i  's#VITE_PUBLIC_PATH\s*=.*#VITE_PUBLIC_PATH = /vue-arco-admin/#g' ./.env.production
           cat ./.env.production
 
       - name: Install and Build 🔧
