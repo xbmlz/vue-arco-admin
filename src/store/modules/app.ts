@@ -12,12 +12,14 @@ interface AppState {
   sidebarCollapsed: boolean
   sidebarHidden: boolean
   colorWeakness: boolean
+  appTitle: string
 }
 
 export const useAppStore = defineStore({
   id: 'app',
   state: (): AppState => ({
     ...appSettings,
+    appTitle: import.meta.env.VITE_APP_TITLE,
   }),
   getters: {},
   actions: {

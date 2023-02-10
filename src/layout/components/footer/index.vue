@@ -1,7 +1,12 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const appStore = useAppStore()
+const appTitle = computed(() => {
+  return appStore.appTitle
+})
+</script>
 
 <template>
-  <a-layout-footer class="footer">Copyright ©2022 VEnable Admin</a-layout-footer>
+  <a-layout-footer class="footer">Copyright ©2022 {{ appTitle }}</a-layout-footer>
 </template>
 
 <style lang="less" scoped>

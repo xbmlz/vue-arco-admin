@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { Message } from '@arco-design/web-vue'
 import type { ValidatedError } from '@arco-design/web-vue/es/form/interface'
+import { LoginStateEnum, useLoginState } from '../useLogin'
+import FormTitle from './form-title.vue'
 import useLoading from '@/hooks/useLoading'
 import { BASE_HOME_PATH } from '@/router/constants'
 import { useUserStore } from '@/store/modules/user'
@@ -8,8 +10,12 @@ import type { LoginParams } from '@/api/system/user/model'
 
 const errorMessage = ref('')
 const userStore = useUserStore()
+const { setLoginState, getLoginState } = useLoginState()
+
 const router = useRouter()
 const { loading, setLoading } = useLoading()
+
+const isShow = computed(() => unref(getLoginState) === LoginStateEnum.LOGIN)
 
 const loginConfig = useStorage('login-config', {
   rememberPassword: true,
@@ -52,9 +58,8 @@ const handleSubmit = async ({
 </script>
 
 <template>
-  <div w-320px>
-    <div font-500 text-3xl mb-4>登录 VEnable Admin</div>
-    <div text-2xl color-gray-5 mb-4>登录 VEnable Admin</div>
+  <div v-show="isShow" w-320px>
+    <FormTitle />
     <div h-32px color-red-5 text-xl>
       {{ errorMessage }}
     </div>
@@ -95,7 +100,7 @@ const handleSubmit = async ({
           <ALink>忘记密码</ALink>
         </div>
         <AButton type="primary" html-type="submit" :loading="loading" long>登录</AButton>
-        <AButton type="text" long>注册账号</AButton>
+        <AButton type="text" long @click="setLoginState(LoginStateEnum.REGISTER)">注册账号</AButton>
       </ASpace>
     </AForm>
   </div>
