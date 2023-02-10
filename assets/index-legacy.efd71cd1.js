@@ -1,0 +1,1 @@
+System.register(["./arco-legacy.0a3d2935.js","./index-legacy.f23afe1a.js","./vue-legacy.933b4a7b.js"],(function(e,t){"use strict";var n,r,u,a;return{setters:[e=>{n=e.z,r=e.A,u=e.D},e=>{a=e._},()=>{}],execute:function(){const t={},c=[u("h1",null,"用户管理",-1)];e("default",a(t,[["render",function(e,t){return n(),r("div",null,c)}]]))}}}));

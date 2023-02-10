@@ -1,1 +1,0 @@
-System.register(["./arco-legacy.0a3d2935.js","./_plugin-vue_export-helper-legacy.649209c3.js"],(function(e,t){"use strict";var r,n,u,c;return{setters:[e=>{r=e.z,n=e.A,u=e.D},e=>{c=e._}],execute:function(){const t={},l=[u("h1",null,"用户管理",-1)];e("default",c(t,[["render",function(e,t){return r(),n("div",null,l)}]]))}}}));
