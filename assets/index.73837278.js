@@ -1,0 +1,1 @@
+import{z as e,A as o,D as t}from"./arco.63277673.js";import{_ as c}from"./_plugin-vue_export-helper.cdc0426e.js";const n={},s=t("h1",null,"\u7528\u6237\u7BA1\u7406",-1),r=[s];function _(a,d){return e(),o("div",null,r)}const f=c(n,[["render",_]]);export{f as default};
