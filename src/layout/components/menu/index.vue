@@ -14,6 +14,8 @@ const { menuTree } = useMenuTree()
 const openKeys = ref<string[]>([])
 const selectedKey = ref<string[]>([])
 
+const topMenu = computed(() => appStore.topMenu)
+
 const collapsed = computed({
   get() {
     if (!appStore.isMobile) return appStore.sidebarCollapsed
@@ -110,6 +112,7 @@ const renderSubMenu = () => {
 }
 const Render = () => (
   <a-menu
+    mode={topMenu.value ? 'horizontal' : 'vertical'}
     v-model:collapsed={collapsed.value}
     v-model:open-keys={openKeys.value}
     show-collapse-button={!appStore.isMobile}

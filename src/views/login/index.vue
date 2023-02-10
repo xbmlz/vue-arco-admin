@@ -8,11 +8,7 @@ defineOptions({
   name: 'Login',
 })
 
-const appStore = useAppStore()
-
-const appTitle = computed(() => {
-  return appStore.appTitle
-})
+const appTitle = import.meta.env.VITE_APP_TITLE
 </script>
 
 <template>

@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { LoginStateEnum, useLoginState } from '../useLogin'
-const appStore = useAppStore()
-const appTitle = computed(() => {
-  return appStore.appTitle
-})
+const appTitle = import.meta.env.VITE_APP_TITLE
 const { getLoginState } = useLoginState()
 const getFormTitle = computed(() => {
   const titleObj: Record<LoginStateEnum, string> = {
@@ -17,6 +14,6 @@ const getFormTitle = computed(() => {
 <template>
   <div>
     <div font-500 text-3xl mb-4>{{ getFormTitle }} {{ appTitle }}</div>
-    <div text-xl color-gray-5 mb-4>{{ getFormTitle }} {{ appTitle }}</div>
+    <div text-xl c-gray mb-4>{{ getFormTitle }} {{ appTitle }}</div>
   </div>
 </template>

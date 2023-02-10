@@ -7,19 +7,19 @@ interface AppState {
   isMobile: boolean
   multiTabs: boolean
   serverMenu: boolean
+  topMenu: boolean
   navbarHeight: number
   sidebarWidth: number
   sidebarCollapsed: boolean
   sidebarHidden: boolean
   colorWeakness: boolean
-  appTitle: string
+  footer: boolean
 }
 
 export const useAppStore = defineStore({
   id: 'app',
   state: (): AppState => ({
     ...appSettings,
-    appTitle: import.meta.env.VITE_APP_TITLE,
   }),
   getters: {},
   actions: {

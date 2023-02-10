@@ -34,6 +34,7 @@
   "dependencies": {
     "@ckpack/vue-color": "^1.2.4",
     "@vueuse/core": "^9.3.1",
+    "@vueuse/head": "^1.0.25",
     "axios": "^0.27.2",
     "lodash-es": "^4.17.21",
     "mitt": "^3.0.0",

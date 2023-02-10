@@ -28,6 +28,12 @@ const handleChange = async ({ key, value }: { key: string; value: unknown }) => 
 
   if (key === 'serverMenu' && value) await permissionStore.buildRoutes()
 
+  if (key === 'topMenu') {
+    appStore.updateSettings({
+      sidebarCollapsed: false,
+    })
+  }
+
   appStore.updateSettings({ [key]: value })
 }
 </script>

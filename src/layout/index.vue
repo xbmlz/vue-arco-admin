@@ -10,7 +10,7 @@ const appStore = useAppStore()
 const permissionStore = usePermissionStore()
 const tabsStore = useTabsStore()
 
-const renderMenu = computed(() => permissionStore.menuList)
+const renderMenu = computed(() => permissionStore.menuList && !appStore.topMenu)
 const debounceFn = useDebounceFn(() => {
   if (!document.hidden) appStore.updateSettings({ isMobile: isMobile() })
 }, 100)
@@ -64,6 +64,7 @@ const drawerCancel = () => {
 const cacheList = computed(() => tabsStore.getTabCacheList)
 
 const multiTabs = computed(() => appStore.multiTabs)
+const footer = computed(() => appStore.footer)
 
 onMounted(() => {
   debounceFn()
@@ -125,7 +126,7 @@ provide('toggleDrawerMenu', () => {
             </transition>
           </router-view>
         </a-layout-content>
-        <Footer />
+        <Footer v-if="footer" />
       </a-layout>
     </a-layout>
   </a-layout>

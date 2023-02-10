@@ -15,11 +15,16 @@ const contentOpts = computed(() => [
     defaultVal: appStore.serverMenu,
   },
   {
-    name: '顶栏高度',
-    key: 'navbarheight',
-    defaultVal: appStore.navbarHeight,
-    type: 'number',
+    name: '顶部菜单栏',
+    key: 'topMenu',
+    defaultVal: appStore.topMenu,
   },
+  // {
+  //   name: '顶栏高度',
+  //   key: 'navbarheight',
+  //   defaultVal: appStore.navbarHeight,
+  //   type: 'number',
+  // },
   {
     name: '侧边栏宽度',
     key: 'sidebarWidth',
@@ -27,6 +32,7 @@ const contentOpts = computed(() => [
     type: 'number',
   },
   { name: '多页签', key: 'multiTabs', defaultVal: appStore.multiTabs },
+  { name: '页脚', key: 'footer', defaultVal: appStore.footer },
 ])
 const othersOpts = computed(() => [
   {

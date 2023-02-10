@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import GlobalSettings from '../../components/settings/index.vue'
 import Notify from '../../components/notify/index.vue'
-import { useAppStore, useUserStore } from '@/store'
+import Menu from '../../components/menu/index.vue'
+import { useAppStore, usePermissionStore, useUserStore } from '@/store'
 
 const appStore = useAppStore()
 const userStore = useUserStore()
+const permissionStore = usePermissionStore()
 
 const toggleDrawerMenu = inject('toggleDrawerMenu') as (ev: MouseEvent) => any
+
+const topMenu = computed(() => appStore.topMenu && permissionStore.menuList)
+
+const appShortTitle = import.meta.env.VITE_APP_SHORT_TITLE as string
 
 // theme
 const theme = computed(() => {
@@ -64,14 +70,17 @@ const handleLogout = () => {
       <a-space>
         <img alt="logo" src="../../../assets/images/logo.png" />
         <a-typography-title :style="{ marginTop: '0.8rem', fontSize: '18px' }" :heading="5">
-          VEnable
+          {{ appShortTitle }}
         </a-typography-title>
         <icon-menu-fold
-          v-if="appStore.isMobile"
+          v-if="!topMenu && appStore.isMobile"
           style="font-size: 22px; cursor: pointer"
           @click="toggleDrawerMenu"
         />
       </a-space>
+    </div>
+    <div class="navbar-center">
+      <Menu v-if="topMenu" />
     </div>
     <ul class="navbar-right">
       <!-- search -->
@@ -179,6 +188,10 @@ const handleLogout = () => {
     width: 28px;
     margin-right: 8px;
   }
+}
+
+.navbar-center {
+  flex: 1;
 }
 
 .navbar-right {
