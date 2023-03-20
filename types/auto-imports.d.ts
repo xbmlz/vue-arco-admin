@@ -187,6 +187,7 @@ declare global {
   const useOffsetPagination: typeof import('@vueuse/core')['useOffsetPagination']
   const useOnline: typeof import('@vueuse/core')['useOnline']
   const usePageLeave: typeof import('@vueuse/core')['usePageLeave']
+  const usePageTitle: typeof import('../src/hooks/usePageTitle')['usePageTitle']
   const useParallax: typeof import('@vueuse/core')['useParallax']
   const usePermission: typeof import('@vueuse/core')['usePermission']
   const usePermissionStore: typeof import('../src/store/index')['usePermissionStore']
@@ -459,6 +460,7 @@ declare module '@vue/runtime-core' {
     readonly useOffsetPagination: UnwrapRef<typeof import('@vueuse/core')['useOffsetPagination']>
     readonly useOnline: UnwrapRef<typeof import('@vueuse/core')['useOnline']>
     readonly usePageLeave: UnwrapRef<typeof import('@vueuse/core')['usePageLeave']>
+    readonly usePageTitle: UnwrapRef<typeof import('../src/hooks/usePageTitle')['usePageTitle']>
     readonly useParallax: UnwrapRef<typeof import('@vueuse/core')['useParallax']>
     readonly usePermission: UnwrapRef<typeof import('@vueuse/core')['usePermission']>
     readonly usePermissionStore: UnwrapRef<typeof import('../src/store/index')['usePermissionStore']>

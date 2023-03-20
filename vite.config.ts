@@ -15,14 +15,13 @@ import Unocss from 'unocss/vite'
 import Shiki from 'markdown-it-shiki'
 import LinkAttributes from 'markdown-it-link-attributes'
 import type { ConfigEnv, UserConfig } from 'vite'
-import { createHtmlPlugin } from 'vite-plugin-html'
 import settings from './src/settings.json'
 
 // https://cn.vitejs.dev/config/
 export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
   const root = process.cwd()
   const env = loadEnv(mode, root)
-  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_BASE_URL, VITE_APP_TITLE } = env
+  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_BASE_URL } = env
   const isBuild = command === 'build'
   const isHttps = /^https:\/\//.test(VITE_BASE_URL)
 
@@ -130,15 +129,6 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
             },
           },
         ],
-      }),
-      // https://github.com/vbenjs/vite-plugin-html
-      createHtmlPlugin({
-        minify: isBuild,
-        inject: {
-          data: {
-            title: VITE_APP_TITLE,
-          },
-        },
       }),
       // https://github.com/vbenjs/vite-plugin-mock
       viteMockServe({
