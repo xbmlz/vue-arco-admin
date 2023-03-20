@@ -40,7 +40,6 @@ specifiers:
   shiki: ^0.11.1
   sortablejs: ^1.15.0
   terser: ^5.15.1
-  turbo: ^1.6.2
   typescript: ^4.8.4
   unocss: ^0.45.29
   unplugin-auto-import: ^0.11.2
@@ -97,7 +96,6 @@ devDependencies:
   markdown-it-shiki: 0.5.1
   shiki: 0.11.1
   terser: 5.15.1
-  turbo: 1.6.2
   typescript: 4.8.4
   unocss: 0.45.29_vite@3.1.8
   unplugin-auto-import: 0.11.2_@vueuse+core@9.3.1
@@ -5440,67 +5438,6 @@ packages:
     dependencies:
       tslib: 1.14.1
       typescript: 4.8.4
-    dev: true
-
-  /turbo-darwin-64/1.6.2:
-    resolution: {integrity: sha512-qzqVdJZcVeu1d0mzeSxffgeOToSgM+Hl1y9yDiJQ4QQjiR/WGCzS9FtydLnk0ori8T1j/lxiiQz2sHjHYfLCTg==}
-    cpu: [x64]
-    os: [darwin]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo-darwin-arm64/1.6.2:
-    resolution: {integrity: sha512-EJvgWSjLwzJbAsqRuqeaYSdXNKwyiUfOfEOPerYCvwxC+ILiqpladjteMCzzF/z2OmIbPzuqZpyik30TfpIC9A==}
-    cpu: [arm64]
-    os: [darwin]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo-linux-64/1.6.2:
-    resolution: {integrity: sha512-SJ5ThDApOyOavjvkYb6a1MKJbOvX4JEvSYxoZv+ZpN8g7A7x1SE9b7EnxFl26S4eyy0J4+r+YJBDBZ7sFkqRWQ==}
-    cpu: [x64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo-linux-arm64/1.6.2:
-    resolution: {integrity: sha512-0vHojVlvAelsYZo6p/xE9H9Dg8spNjXx+PO5RwP12ui8GuEqHb3Vomdb7AKDnWkIH7bpysNb9GbKEk7awQpGSg==}
-    cpu: [arm64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo-windows-64/1.6.2:
-    resolution: {integrity: sha512-j4mJmY5pEt7OaBXDM99BpDnJuSpiLVbVbUl4Ezp8w3gyIcGuxy3wAfLbQyZSLu8ke6R9SdmXIBAM2Y0MjS/Z1g==}
-    cpu: [x64]
-    os: [win32]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo-windows-arm64/1.6.2:
-    resolution: {integrity: sha512-AlDYjxPU21YSefP3qMl/Zys5spglXtaBt2ZF5N2+OWcjiJZ/0mIIc69oFdzuAuiyoYkyWMdkoCSGwuljtl31vg==}
-    cpu: [arm64]
-    os: [win32]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo/1.6.2:
-    resolution: {integrity: sha512-a6UM9HaAjM5ai+vxDFI/z0l4Bf6zWjf7wCf9Ip2iyd4XZkZZnhRtM6FpaUWzorjz9Dsqnfwu3nkWY3wPdH02IQ==}
-    hasBin: true
-    requiresBuild: true
-    optionalDependencies:
-      turbo-darwin-64: 1.6.2
-      turbo-darwin-arm64: 1.6.2
-      turbo-linux-64: 1.6.2
-      turbo-linux-arm64: 1.6.2
-      turbo-windows-64: 1.6.2
-      turbo-windows-arm64: 1.6.2
     dev: true
 
   /type-check/0.4.0:
