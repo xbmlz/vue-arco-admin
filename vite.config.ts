@@ -16,13 +16,14 @@ import Shiki from 'markdown-it-shiki'
 import LinkAttributes from 'markdown-it-link-attributes'
 import type { ConfigEnv, UserConfig } from 'vite'
 import { createHtmlPlugin } from 'vite-plugin-html'
+import { VitePWA } from 'vite-plugin-pwa'
 import settings from './src/settings.json'
 
 // https://cn.vitejs.dev/config/
 export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
   const root = process.cwd()
   const env = loadEnv(mode, root)
-  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_BASE_URL, VITE_APP_TITLE } = env
+  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_BASE_URL, VITE_APP_TITLE, VITE_APP_SHORT_TITLE } = env
   const isBuild = command === 'build'
   const isHttps = /^https:\/\//.test(VITE_BASE_URL)
 
@@ -176,6 +177,29 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
               rel: 'noopener',
             },
           })
+        },
+      }),
+      // https://vite-pwa-org.netlify.app/guide/
+      VitePWA({
+        registerType: 'autoUpdate',
+        manifest: {
+          name: VITE_APP_TITLE,
+          short_name: VITE_APP_SHORT_TITLE,
+          icons: [
+            {
+              src: '/img/icons/192x192.png',
+              sizes: '192x192',
+              type: 'image/png',
+            },
+            {
+              src: '/img/icons/192x192.png',
+              sizes: '512x512',
+              type: 'image/png',
+            },
+          ],
+        },
+        devOptions: {
+          enabled: false,
         },
       }),
     ],
