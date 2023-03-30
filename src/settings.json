@@ -6,7 +6,7 @@
   "isMobile": false,
   "navbarHeight": 60,
   "serverMenu": true,
-  "topMenu": false,
+  "topMenu": true,
   "sidebarWidth": 220,
   "sidebarCollapsed": false,
   "sidebarHidden": false,

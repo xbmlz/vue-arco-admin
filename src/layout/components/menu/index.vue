@@ -134,6 +134,7 @@ const Render = () => (
 
 <style lang="less" scoped>
 :deep(.arco-menu-inner) {
+  // padding: 0px 20px;
   .arco-menu-inline-header {
     display: flex;
     align-items: center;
@@ -144,4 +145,11 @@ const Render = () => (
     }
   }
 }
+// :deep(.arco-menu-pop::after) {
+//   bottom: -10px;
+//   height: 10px;
+// }
+// :deep(.arco-menu-selected-label) {
+//   bottom: -10px;
+// }
 </style>
