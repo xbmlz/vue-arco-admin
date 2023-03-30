@@ -1,0 +1,1 @@
+import{z as e,A as o,D as t}from"./arco-02ea24c4.js";import{_ as c}from"./_plugin-vue_export-helper-c27b6911.js";const n={},s=t("h1",null,"用户管理",-1),r=[s];function _(a,d){return e(),o("div",null,r)}const f=c(n,[["render",_]]);export{f as default};
