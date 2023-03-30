@@ -17,6 +17,7 @@ const registerInfo = reactive({
   username: '',
   password: '',
   confirmPassword: '',
+  email: '',
 })
 
 const confirmPasswordRules: FieldRule[] = [
@@ -25,6 +26,19 @@ const confirmPasswordRules: FieldRule[] = [
     validator: (value: string, callback: (error?: string) => void) => {
       if (value !== registerInfo.password) {
         callback(new Error('两次密码不一致').message)
+      } else {
+        callback()
+      }
+    },
+  },
+]
+
+const emailRules: FieldRule[] = [
+  { required: true, message: '邮箱不能为空' },
+  {
+    validator: (value: string, callback: (error?: string) => void) => {
+      if (!value.includes('@')) {
+        callback(new Error('邮箱格式不正确').message)
       } else {
         callback()
       }
@@ -69,6 +83,13 @@ const handleSubmit = ({
         <AInput v-model="registerInfo.username" placeholder="用户名">
           <template #prefix>
             <icon-user />
+          </template>
+        </AInput>
+      </AFormItem>
+      <AFormItem field="email" :rules="emailRules" :validate-trigger="['change', 'blur']" hide-label>
+        <AInput v-model="registerInfo.email" placeholder="邮箱">
+          <template #prefix>
+            <icon-email />
           </template>
         </AInput>
       </AFormItem>

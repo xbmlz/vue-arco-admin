@@ -15,7 +15,6 @@ import Unocss from 'unocss/vite'
 import Shiki from 'markdown-it-shiki'
 import LinkAttributes from 'markdown-it-link-attributes'
 import type { ConfigEnv, UserConfig } from 'vite'
-import { createHtmlPlugin } from 'vite-plugin-html'
 import { VitePWA } from 'vite-plugin-pwa'
 import settings from './src/settings.json'
 
@@ -131,15 +130,6 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
             },
           },
         ],
-      }),
-      // https://github.com/vbenjs/vite-plugin-html
-      createHtmlPlugin({
-        minify: isBuild,
-        inject: {
-          data: {
-            title: VITE_APP_TITLE,
-          },
-        },
       }),
       // https://github.com/vbenjs/vite-plugin-mock
       viteMockServe({
